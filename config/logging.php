@@ -117,6 +117,24 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'token' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/token.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+
+        'call_api' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/call_api.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+
+        'update_database' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/update_database.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
     ],
 
 ];
