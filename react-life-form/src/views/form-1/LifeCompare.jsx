@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, useParams } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import FormInput from "./FormInput";
 import Cookies from "universal-cookie";
 import DateObject from "react-date-object";
@@ -10,6 +11,7 @@ import axiosClient from "../../axios-client.js";
 import { useStateContext } from "../../context/ContextProvider.jsx";
 
 function LifeCompare() {
+    const navigate = useNavigate();
     const cookies = new Cookies();
     const formData = cookies.get("formData");
     const { setNotification } = useStateContext();
@@ -17,15 +19,12 @@ function LifeCompare() {
     const [values, setValues] = useState({
         insurance_target:
             typeof formData !== "undefined" ? formData.insurance_target : "",
-        birth_year:
-            typeof formData !== "undefined" ? formData.birth_year : "",
+        birth_year: typeof formData !== "undefined" ? formData.birth_year : "",
         birth_month:
             typeof formData !== "undefined" ? formData.birth_month : "",
         birth_day: typeof formData !== "undefined" ? formData.birth_day : "",
         life_ins_duration:
-            typeof formData !== "undefined"
-                ? formData.life_ins_duration
-                : "",
+            typeof formData !== "undefined" ? formData.life_ins_duration : "",
         payment_method:
             typeof formData !== "undefined" ? formData.payment_method : "",
         annual_payment:
@@ -33,7 +32,8 @@ function LifeCompare() {
                 ? parseInt(formData.annual_payment).toLocaleString()
                 : "",
         first_job_level: typeof formData !== "undefined" ? formData.job : "",
-        first_job_level_id:  typeof formData !== "undefined" ? formData.job_id : "",
+        first_job_level_id:
+            typeof formData !== "undefined" ? formData.job_id : "",
         divided_payment:
             typeof formData !== "undefined"
                 ? (
@@ -76,8 +76,7 @@ function LifeCompare() {
     const age = useRef(
         now.year -
             (values.birth_year ? values.birth_year : now.yaer) -
-            (now.month >
-            (values.birth_month ? values.birth_month : now.month)
+            (now.month > (values.birth_month ? values.birth_month : now.month)
                 ? 1
                 : 0) -
             (now.month ==
@@ -495,6 +494,60 @@ function LifeCompare() {
         */
     ];
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // alert("فرم ثبت شد");
+        if (values.first_job_level_id) {
+            const payload = {
+                insurance_target: values.insurance_target,
+                birth_year: values.birth_year,
+                birth_month: values.birth_month,
+                birth_day: values.birth_day,
+                life_ins_duration: values.life_ins_duration,
+                payment_method: values.payment_method,
+                annual_payment: values.annual_payment.replace(/,/g, ","),
+                first_job_level: values.first_job_level,
+                first_job_level_id: values.first_job_level_id,
+                divided_payment: values.divided_payment.replace(/,/g, ","),
+                annual_payment_increase: values.annual_payment_increase,
+                addon_payment_method: values.addon_payment_method,
+                death_capital_any_reason_ratio:
+                    values.death_capital_any_reason_ratio,
+                capital_increase: values.capital_increase,
+                death_capital_incident_ratio:
+                    values.death_capital_incident_ratio,
+                maim_ratio: values.maim_ratio,
+                has_medical_cost: values.has_medical_cost,
+                additional_dangers: values.additional_dangers,
+                hospitalization: values.hospitalization,
+                exemption: values.exemption,
+                special_diseases_ratio: values.special_diseases_ratio,
+            };
+            axiosClient
+                .post("/life-compare", payload)
+                .then(({ data }) => {
+                    setNotification("ثبت اطلاعات با موفقیت انجام شد !");
+                    console.log(data);
+                    cookies.set("formData", [], { path: "/life-compare" });
+                    setTimeout(() => {
+                        navigate("/life");
+                    }, 6000);
+                })
+                .catch((err) => {
+                    const response = err.response;
+                    if (response) {
+                        setServerErrors(err.response.data.errors);
+                    }
+                });
+        } else {
+            setValues({ ...values, first_job_level: "" });
+            setErrors({
+                ...errors,
+                first_job_level: ". شغل را از موارد پیشنهادی انتخاب کنید !!",
+            });
+        }
+    };
+
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
         handleChange(e);
@@ -534,59 +587,6 @@ function LifeCompare() {
                 break;
             default:
                 break;
-        }
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // alert("فرم ثبت شد");
-        if (values.first_job_level_id) {
-            const payload = {
-                insurance_target: values.insurance_target,
-                birth_year: values.birth_year,
-                birth_month: values.birth_month,
-                birth_day: values.birth_day,
-                life_ins_duration: values.life_ins_duration,
-                payment_method: values.payment_method,
-                annual_payment: values.annual_payment.replace(/,/g, ","),
-                first_job_level: values.first_job_level,
-                first_job_level_id: values.first_job_level_id,
-                divided_payment: values.divided_payment.replace(/,/g, ","),
-                annual_payment_increase: values.annual_payment_increase,
-                addon_payment_method: values.addon_payment_method,
-                death_capital_any_reason_ratio:
-                    values.death_capital_any_reason_ratio,
-                capital_increase: values.capital_increase,
-                death_capital_incident_ratio:
-                    values.death_capital_incident_ratio,
-                maim_ratio: values.maim_ratio,
-                has_medical_cost: values.has_medical_cost,
-                additional_dangers: values.additional_dangers,
-                hospitalization: values.hospitalization,
-                exemption: values.exemption,
-                special_diseases_ratio: values.special_diseases_ratio,
-            };
-            // console.log(payload);
-            setNotification("ثبت اطلاعات با موفقیت انجام شد !");
-            axiosClient
-                .post("/life-compare", payload)
-                .then(({ data }) => {
-                    console.log(data);
-                })
-                .catch((err) => {
-                    const response = err.response;
-                    if (response) {
-                        // setMessage(response.data.message);
-                        setServerErrors(err.response.data.errors);
-                    }
-                    console.log(response);
-                });
-        } else {
-            setValues({ ...values, first_job_level: "" });
-            setErrors({
-                ...errors,
-                first_job_level: ". شغل را از موارد پیشنهادی انتخاب کنید !!",
-            });
         }
     };
 

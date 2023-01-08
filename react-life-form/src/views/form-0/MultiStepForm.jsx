@@ -52,23 +52,6 @@ function MultiStepForm() {
         }
     };
 
-    const fetchData = async () => {
-        await axios
-            .post("/lifeCompare", formData)
-            .then(function (response) {
-                console.log(response, true);
-                // if (response.data.redirect == '/') {
-                //   window.location = "/index"
-                // } else if (response.data.redirect == '/login') {
-                //   window.location = "/login"
-                // }
-            })
-            .catch(function (error) {
-                window.location = "/lifeCompare";
-                console.log(error, false);
-            });
-    };
-
     const handleSubmit = () => {
         if (
             formData["insurance_target"] &&
