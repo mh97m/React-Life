@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useParams } from "react";
 import FormInput from "./FormInput";
 import Cookies from "universal-cookie";
 import DateObject from "react-date-object";
@@ -6,10 +6,14 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import "./lifeCompare.css";
 // import Jobs from "../../Jobs.json";
+import axiosClient from "../../axios-client.js";
+import { useStateContext } from "../../context/ContextProvider.jsx";
 
 function LifeCompare() {
     const cookies = new Cookies();
     const formData = cookies.get("formData");
+    const { setNotification } = useStateContext();
+    const [ServerErrors, setServerErrors] = useState(null);
     const [values, setValues] = useState({
         insurance_target:
             typeof formData !== "undefined" ? formData["insurance_target"] : "",
@@ -29,7 +33,7 @@ function LifeCompare() {
                 ? parseInt(formData["annual_payment"]).toLocaleString()
                 : "",
         first_job_level: typeof formData !== "undefined" ? formData["job"] : "",
-        first_job_level_id: "",
+        first_job_level_id:  typeof formData !== "undefined" ? formData["job_id"] : "",
         divided_payment:
             typeof formData !== "undefined"
                 ? (
@@ -54,6 +58,7 @@ function LifeCompare() {
         birth_month: "",
         birth_day: "",
         annual_payment: "",
+        first_job_level: "",
     });
     const [disableds, setDisableds] = useState({
         maim_ratio: true,
@@ -534,7 +539,55 @@ function LifeCompare() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert("فرم ثبت شد");
+        // alert("فرم ثبت شد");
+        if (values["first_job_level_id"]) {
+            const payload = {
+                insurance_target: values["insurance_target"],
+                birth_year: values["birth_year"],
+                birth_month: values["birth_month"],
+                birth_day: values["birth_day"],
+                life_ins_duration: values["life_ins_duration"],
+                payment_method: values["payment_method"],
+                annual_payment: values["annual_payment"].replace(/,/g, ""),
+                first_job_level: values["first_job_level"],
+                first_job_level_id: values["first_job_level_id"],
+                divided_payment: values["divided_payment"].replace(/,/g, ""),
+                annual_payment_increase: values["annual_payment_increase"],
+                addon_payment_method: values["addon_payment_method"],
+                death_capital_any_reason_ratio:
+                    values["death_capital_any_reason_ratio"],
+                capital_increase: values["capital_increase"],
+                death_capital_incident_ratio:
+                    values["death_capital_incident_ratio"],
+                maim_ratio: values["maim_ratio"],
+                has_medical_cost: values["has_medical_cost"],
+                additional_dangers: values["additional_dangers"],
+                hospitalization: values["hospitalization"],
+                exemption: values["exemption"],
+                special_diseases_ratio: values["special_diseases_ratio"],
+            };
+            // console.log(payload);
+            setNotification("ثبت اطلاعات با موفقیت انجام شد !");
+            axiosClient
+                .post("/life-compare", payload)
+                .then(({ data }) => {
+                    console.log(data);
+                })
+                .catch((err) => {
+                    const response = err.response;
+                    if (response) {
+                        // setMessage(response.data.message);
+                        setServerErrors(err.response.data.errors);
+                    }
+                    console.log(response);
+                });
+        } else {
+            setValues({ ...values, first_job_level: "" });
+            setErrors({
+                ...errors,
+                first_job_level: ". شغل را از موارد پیشنهادی انتخاب کنید !!",
+            });
+        }
     };
 
     const updateAge = (e) => {
@@ -771,7 +824,7 @@ function LifeCompare() {
     const onClickJobResults = (e) => {
         setValues({
             ...values,
-            first_job_level_id: e.target.value,
+            first_job_level_id: e.target.value.toString(),
             first_job_level: e.target.innerHTML,
         });
         setJobResults([]);
@@ -841,6 +894,13 @@ function LifeCompare() {
         <div className="life-compare">
             <form onSubmit={handleSubmit} className="life-compare-form">
                 <h1 className="life-compare-h1">استعلام قیمت</h1>
+                {ServerErrors && (
+                    <div className="alert">
+                        {Object.keys(ServerErrors).map((key) => (
+                            <p key={key}>{ServerErrors[key][0]}</p>
+                        ))}
+                    </div>
+                )}
                 {inputs.map((input) => (
                     <FormInput
                         key={input.id}

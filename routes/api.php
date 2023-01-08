@@ -28,9 +28,12 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/life-compare', function (Request $request) {
+    dd($request);
+});
 
-Route::prefix('v1')->group(function() {
-    Route::get('/get-jobs', function(){
+Route::prefix('v1')->group(function () {
+    Route::get('/get-jobs', function () {
         return Job::all()->toArray();
     });
 });

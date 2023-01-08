@@ -84,26 +84,9 @@ function MultiStepForm() {
                 /,/g,
                 ""
             );
-            if (formData["payment_method"] == 12) {
-                if (formData["annual_payment"] >= 6000000) {
-                    alert("FORM SUBMITTED");
-                    // console.log(formData);
-                    // fetchData();
-                    const cookies = new Cookies();
-                    cookies.set("formData", formData, { path: "/life-compare" });
-                    window.location = "/life-compare";
-                    // console.log(cookies.get('formData'));
-                }
-            } else {
-                if (formData["annual_payment"] >= 4000000) {
-                    alert("FORM SUBMITTED");
-                    const cookies = new Cookies();
-                    cookies.set("formData", formData, { path: "/life-compare" });
-                    window.location = "/life-compare";
-                    // console.log(formData);
-                    // fetchData();
-                }
-            }
+            const cookies = new Cookies();
+            cookies.set("formData", formData, { path: "/life-compare" });
+            alert("FORM SUBMITTED");
         }
     };
 

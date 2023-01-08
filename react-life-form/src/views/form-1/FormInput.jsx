@@ -65,16 +65,12 @@ const FormInput = (props) => {
                         className="life-compare-input"
                         onChange={onChange}
                         onBlur={handleFocus}
-                        onFocus={() =>
-                            inputProps.name === "confirmPassword" &&
-                            setFocused(true)
-                        }
                         focused={focused.toString()}
                         type={type}
                     />
                     <span className="life-compare-span">{errorMessage}</span>
                     <span className="life-compare-span-error">{error}</span>
-                    {inputProps.name == "first_job_level" ? (
+                    {inputProps.name == "first_job_level" && (
                         <ul>
                             {options?.map((item, index) => {
                                 if (index < 5) {
@@ -83,7 +79,7 @@ const FormInput = (props) => {
                                             key={index}
                                             className="ui-menu-item"
                                             onClick={onClick}
-                                            value={item.Id}
+                                            value={item.fanavaran_id}
                                         >
                                             {item.caption}
                                         </li>
@@ -91,7 +87,7 @@ const FormInput = (props) => {
                                 }
                             })}
                         </ul>
-                    ) : null}
+                    )}
                 </div>
             );
             break;
