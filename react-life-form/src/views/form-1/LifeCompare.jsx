@@ -16,28 +16,28 @@ function LifeCompare() {
     const [ServerErrors, setServerErrors] = useState(null);
     const [values, setValues] = useState({
         insurance_target:
-            typeof formData !== "undefined" ? formData["insurance_target"] : "",
+            typeof formData !== "undefined" ? formData.insurance_target : "",
         birth_year:
-            typeof formData !== "undefined" ? formData["birth_year"] : "",
+            typeof formData !== "undefined" ? formData.birth_year : "",
         birth_month:
-            typeof formData !== "undefined" ? formData["birth_month"] : "",
-        birth_day: typeof formData !== "undefined" ? formData["birth_day"] : "",
+            typeof formData !== "undefined" ? formData.birth_month : "",
+        birth_day: typeof formData !== "undefined" ? formData.birth_day : "",
         life_ins_duration:
             typeof formData !== "undefined"
-                ? formData["life_ins_duration"]
+                ? formData.life_ins_duration
                 : "",
         payment_method:
-            typeof formData !== "undefined" ? formData["payment_method"] : "",
+            typeof formData !== "undefined" ? formData.payment_method : "",
         annual_payment:
             typeof formData !== "undefined"
-                ? parseInt(formData["annual_payment"]).toLocaleString()
+                ? parseInt(formData.annual_payment).toLocaleString()
                 : "",
-        first_job_level: typeof formData !== "undefined" ? formData["job"] : "",
-        first_job_level_id:  typeof formData !== "undefined" ? formData["job_id"] : "",
+        first_job_level: typeof formData !== "undefined" ? formData.job : "",
+        first_job_level_id:  typeof formData !== "undefined" ? formData.job_id : "",
         divided_payment:
             typeof formData !== "undefined"
                 ? (
-                      formData["annual_payment"] / formData["payment_method"]
+                      formData.annual_payment / formData.payment_method
                   ).toLocaleString()
                 : "",
         annual_payment_increase: "",
@@ -75,14 +75,14 @@ function LifeCompare() {
     );
     const age = useRef(
         now.year -
-            (values["birth_year"] ? values["birth_year"] : now.yaer) -
+            (values.birth_year ? values.birth_year : now.yaer) -
             (now.month >
-            (values["birth_month"] ? values["birth_month"] : now.month)
+            (values.birth_month ? values.birth_month : now.month)
                 ? 1
                 : 0) -
             (now.month ==
-                (values["birth_month"] ? values["birth_month"] : now.month) &&
-            now.day > (values["birth_day"] ? values["birth_day"] : now.day)
+                (values.birth_month ? values.birth_month : now.month) &&
+            now.day > (values.birth_day ? values.birth_day : now.day)
                 ? 1
                 : 0)
     );
@@ -540,31 +540,31 @@ function LifeCompare() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // alert("فرم ثبت شد");
-        if (values["first_job_level_id"]) {
+        if (values.first_job_level_id) {
             const payload = {
-                insurance_target: values["insurance_target"],
-                birth_year: values["birth_year"],
-                birth_month: values["birth_month"],
-                birth_day: values["birth_day"],
-                life_ins_duration: values["life_ins_duration"],
-                payment_method: values["payment_method"],
-                annual_payment: values["annual_payment"].replace(/,/g, ""),
-                first_job_level: values["first_job_level"],
-                first_job_level_id: values["first_job_level_id"],
-                divided_payment: values["divided_payment"].replace(/,/g, ""),
-                annual_payment_increase: values["annual_payment_increase"],
-                addon_payment_method: values["addon_payment_method"],
+                insurance_target: values.insurance_target,
+                birth_year: values.birth_year,
+                birth_month: values.birth_month,
+                birth_day: values.birth_day,
+                life_ins_duration: values.life_ins_duration,
+                payment_method: values.payment_method,
+                annual_payment: values.annual_payment.replace(/,/g, ","),
+                first_job_level: values.first_job_level,
+                first_job_level_id: values.first_job_level_id,
+                divided_payment: values.divided_payment.replace(/,/g, ","),
+                annual_payment_increase: values.annual_payment_increase,
+                addon_payment_method: values.addon_payment_method,
                 death_capital_any_reason_ratio:
-                    values["death_capital_any_reason_ratio"],
-                capital_increase: values["capital_increase"],
+                    values.death_capital_any_reason_ratio,
+                capital_increase: values.capital_increase,
                 death_capital_incident_ratio:
-                    values["death_capital_incident_ratio"],
-                maim_ratio: values["maim_ratio"],
-                has_medical_cost: values["has_medical_cost"],
-                additional_dangers: values["additional_dangers"],
-                hospitalization: values["hospitalization"],
-                exemption: values["exemption"],
-                special_diseases_ratio: values["special_diseases_ratio"],
+                    values.death_capital_incident_ratio,
+                maim_ratio: values.maim_ratio,
+                has_medical_cost: values.has_medical_cost,
+                additional_dangers: values.additional_dangers,
+                hospitalization: values.hospitalization,
+                exemption: values.exemption,
+                special_diseases_ratio: values.special_diseases_ratio,
             };
             // console.log(payload);
             setNotification("ثبت اطلاعات با موفقیت انجام شد !");
@@ -597,16 +597,16 @@ function LifeCompare() {
                 ? e.target.value
                     ? e.target.value
                     : now.year
-                : values["birth_year"]
-                ? values["birth_year"]
+                : values.birth_year
+                ? values.birth_year
                 : now.yaer) -
             (now.month <
             (e.target.name == "birth_month"
                 ? e.target.value
                     ? e.target.value
                     : now.month
-                : values["birth_month"]
-                ? values["birth_month"]
+                : values.birth_month
+                ? values.birth_month
                 : now.month)
                 ? 1
                 : 0) -
@@ -615,16 +615,16 @@ function LifeCompare() {
                     ? e.target.value
                         ? e.target.value
                         : now.month
-                    : values["birth_month"]
-                    ? values["birth_month"]
+                    : values.birth_month
+                    ? values.birth_month
                     : now.month) &&
             now.day <
                 (e.target.name == "birth_day"
                     ? e.target.value
                         ? e.target.value
                         : now.day
-                    : values["birth_day"]
-                    ? values["birth_day"]
+                    : values.birth_day
+                    ? values.birth_day
                     : now.day)
                 ? 1
                 : 0);
@@ -655,9 +655,9 @@ function LifeCompare() {
                       ).toLocaleString()
                     : 0,
                 divided_payment: parseInt(
-                    values["payment_method"]
+                    values.payment_method
                         ? parseInt(e.target.value.replace(/,/g, "")) /
-                              parseInt(values["payment_method"])
+                              parseInt(values.payment_method)
                         : "0"
                 ).toLocaleString(),
             });
@@ -667,7 +667,7 @@ function LifeCompare() {
                 [e.target.name]: e.target.value,
                 divided_payment: parseInt(
                     e.target.value
-                        ? parseInt(values["annual_payment"].replace(/,/g, "")) /
+                        ? parseInt(values.annual_payment.replace(/,/g, "")) /
                               parseInt(e.target.value)
                         : "0"
                 ).toLocaleString(),
@@ -714,7 +714,7 @@ function LifeCompare() {
             setDurations([]);
             setCapitalIncidents([]);
         } else if (age.current < 18) {
-            if (values["insurance_target"] == "خودم") {
+            if (values.insurance_target == "خودم") {
                 setValues({ ...values, [e.target.name]: "" });
                 setErrors({
                     ...errors,
@@ -731,8 +731,8 @@ function LifeCompare() {
         setErrors({ ...errors, annual_payment: "" });
         if (e.target.value == "12") {
             if (
-                (values["annual_payment"]
-                    ? values["annual_payment"].replace(/,/g, "")
+                (values.annual_payment
+                    ? values.annual_payment.replace(/,/g, "")
                     : 0) < 6000000
             ) {
                 setValues({
@@ -750,8 +750,8 @@ function LifeCompare() {
             }
         } else {
             if (
-                (values["annual_payment"]
-                    ? values["annual_payment"].replace(/,/g, "")
+                (values.annual_payment
+                    ? values.annual_payment.replace(/,/g, "")
                     : 0) < 4000000
             ) {
                 setValues({
@@ -771,15 +771,15 @@ function LifeCompare() {
 
     const handleAnnualPayment = (e) => {
         setErrors({ ...errors, [e.target.name]: "" });
-        if (values["payment_method"] == "12") {
+        if (values.payment_method == "12") {
             if (e.target.value.replace(/,/g, "") < 6000000) {
                 // setValues({
                 //     ...values,
                 //     payment_method: "",
                 //     divided_payment: "",
                 // });
-                values["payment_method"] = "";
-                values["divided_payment"] = "";
+                values.payment_method = "";
+                values.divided_payment = "";
                 setErrors({
                     ...errors,
                     [e.target.name]:
@@ -793,8 +793,8 @@ function LifeCompare() {
                 //     payment_method: "",
                 //     divided_payment: "",
                 // });
-                values["payment_method"] = "";
-                values["divided_payment"] = "";
+                values.payment_method = "";
+                values.divided_payment = "";
                 setErrors({
                     ...errors,
                     [e.target.name]: ". حداقل مبلغ 000'000'4 ریال می باشد !!",
