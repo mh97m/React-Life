@@ -35,14 +35,14 @@ const router = createBrowserRouter([
                 path: "/users/:id",
                 element: <UserForm key="userUpdate" />,
             },
-            {
-                path: "/life",
-                element: <MultiStepForm />,
-            },
-            {
-                path: "/life-compare",
-                element: <LifeCompare />,
-            },
+            // {
+            //     path: "/life",
+            //     element: <MultiStepForm />,
+            // },
+            // {
+            //     path: "/life-compare",
+            //     element: <LifeCompare />,
+            // },
         ],
     },
     {
@@ -57,14 +57,14 @@ const router = createBrowserRouter([
                 path: "/signup",
                 element: <Signup />,
             },
-            // {
-            //     path: "/life",
-            //     element: <MultiStepForm />,
-            // },
-            // {
-            //     path: "/life-compare",
-            //     element: <LifeCompare />,
-            // },
+            {
+                path: "/life",
+                element: <MultiStepForm />,
+            },
+            {
+                path: "/life-compare",
+                element: <LifeCompare />,
+            },
         ],
     },
     {

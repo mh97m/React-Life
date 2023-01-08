@@ -531,7 +531,7 @@ function LifeCompare() {
                     cookies.set("formData", [], { path: "/life-compare" });
                     setTimeout(() => {
                         navigate("/life");
-                    }, 6000);
+                    }, 3000);
                 })
                 .catch((err) => {
                     const response = err.response;
