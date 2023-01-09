@@ -44,6 +44,7 @@ function JobInfo({ formData, setFormData }) {
                                     job_id: item.Id.toString(),
                                     job: e.target.innerHTML,
                                 });
+                                setResults([]);
                             }}
                             key={index}
                             className="job-offer"
