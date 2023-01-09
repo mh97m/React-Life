@@ -767,7 +767,7 @@ function LifeCompare() {
                 //     divided_payment: "",
                 // });
                 values.payment_method = "";
-                values.divided_payment = "";
+                values.divided_payment = "0";
                 setErrors({
                     ...errors,
                     [e.target.name]:
@@ -782,7 +782,7 @@ function LifeCompare() {
                 //     divided_payment: "",
                 // });
                 values.payment_method = "";
-                values.divided_payment = "";
+                values.divided_payment = "0";
                 setErrors({
                     ...errors,
                     [e.target.name]: ". حداقل مبلغ 000'000'4 ریال می باشد !!",
