@@ -37,11 +37,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/life-insurance",
-                element: <MultiStepForm />,
+                element: <LifeCompare />,
             },
             // {
-            //     path: "/life-compare",
-            //     element: <LifeCompare />,
+            //     path: "/life",
+            //     element: <MultiStepForm />,
             // },
         ],
     },
