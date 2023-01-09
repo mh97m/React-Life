@@ -1,12 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 import JobInfo from "./JobInfo";
 import InsuranceInfo from "./InsuranceInfo";
-import axios from "axios";
 import Cookies from "universal-cookie";
 import "./multiStepForm.css";
 
 function MultiStepForm() {
+    const navigate = useNavigate();
     const [page, setPage] = useState(0);
     const [formData, setFormData] = useState({
         insurance_target: "",
@@ -69,7 +70,9 @@ function MultiStepForm() {
             );
             const cookies = new Cookies();
             cookies.set("formData", formData, { path: "/life-compare" });
-            alert("FORM SUBMITTED");
+            alert("فرم تایید شد!");
+            // navigate("/life-compare");
+            window.location = "/life-compare";
         }
     };
 

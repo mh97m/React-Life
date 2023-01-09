@@ -34,7 +34,7 @@ export default function Login() {
         <div className="login-signup-form animated fadeInDown">
             <div className="form">
                 <form onSubmit={onSubmit}>
-                    <h1 className="title">Login into your account</h1>
+                    <h1 className="title">ورود حساب کاربری</h1>
 
                     {message && (
                         <div className="alert">
@@ -42,16 +42,16 @@ export default function Login() {
                         </div>
                     )}
 
-                    <input ref={emailRef} type="email" placeholder="Email" />
+                    <input ref={emailRef} type="email" placeholder="ایمیل" />
                     <input
                         ref={passwordRef}
                         type="password"
-                        placeholder="Password"
+                        placeholder="رمز عبور"
                     />
-                    <button className="btn btn-block">Login</button>
+                    <button className="btn btn-block">ورود</button>
                     <p className="message">
-                        Not registered?{" "}
-                        <Link to="/signup">Create an account</Link>
+                        حسابی ندارید؟{" "}
+                        <Link to="/signup">ساختن حساب کاربری</Link>
                     </p>
                 </form>
             </div>

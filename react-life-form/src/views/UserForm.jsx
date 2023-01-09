@@ -38,7 +38,7 @@ export default function UserForm() {
             axiosClient
                 .put(`/users/${user.id}`, user)
                 .then(() => {
-                    setNotification("User was successfully updated");
+                    setNotification("کاربر بروزرسانی شد.!");
                     navigate("/users");
                 })
                 .catch((err) => {
@@ -51,7 +51,7 @@ export default function UserForm() {
             axiosClient
                 .post("/users", user)
                 .then(() => {
-                    setNotification("User was successfully created");
+                    setNotification("کاربر ساخته شد.");
                     navigate("/users");
                 })
                 .catch((err) => {
@@ -83,21 +83,21 @@ export default function UserForm() {
                             onChange={(ev) =>
                                 setUser({ ...user, name: ev.target.value })
                             }
-                            placeholder="Name"
+                            placeholder="نام"
                         />
                         <input
                             value={user.email}
                             onChange={(ev) =>
                                 setUser({ ...user, email: ev.target.value })
                             }
-                            placeholder="Email"
+                            placeholder="ایمیل"
                         />
                         <input
                             type="password"
                             onChange={(ev) =>
                                 setUser({ ...user, password: ev.target.value })
                             }
-                            placeholder="Password"
+                            placeholder="رمز عبور"
                         />
                         <input
                             type="password"
@@ -107,7 +107,7 @@ export default function UserForm() {
                                     password_confirmation: ev.target.value,
                                 })
                             }
-                            placeholder="Password Confirmation"
+                            placeholder="تکرار رمز عبور"
                         />
                         <button className="btn">Save</button>
                     </form>

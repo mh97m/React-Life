@@ -38,7 +38,7 @@ export default function Signup() {
         <div className="login-signup-form animated fadeInDown">
             <div className="form">
                 <form onSubmit={onSubmit}>
-                    <h1 className="title">Signup for Free</h1>
+                    <h1 className="title">ثبت نام</h1>
                     {errors && (
                         <div className="alert">
                             {Object.keys(errors).map((key) => (
@@ -46,25 +46,25 @@ export default function Signup() {
                             ))}
                         </div>
                     )}
-                    <input ref={nameRef} type="text" placeholder="Full Name" />
+                    <input ref={nameRef} type="text" placeholder="نام" />
                     <input
                         ref={emailRef}
                         type="email"
-                        placeholder="Email Address"
+                        placeholder="ایمیل"
                     />
                     <input
                         ref={passwordRef}
                         type="password"
-                        placeholder="Password"
+                        placeholder="رمز عبور"
                     />
                     <input
                         ref={passwordConfirmationRef}
                         type="password"
-                        placeholder="Repeat Password"
+                        placeholder="تکرار رمز عبور"
                     />
-                    <button className="btn btn-block">Signup</button>
+                    <button className="btn btn-block">ثبت نام</button>
                     <p className="message">
-                        Already registered? <Link to="/login">Sign In</Link>
+                        حساب کاربری دارید؟ <Link to="/login">ورود</Link>
                     </p>
                 </form>
             </div>

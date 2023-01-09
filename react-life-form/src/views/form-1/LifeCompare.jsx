@@ -1,21 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import FormInput from "./FormInput";
 import Cookies from "universal-cookie";
 import DateObject from "react-date-object";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import { useStateContext } from "../../context/ContextProvider.jsx";
+import axiosClient from "../../axios-client.js";
+import FormInput from "./FormInput";
 import "./lifeCompare.css";
 // import Jobs from "../../Jobs.json";
-import axiosClient from "../../axios-client.js";
-import { useStateContext } from "../../context/ContextProvider.jsx";
 
 function LifeCompare() {
     const navigate = useNavigate();
-    const cookies = new Cookies();
-    const formData = cookies.get("formData");
     const { setNotification } = useStateContext();
     const [ServerErrors, setServerErrors] = useState(null);
+    const cookies = new Cookies();
+    const formData = cookies.get("formData");
     const [values, setValues] = useState({
         insurance_target:
             typeof formData !== "undefined" ? formData.insurance_target : "",
@@ -505,10 +505,10 @@ function LifeCompare() {
                 birth_day: values.birth_day,
                 life_ins_duration: values.life_ins_duration,
                 payment_method: values.payment_method,
-                annual_payment: values.annual_payment.replace(/,/g, ","),
+                annual_payment: values.annual_payment.replace(/,/g, ""),
                 first_job_level: values.first_job_level,
                 first_job_level_id: values.first_job_level_id,
-                divided_payment: values.divided_payment.replace(/,/g, ","),
+                divided_payment: values.divided_payment.replace(/,/g, ""),
                 annual_payment_increase: values.annual_payment_increase,
                 addon_payment_method: values.addon_payment_method,
                 death_capital_any_reason_ratio:

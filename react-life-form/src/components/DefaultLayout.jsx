@@ -28,17 +28,17 @@ export default function DefaultLayout() {
     return (
         <div id="defaultLayout">
             <aside>
-                <Link to="/dashboard">Dashboard</Link>
-                <Link to="/users">Users</Link>
+                <Link to="/dashboard">داشبورد</Link>
+                <Link to="/users">کاربران</Link>
             </aside>
             <div className="content">
                 <header>
-                    <div>Header</div>
+                    <div></div>
 
                     <div>
-                        {user.name} &nbsp; &nbsp;
+                        سلام آقای {user.name} &nbsp; &nbsp;
                         <a onClick={onLogout} className="btn-logout" href="#">
-                            Logout
+                            خروج
                         </a>
                     </div>
                 </header>

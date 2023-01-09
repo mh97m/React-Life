@@ -44,27 +44,27 @@ export default function Users() {
                     alignItems: "center",
                 }}
             >
-                <h1>Users</h1>
+                <h1>کاربران</h1>
                 <Link className="btn-add" to="/users/new">
-                    Add new
+                    اضافه کردن کاربر
                 </Link>
             </div>
             <div className="card animated fadeInDown">
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Create Date</th>
-                            <th>Actions</th>
+                            <th>آیدی</th>
+                            <th>نام</th>
+                            <th>ایمیل</th>
+                            <th>تاریخ ایجاد</th>
+                            <th>مدیریت</th>
                         </tr>
                     </thead>
                     {loading && (
                         <tbody>
                             <tr>
                                 <td colSpan="5" className="text-center">
-                                    Loading...
+                                    در حال لود شدن...
                                 </td>
                             </tr>
                         </tbody>
@@ -82,14 +82,14 @@ export default function Users() {
                                             className="btn-edit"
                                             to={"/users/" + u.id}
                                         >
-                                            Edit
+                                            تغییر
                                         </Link>
                                         &nbsp;
                                         <button
                                             className="btn-delete"
                                             onClick={(ev) => onDeleteClick(u)}
                                         >
-                                            Delete
+                                            حذف
                                         </button>
                                     </td>
                                 </tr>
