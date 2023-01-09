@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\LifeInsurance;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('test',function () {
+    dd((LifeInsurance::inRandomOrder()->first())->divided_payment);
+});
 
 Route::get('/{uri?}', function () {
     return view('welcome');
