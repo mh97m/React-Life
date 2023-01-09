@@ -15,7 +15,7 @@ function LifeCompare() {
     const { setNotification } = useStateContext();
     const [ServerErrors, setServerErrors] = useState(null);
     const cookies = new Cookies();
-    const formData = cookies.get("formData");
+    const formData = cookies.get("formData") ? cookies.get("formData") : [];
     const [values, setValues] = useState({
         insurance_target: formData.insurance_target ?? "",
         birth_year: formData.birth_year ?? "",
