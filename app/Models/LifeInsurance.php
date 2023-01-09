@@ -14,16 +14,25 @@ class LifeInsurance extends Model
 
     protected $guarded = [];
 
-    public function annualPayment(): Attribute
-    {
-        return new Attribute(
-            get: fn($value) => (int) $value,
-        );
-    }
-    public function dividedPayment(): Attribute
-    {
-        return new Attribute(
-            get: fn($value) => (int) $value,
-        );
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'annual_payment' => 'int',
+        'divided_payment' => 'int',
+    ];
+    // public function annualPayment(): Attribute
+    // {
+    //     return new Attribute(
+    //         get: fn($value) => (int) $value,
+    //     );
+    // }
+    // public function dividedPayment(): Attribute
+    // {
+    //     return new Attribute(
+    //         get: fn($value) => (int) $value,
+    //     );
+    // }
 }

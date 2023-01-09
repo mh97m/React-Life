@@ -17,29 +17,16 @@ function LifeCompare() {
     const cookies = new Cookies();
     const formData = cookies.get("formData");
     const [values, setValues] = useState({
-        insurance_target:
-            typeof formData !== "undefined" ? formData.insurance_target : "",
-        birth_year: typeof formData !== "undefined" ? formData.birth_year : "",
-        birth_month:
-            typeof formData !== "undefined" ? formData.birth_month : "",
-        birth_day: typeof formData !== "undefined" ? formData.birth_day : "",
-        life_ins_duration:
-            typeof formData !== "undefined" ? formData.life_ins_duration : "",
-        payment_method:
-            typeof formData !== "undefined" ? formData.payment_method : "",
-        annual_payment:
-            typeof formData !== "undefined"
-                ? parseInt(formData.annual_payment).toLocaleString()
-                : "",
-        first_job_level: typeof formData !== "undefined" ? formData.job : "",
-        first_job_level_id:
-            typeof formData !== "undefined" ? formData.job_id : "",
-        divided_payment:
-            typeof formData !== "undefined"
-                ? (
-                      formData.annual_payment / formData.payment_method
-                  ).toLocaleString()
-                : "",
+        insurance_target: formData.insurance_target ?? "",
+        birth_year: formData.birth_year ?? "",
+        birth_month: formData.birth_month ?? "",
+        birth_day: formData.birth_day ?? "",
+        life_ins_duration: formData.life_ins_duration ?? "",
+        payment_method: formData.payment_method ?? "",
+        annual_payment: parseInt(formData.annual_payment ?? 0).toLocaleString(),
+        first_job_level: formData.job ?? "",
+        first_job_level_id: formData.job_id ?? "",
+        divided_payment: ((formData.annual_payment && formData.payment_method) ? (formData.annual_payment / formData.payment_method) : 0).toLocaleString(),
         annual_payment_increase: "",
         addon_payment_method: "",
         death_capital_any_reason_ratio: "",
@@ -97,7 +84,7 @@ function LifeCompare() {
     useEffect(() => {
         setYears([...Array(66).keys()].map((i) => now.year - i));
         setMonths([...Array(12).keys()].map((i) => 12 - i));
-        setDays([...Array(30).keys()].map((i) => 30 - i));
+        setDays([...Array(values.birth_month <= 6 ? 31 :30).keys()].map((i) => (values.birth_month <= 6 ? 31 :30) - i));
         updateDurations();
         updateCapitalIncidents();
         const getjobs = async () => {
@@ -705,6 +692,7 @@ function LifeCompare() {
         setErrors({ ...errors, [e.target.name]: "" });
         updateAge(e);
         updateCapitalIncidents(e);
+        e.target.name == 'birth_month' && setDays([...Array(e.target.value <= 6 ? 31 :30).keys()].map((i) => (e.target.value <= 6 ? 31 :30) - i));
         if (age.current > 64) {
             setValues({ ...values, [e.target.name]: "" });
             setErrors({
