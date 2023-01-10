@@ -8,11 +8,10 @@ import { useStateContext } from "../../context/ContextProvider.jsx";
 import axiosClient from "../../axios-client.js";
 import FormInput from "./FormInput";
 import "./lifeCompare.css";
-// import Jobs from "../../Jobs.json";
 
 function LifeCompare() {
     const navigate = useNavigate();
-    const { setNotification } = useStateContext();
+    const { setNotification, setNext, token } = useStateContext();
     const [ServerErrors, setServerErrors] = useState(null);
     const cookies = new Cookies();
     const formData = cookies.get("formData") ? cookies.get("formData") : [];
@@ -28,7 +27,7 @@ function LifeCompare() {
         first_job_level_id: formData.job_id ?? "",
         second_job_level: "",
         second_job_level_id: "",
-        divided_payment: ((formData.annual_payment && formData.payment_method) ? (formData.annual_payment / formData.payment_method) : 0).toLocaleString(),
+        divided_payment: ((formData.annual_payment && formData.payment_method) ? parseInt((formData.annual_payment / formData.payment_method)) : 0).toLocaleString(),
         annual_payment_increase: "",
         addon_payment_method: "",
         death_capital_any_reason_ratio: "",
@@ -94,7 +93,7 @@ function LifeCompare() {
         const getjobs = async () => {
             try {
                 const result = await fetch(
-                    "http://127.0.0.1:8000/api/v1/get-jobs"
+                    `${import.meta.env.VITE_API_BASE_URL}` + "/api/v1/get-jobs"
                 );
                 // const result = await axios.get("http://127.0.0.1:8000/api/v1/get-jobs");
                 const resultJobs = await result.json();
@@ -471,28 +470,28 @@ function LifeCompare() {
             ],
         },
         /*
-        ,{
-            id: 44,
-            name: "password",
-            type: "password",
-            placeholder: "Password",
-            errorMessage:
-                "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
-            label: "Password",
-            pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
-            required: true,
-        },
-        {
-            id: 55,
-            name: "confirmPassword",
-            type: "password",
-            placeholder: "Confirm Password",
-            errorMessage: "Passwords don't match!",
-            label: "Confirm Password",
-            pattern: values.password,
-            required: true,
-        },
-        */
+            ,{
+                id: 44,
+                name: "password",
+                type: "password",
+                placeholder: "Password",
+                errorMessage:
+                    "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
+                label: "Password",
+                pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+                required: true,
+            },
+            {
+                id: 55,
+                name: "confirmPassword",
+                type: "password",
+                placeholder: "Confirm Password",
+                errorMessage: "Passwords don't match!",
+                label: "Confirm Password",
+                pattern: values.password,
+                required: true,
+            },
+            */
     ];
 
     const handleSubmit = (e) => {
@@ -530,9 +529,9 @@ function LifeCompare() {
                 .post("/life-compare", payload)
                 .then(({ data }) => {
                     setNotification("ثبت اطلاعات با موفقیت انجام شد !");
-                    console.log(data);
                     cookies.set("formData", [], { path: "/life-compare" });
                     setTimeout(() => {
+                        (!token) && setNext("/life-medical-info");
                         navigate("/life-medical-info");
                     }, 3000);
                 })

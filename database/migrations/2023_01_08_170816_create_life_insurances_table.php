@@ -38,6 +38,8 @@ return new class extends Migration
             $table->string('hospitalization')->nullable();
             $table->string('exemption')->nullable();
             $table->string('special_diseases_ratio')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

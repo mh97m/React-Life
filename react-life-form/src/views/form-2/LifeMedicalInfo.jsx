@@ -11,8 +11,9 @@ import "./lifeCompare.css";
 
 function LifeMedicalInfo() {
     const navigate = useNavigate();
-    const { setNotification } = useStateContext();
+    const { setNotification, setNext, user } = useStateContext();
     const [ServerErrors, setServerErrors] = useState(null);
+    const [insuranced, setInsuranced] = useState({});
     const [values, setValues] = useState({
         national_code: "",
         birth: "",
@@ -36,7 +37,26 @@ function LifeMedicalInfo() {
         military_service_reason: true,
     });
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        axiosClient.get("/insuranced").then(({ data }) => {
+            setInsuranced(data);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    }, []);
 
     const inputs = [
         {
@@ -141,6 +161,7 @@ function LifeMedicalInfo() {
             placeholder: "علت معافیت",
         },
     ];
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -213,11 +234,10 @@ function LifeMedicalInfo() {
             });
         }
     };
-    
-    const handleMobileNumber = (e) => {
-        const validNumber = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
-    };
 
+    const handleMobileNumber = (e) => {
+        const validNumber = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$");
+    };
 
     return (
         <div className="life-compare">

@@ -44,6 +44,10 @@ const router = createBrowserRouter([
             //     path: "/life",
             //     element: <MultiStepForm />,
             // },
+            {
+                path: "/life-medical-info",
+                element: <LifeMedicalInfo />,
+            },
         ],
     },
     {
@@ -65,10 +69,6 @@ const router = createBrowserRouter([
             {
                 path: "/life-compare",
                 element: <LifeCompare />,
-            },
-            {
-                path: "/life-medical-info",
-                element: <LifeMedicalInfo />,
             },
         ],
     },

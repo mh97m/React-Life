@@ -24,13 +24,18 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
+    Route::get('/insuranced', function (Request $request) {
+        return 'aaaaaaaaaaaaaaa';
+    });
+
     Route::apiResource('/users', UserController::class);
+
+    Route::post('/life-medical-info', [LifeInsurancesController::class, 'medical']);
 });
 
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/life-compare', [LifeInsurancesController::class, 'store']);
-Route::post('/life-medical-info', [LifeInsurancesController::class, 'medical']);
 
 Route::prefix('v1')->group(function () {
     Route::get('/get-jobs', function () {

@@ -20,7 +20,8 @@ class LifeInsurancesController extends Controller
         $data = $request->validated();
         $life_insurance = LifeInsurance::create($data);
 
-        return response(new LifeInsuranceResource($life_insurance) , 201);
+        return response($life_insurance->id , 201);
+        // return response(new LifeInsuranceResource($life_insurance) , 201);
     }
 
     /**
