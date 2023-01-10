@@ -26,6 +26,8 @@ function LifeCompare() {
         annual_payment: parseInt(formData.annual_payment ?? 0).toLocaleString(),
         first_job_level: formData.job ?? "",
         first_job_level_id: formData.job_id ?? "",
+        second_job_level: "",
+        second_job_level_id: "",
         divided_payment: ((formData.annual_payment && formData.payment_method) ? (formData.annual_payment / formData.payment_method) : 0).toLocaleString(),
         annual_payment_increase: "",
         addon_payment_method: "",
@@ -46,6 +48,7 @@ function LifeCompare() {
         birth_day: "",
         annual_payment: "",
         first_job_level: "",
+        second_job_level: "",
     });
     const [disableds, setDisableds] = useState({
         maim_ratio: true,
@@ -77,7 +80,8 @@ function LifeCompare() {
     const [days, setDays] = useState([]);
     const [durations, setDurations] = useState([]);
     const [jobs, setJobs] = useState([]);
-    const [jobResults, setJobResults] = useState([]);
+    const [firstJobResults, setFirstJobResults] = useState([]);
+    const [secondJobResults, setSecondJobResults] = useState([]);
     const [capitalIncreases, setCapitalIncreases] = useState([]);
     const [capitalIncidents, setCapitalIncidents] = useState([]);
 
@@ -152,15 +156,25 @@ function LifeCompare() {
         {
             id: 6,
             type: "input",
-            label: "عنوان شغل",
+            label: "عنوان شغل اول",
             name: "first_job_level",
-            placeholder: "عنوان شغل",
+            placeholder: "عنوان شغل اول",
             errorMessage: ". شغل خود را انتخاب کنید !!",
             required: true,
-            options: jobResults,
+            options: firstJobResults,
         },
         {
             id: 7,
+            type: "input",
+            label: "عنوان شغل دوم",
+            name: "second_job_level",
+            placeholder: "عنوان شغل دوم",
+            errorMessage: ". شغل خود را انتخاب کنید !!",
+            required: true,
+            options: secondJobResults,
+        },
+        {
+            id: 8,
             type: "select",
             label: "روش پرداخت",
             name: "payment_method",
@@ -186,7 +200,7 @@ function LifeCompare() {
             ],
         },
         {
-            id: 8,
+            id: 9,
             type: "input",
             label: "مبلغ پرداختی سال اول",
             name: "annual_payment",
@@ -195,14 +209,14 @@ function LifeCompare() {
             required: true,
         },
         {
-            id: 9,
+            id: 10,
             type: "input",
             label: "مبلغ پرداختی قسط اول",
             name: "divided_payment",
             readOnly: true,
         },
         {
-            id: 10,
+            id: 11,
             type: "select",
             label: "افزایش سالانه حق بیمه",
             name: "annual_payment_increase",
@@ -232,7 +246,7 @@ function LifeCompare() {
             ],
         },
         {
-            id: 11,
+            id: 12,
             type: "select",
             label: "نحوه پرداخت حق بیمه پوشش های اضافی",
             name: "addon_payment_method",
@@ -252,7 +266,7 @@ function LifeCompare() {
             ],
         },
         {
-            id: 12,
+            id: 13,
             type: "select",
             label: "سرمایه فوت به هر علت",
             name: "death_capital_any_reason_ratio",
@@ -363,7 +377,7 @@ function LifeCompare() {
             ],
         },
         {
-            id: 13,
+            id: 14,
             type: "select",
             label: "افزایش سالانه سرمایه",
             name: "capital_increase",
@@ -372,7 +386,7 @@ function LifeCompare() {
             options: capitalIncreases,
         },
         {
-            id: 14,
+            id: 15,
             type: "select",
             label: "فوت بر اثر حادثه",
             name: "death_capital_incident_ratio",
@@ -380,7 +394,7 @@ function LifeCompare() {
             options: capitalIncidents,
         },
         {
-            id: 15,
+            id: 16,
             type: "select",
             label: "نقص عضو و از کارافتادگی",
             name: "maim_ratio",
@@ -388,7 +402,7 @@ function LifeCompare() {
             options: capitalIncidents,
         },
         {
-            id: 16,
+            id: 17,
             type: "select",
             label: "هزینه پزشکی ناشی از حادثه",
             name: "has_medical_cost",
@@ -401,7 +415,7 @@ function LifeCompare() {
             ],
         },
         {
-            id: 17,
+            id: 18,
             type: "select",
             label: "بسته تکمیلی خطرات اضافی",
             name: "additional_dangers",
@@ -414,7 +428,7 @@ function LifeCompare() {
             ],
         },
         {
-            id: 18,
+            id: 19,
             type: "select",
             label: "غرامت بستری",
             name: "hospitalization",
@@ -427,7 +441,7 @@ function LifeCompare() {
             ],
         },
         {
-            id: 19,
+            id: 20,
             type: "select",
             label: "معافیت از پرداخت حق بیمه",
             name: "exemption",
@@ -440,7 +454,7 @@ function LifeCompare() {
             ],
         },
         {
-            id: 20,
+            id: 21,
             type: "select",
             label: "امراض خاص",
             name: "special_diseases_ratio",
@@ -484,7 +498,7 @@ function LifeCompare() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // alert("فرم ثبت شد");
-        if (values.first_job_level_id) {
+        if (values.first_job_level_id && values.second_job_level_id) {
             const payload = {
                 insurance_target: values.insurance_target,
                 birth_year: values.birth_year,
@@ -495,6 +509,8 @@ function LifeCompare() {
                 annual_payment: values.annual_payment.replace(/,/g, ""),
                 first_job_level: values.first_job_level,
                 first_job_level_id: values.first_job_level_id,
+                second_job_level: values.second_job_level,
+                second_job_level_id: values.second_job_level_id,
                 divided_payment: values.divided_payment.replace(/,/g, ""),
                 annual_payment_increase: values.annual_payment_increase,
                 addon_payment_method: values.addon_payment_method,
@@ -527,11 +543,19 @@ function LifeCompare() {
                     }
                 });
         } else {
-            setValues({ ...values, first_job_level: "" });
-            setErrors({
-                ...errors,
-                first_job_level: ". شغل را از موارد پیشنهادی انتخاب کنید !!",
-            });
+            if (!values.first_job_level_id) {
+                setValues({ ...values, first_job_level: "" });
+                setErrors({
+                    ...errors,
+                    first_job_level: ". شغل را از موارد پیشنهادی انتخاب کنید !!",
+                });
+            } else if (!values.second_job_level_id) {
+                setValues({ ...values, second_job_level: "" });
+                setErrors({
+                    ...errors,
+                    second_job_level: ". شغل را از موارد پیشنهادی انتخاب کنید !!",
+                });
+            }
         }
     };
 
@@ -562,6 +586,9 @@ function LifeCompare() {
                 break;
             case "first_job_level":
                 handleFirstJobLevel(e);
+                break;
+            case "second_job_level":
+                handleSecondJobLevel(e);
                 break;
             case "annual_payment_increase":
                 handleAnnualPaymentIncrease(e);
@@ -802,7 +829,7 @@ function LifeCompare() {
             ...errors,
             first_job_level: "",
         });
-        setJobResults(
+        setFirstJobResults(
             e.target.value.length > 2
                 ? jobs.filter((value) => {
                       return value.caption
@@ -813,13 +840,43 @@ function LifeCompare() {
         );
     };
 
-    const onClickJobResults = (e) => {
+    const handleSecondJobLevel = (e) => {
+        setValues({
+            ...values,
+            second_job_level_id: "",
+            second_job_level: e.target.value,
+        });
+        setErrors({
+            ...errors,
+            second_job_level: "",
+        });
+        setSecondJobResults(
+            e.target.value.length > 2
+                ? jobs.filter((value) => {
+                      return value.caption
+                          .toLowerCase()
+                          .includes(e.target.value.toLowerCase());
+                  })
+                : []
+        );
+    };
+
+    const onClickFirstJobResults = (e) => {
         setValues({
             ...values,
             first_job_level_id: e.target.value.toString(),
             first_job_level: e.target.innerHTML,
         });
-        setJobResults([]);
+        setFirstJobResults([]);
+    };
+
+    const onClickSecondJobResults = (e) => {
+        setValues({
+            ...values,
+            second_job_level_id: e.target.value.toString(),
+            second_job_level: e.target.innerHTML,
+        });
+        setSecondJobResults([]);
     };
 
     const handleAnnualPaymentIncrease = (e) => {
@@ -903,8 +960,9 @@ function LifeCompare() {
                         onChange={onChange}
                         onClick={
                             input.name == "first_job_level"
-                                ? onClickJobResults
-                                : null
+                                ? onClickFirstJobResults
+                                : input.name == "second_job_level"
+                                    && onClickSecondJobResults
                         }
                     />
                 ))}

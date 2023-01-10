@@ -71,7 +71,7 @@ const FormInput = (props) => {
                     />
                     <span className="life-compare-span">{errorMessage}</span>
                     <span className="life-compare-span-error">{error}</span>
-                    {inputProps.name == "first_job_level" && (
+                    {(inputProps.name == "first_job_level" || inputProps.name == "second_job_level") && (
                         <ul>
                             {options?.map((item, index) => {
                                 if (index < 5) {

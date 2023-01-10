@@ -26,6 +26,8 @@ class LifeInsuranceResource extends JsonResource
             'annual_payment' => $this->annual_payment,
             'first_job_level' => $this->first_job_level,
             'first_job_level_id' => $this->first_job_level_id,
+            'second_job_level' => $this->second_job_level,
+            'second_job_level_id' => $this->second_job_level_id,
             'divided_payment' => $this->divided_payment,
             'annual_payment_increase' => $this->annual_payment_increase,
             'addon_payment_method' => $this->addon_payment_method,

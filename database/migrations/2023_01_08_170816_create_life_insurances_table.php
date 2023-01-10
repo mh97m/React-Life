@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('annual_payment');
             $table->string('first_job_level');
             $table->string('first_job_level_id');
+            $table->string('second_job_level');
+            $table->string('second_job_level_id');
             $table->string('divided_payment');
             $table->string('annual_payment_increase');
             $table->string('addon_payment_method');

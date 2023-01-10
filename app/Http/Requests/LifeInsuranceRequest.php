@@ -59,6 +59,8 @@ class LifeInsuranceRequest extends FormRequest
             'annual_payment' => 'required|integer',
             'first_job_level' => 'required',
             'first_job_level_id' => 'required',
+            'second_job_level' => 'required',
+            'second_job_level_id' => 'required',
             'divided_payment' => 'required|integer',
             'annual_payment_increase' => 'required',
             'addon_payment_method' => [
