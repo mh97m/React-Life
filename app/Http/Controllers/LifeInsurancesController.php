@@ -45,13 +45,14 @@ class LifeInsurancesController extends Controller
      * @param \App\Http\Requests\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function insuranced(Request $request)
+    public function assginInsuranceToUser(Request $request)
     {
         $insurance = LifeInsurance::find($request->id);
-        if (!$insurance->user_id)
+        if (!$insurance->user_id) {
             $insurance->update([
                 'user_id' => auth()->user()->id
             ]);
+        }
         return response($insurance->birth_year . "/" . $insurance->birth_month . "/" . $insurance->birth_day, 200);
     }
 

@@ -31,7 +31,7 @@ class LifeMedicalInfoRequest extends FormRequest
             'ins_target_height' => 'required|integer',
             'ins_target_weight' => 'required|integer',
             'gender' => 'required|string',
-            'military_service_status' => 'required|string',
+            'military_service_status' => '',
             'military_service_details' => '',
             'military_service_reason' => '',
         ];

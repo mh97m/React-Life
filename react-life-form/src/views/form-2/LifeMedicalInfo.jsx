@@ -41,13 +41,14 @@ function LifeMedicalInfo() {
     });
     const [disableds, setDisableds] = useState({
         birth: true,
+        military_service_status: true,
         military_service_details: true,
         military_service_reason: true,
     });
 
     useEffect(() => {
         if (insurancedId) {
-            axiosClient.get("/insuranced/" + insurancedId).then(({ data }) => {
+            axiosClient.get("/assgin-insurance-to-user/" + insurancedId).then(({ data }) => {
                 setValues({ ...values, birth: data });
             });
         } else {
@@ -284,6 +285,9 @@ function LifeMedicalInfo() {
             case "ins_target_weight":
                 handleInsTargetWeight(e);
                 break;
+            case "gender":
+                handleGender(e);
+                break;
             case "military_service_status":
                 handleMilitaryServiceStatus(e);
                 break;
@@ -344,6 +348,29 @@ function LifeMedicalInfo() {
                 ? parseInt(e.target.value)
                 : "",
         });
+    };
+
+    const handleGender = (e) => {
+        if (e.target.value == "1") {
+            setDisableds({
+                ...disableds,
+                military_service_status: false,
+            });
+        } else {
+            setDisableds({
+                ...disableds,
+                military_service_status: true,
+                military_service_details: true,
+                military_service_reason: true,
+            });
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value,
+                military_service_status: "",
+                military_service_details: "",
+                military_service_reason: "",
+            });
+        }
     };
 
     return (
