@@ -67,6 +67,7 @@ const FormInput = (props) => {
                         onBlur={handleFocus}
                         focused={focused.toString()}
                         type={type}
+                        disabled={(typeof disabled == "boolean") && disabled}
                     />
                     <span className="life-compare-span">{errorMessage}</span>
                     <span className="life-compare-span-error">{error}</span>
