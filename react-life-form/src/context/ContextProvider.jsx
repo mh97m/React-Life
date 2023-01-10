@@ -5,10 +5,12 @@ const StateContext = createContext({
     token: null,
     notification: null,
     next: null,
+    insurancedId: null,
     setUser: () => {},
     setToken: () => {},
     setNotification: () => {},
     setNext: () => {},
+    setInsurancedId: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
@@ -16,6 +18,9 @@ export const ContextProvider = ({ children }) => {
     const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
     const [notification, _setNotification] = useState("");
     const [next, _setNext] = useState(localStorage.getItem("NEXT"));
+    const [insurancedId, _setInsurancedId] = useState(
+        localStorage.getItem("INSURANCED_ID")
+    );
 
     const setToken = (token) => {
         _setToken(token);
@@ -34,6 +39,15 @@ export const ContextProvider = ({ children }) => {
         }, 5000);
     };
 
+    const setInsurancedId = (insurancedId) => {
+        _setInsurancedId(insurancedId);
+        if (insurancedId) {
+            localStorage.setItem("INSURANCED_ID", insurancedId);
+        } else {
+            localStorage.removeItem("INSURANCED_ID");
+        }
+    };
+
     const setNext = (next) => {
         _setNext(next);
         if (next) {
@@ -50,10 +64,12 @@ export const ContextProvider = ({ children }) => {
                 setUser,
                 token,
                 next,
+                insurancedId,
                 setToken,
                 notification,
                 setNotification,
                 setNext,
+                setInsurancedId,
             }}
         >
             {children}

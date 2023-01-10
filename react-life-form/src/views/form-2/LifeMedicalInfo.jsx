@@ -11,9 +11,8 @@ import "./lifeCompare.css";
 
 function LifeMedicalInfo() {
     const navigate = useNavigate();
-    const { setNotification, setNext, user } = useStateContext();
+    const { setNotification, insurancedId, user } = useStateContext();
     const [ServerErrors, setServerErrors] = useState(null);
-    const [insuranced, setInsuranced] = useState({});
     const [values, setValues] = useState({
         national_code: "",
         birth: "",
@@ -38,9 +37,13 @@ function LifeMedicalInfo() {
     });
 
     useEffect(() => {
-        axiosClient.get("/insuranced").then(({ data }) => {
-            setInsuranced(data);
-        });
+        if (insurancedId) {
+            axiosClient.get("/insuranced/" + insurancedId).then(({ data }) => {
+                setValues({ ...values, birth: data });
+            });
+        } else {
+            navigate("/life-insurance");
+        }
 
 
 
@@ -168,6 +171,7 @@ function LifeMedicalInfo() {
         // alert("فرم ثبت شد");
         if (values.national_code) {
             const payload = {
+                user_id: insurancedId,
                 national_code: values.national_code,
             };
             axiosClient

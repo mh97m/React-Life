@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import DateObject from "react-date-object";
 import persian from "react-date-object/calendars/persian";
@@ -11,7 +11,7 @@ import "./lifeCompare.css";
 
 function LifeCompare() {
     const navigate = useNavigate();
-    const { setNotification, setNext, token } = useStateContext();
+    const { setNotification, setNext, setInsurancedId, token } = useStateContext();
     const [ServerErrors, setServerErrors] = useState(null);
     const cookies = new Cookies();
     const formData = cookies.get("formData") ? cookies.get("formData") : [];
@@ -529,6 +529,7 @@ function LifeCompare() {
                 .post("/life-compare", payload)
                 .then(({ data }) => {
                     setNotification("ثبت اطلاعات با موفقیت انجام شد !");
+                    setInsurancedId(data);
                     cookies.set("formData", [], { path: "/life-compare" });
                     setTimeout(() => {
                         (!token) && setNext("/life-medical-info");
