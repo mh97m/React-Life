@@ -9,6 +9,7 @@ import Users from "./views/Users";
 import UserForm from "./views/UserForm";
 import MultiStepForm from "./views/form-0/MultiStepForm";
 import LifeCompare from "./views/form-1/LifeCompare";
+import LifeMedicalInfo from "./views/form-2/LifeMedicalInfo";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: "/life-compare",
                 element: <LifeCompare />,
+            },
+            {
+                path: "/life-medical-info",
+                element: <LifeMedicalInfo />,
             },
         ],
     },

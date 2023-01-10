@@ -533,7 +533,7 @@ function LifeCompare() {
                     console.log(data);
                     cookies.set("formData", [], { path: "/life-compare" });
                     setTimeout(() => {
-                        navigate("/life");
+                        navigate("/life-medical-info");
                     }, 3000);
                 })
                 .catch((err) => {

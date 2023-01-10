@@ -23,4 +23,18 @@ class LifeInsurancesController extends Controller
         return response(new LifeInsuranceResource($life_insurance) , 201);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \App\Http\Requests\LifeInsuranceRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function medical(Request $request)
+    {
+        // $data = $request->validated();
+        // $life_insurance = LifeInsurance::create($data);
+
+        // return response(new LifeInsuranceResource($life_insurance) , 201);
+    }
+
 }
