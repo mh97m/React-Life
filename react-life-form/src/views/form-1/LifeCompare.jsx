@@ -701,13 +701,16 @@ function LifeCompare() {
     };
 
     const handleInsuranceTarget = (e) => {
-        setErrors({ ...errors, birth_year: "" });
+        setErrors({ ...errors, [e.target.name]: "" });
         if (e.target.value == "خودم") {
             if (age.current < 18) {
-                setValues({ ...values, birth_year: "" });
+                setValues({ ...values,
+                    birth_year: "",
+                    [e.target.name]: "",
+                });
                 setErrors({
                     ...errors,
-                    birth_year:
+                    [e.target.name]:
                         ". سن شما کمتر از 18 سال است. نمی توانید خود را بیمه کنید !!",
                 });
                 setDurations([]);
