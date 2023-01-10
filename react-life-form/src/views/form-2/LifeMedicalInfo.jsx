@@ -36,6 +36,7 @@ function LifeMedicalInfo() {
         mobile_number: "",
         ins_target_height: "",
         ins_target_weight: "",
+        military_service_status: "",
         military_service_details: "",
         military_service_reason: "",
     });
@@ -201,6 +202,16 @@ function LifeMedicalInfo() {
                 ins_target_weight: ". وزن بیمه شده پوشش داده نمی شود !!",
             });
             return;
+        }
+        if (!(disableds.military_service_status)) {
+            if (!(values.military_service_status)) {
+                setValues({ ...values, military_service_status: "" });
+                setErrors({
+                    ...errors,
+                    military_service_status: ". وضعیت خدمت سربازی را انتخاب کنید !!",
+                });
+                return;
+            }
         }
         if (!(disableds.military_service_details)) {
             if (!(values.military_service_details)) {
