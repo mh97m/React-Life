@@ -798,6 +798,10 @@ function LifeCompare() {
             first_job_level_id: "",
             first_job_level: e.target.value,
         });
+        setErrors({
+            ...errors,
+            first_job_level: "",
+        });
         setJobResults(
             e.target.value.length > 2
                 ? jobs.filter((value) => {
