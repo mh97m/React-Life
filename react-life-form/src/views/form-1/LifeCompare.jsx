@@ -104,6 +104,7 @@ function LifeCompare() {
             }
         };
         getjobs();
+        setInsurancedId(null);
     }, []);
 
     const inputs = [
@@ -534,7 +535,7 @@ function LifeCompare() {
                     setTimeout(() => {
                         (!token) && setNext("/life-medical-info");
                         navigate("/life-medical-info");
-                    }, 3000);
+                    }, 100);
                 })
                 .catch((err) => {
                     const response = err.response;
