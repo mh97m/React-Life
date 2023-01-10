@@ -12,7 +12,14 @@ import "./lifeCompare.css";
 function LifeMedicalInfo() {
     const navigate = useNavigate();
     const { setNotification, insurancedId, user } = useStateContext();
-    const [ServerErrors, setServerErrors] = useState(null);
+    const [ServerErrors, _setServerErrors] = useState(null);
+    const setServerErrors = (errors) => {
+        _setServerErrors(errors);
+
+        setTimeout(() => {
+            _setServerErrors("");
+        }, 20000);
+    };
     const [values, setValues] = useState({
         national_code: "",
         birth: "",
@@ -29,6 +36,8 @@ function LifeMedicalInfo() {
         mobile_number: "",
         ins_target_height: "",
         ins_target_weight: "",
+        military_service_details: "",
+        military_service_reason: "",
     });
     const [disableds, setDisableds] = useState({
         birth: true,
@@ -44,21 +53,6 @@ function LifeMedicalInfo() {
         } else {
             navigate("/life-insurance");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
     }, []);
 
     const inputs = [
@@ -164,36 +158,115 @@ function LifeMedicalInfo() {
             placeholder: "علت معافیت",
         },
     ];
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setServerErrors(null);
         // alert("فرم ثبت شد");
-        if (values.national_code) {
-            const payload = {
-                user_id: insurancedId,
-                national_code: values.national_code,
-            };
-            axiosClient
-                .post("/life-medical-info", payload)
-                .then(({ data }) => {
-                    setNotification("ثبت اطلاعات با موفقیت انجام شد !");
-                    console.log(data);
-                    setTimeout(() => {
-                        navigate("/life");
-                    }, 3000);
-                })
-                .catch((err) => {
-                    const response = err.response;
-                    if (response) {
-                        setServerErrors(err.response.data.errors);
-                    }
-                });
+        if (!(new RegExp("^0\\d{9}$").test(values.national_code))) {
+            setValues({ ...values, national_code: "" });
+            setErrors({
+                ...errors,
+                national_code: ". فرمت کد ملی بیمه شده اشتباه است !!",
+            });
+            return;
         }
+        if (!(new RegExp("^(\\+98|0)?9\\d{9}$").test(values.mobile_number))) {
+            // 09\d{9}
+            setValues({ ...values, mobile_number: "" });
+            setErrors({
+                ...errors,
+                mobile_number: ". فرمت شماره موبایل بیمه شده اشتباه است !!",
+            });
+            // values.mobile_number = "";
+            // errors.mobile_number = ". فرمت شماره موبایل بیمه شده اشتباه است !!";
+            return;
+        }
+        if (
+            values.ins_target_height >= 300 ||
+            values.ins_target_height <= 100
+        ) {
+            setValues({ ...values, ins_target_height: "" });
+            setErrors({
+                ...errors,
+                ins_target_height: ". قد بیمه شده پوشش داده نمی شود !!",
+            });
+            return;
+        }
+        if (values.ins_target_weight > 300) {
+            setValues({ ...values, ins_target_weight: "" });
+            setErrors({
+                ...errors,
+                ins_target_weight: ". وزن بیمه شده پوشش داده نمی شود !!",
+            });
+            return;
+        }
+        if (!(disableds.military_service_details)) {
+            if (!(values.military_service_details)) {
+                setValues({ ...values, military_service_details: "" });
+                setErrors({
+                    ...errors,
+                    military_service_details: ". جزئیات معافیت را وارد کنید !!",
+                });
+                return;
+            } else if (!(new RegExp("^\\d{4}\\/\\d{1,2}\\/\\d{1,2}$").test(values.military_service_details))) {
+                setValues({ ...values, military_service_details: "" });
+                setErrors({
+                    ...errors,
+                    military_service_details: ". فرمت جزئیات معافیت اشتباه است !!",
+                });
+                return;
+            }
+        }
+        if (!(disableds.military_service_reason)) {
+            if (!(values.military_service_reason)) {
+                setValues({ ...values, military_service_reason: "" });
+                setErrors({
+                    ...errors,
+                    military_service_reason: ". علت معافیت را وارد کنید !!",
+                });
+                return;
+            } else if (!(new RegExp("^[\u0600-\u06FF\s]+$").test(values.military_service_reason))) {
+                setValues({ ...values, military_service_reason: "" });
+                setErrors({
+                    ...errors,
+                    military_service_reason: ". علت معافیت باید فارسی باشد !!",
+                });
+                return;
+            }
+        }
+        const payload = {
+            national_code: values.national_code,
+            birth: values.birth,
+            mobile_number: values.mobile_number,
+            ins_target_height: values.ins_target_height,
+            ins_target_weight: values.ins_target_weight,
+            gender: values.gender,
+            military_service_status: values.military_service_status,
+            military_service_details: values.military_service_details,
+            military_service_reason: values.military_service_reason,
+        };
+        axiosClient
+            .post("/life-medical-info", payload)
+            .then(({ data }) => {
+                setNotification("ثبت اطلاعات با موفقیت انجام شد !");
+                console.log(data);
+                // setTimeout(() => {
+                //     navigate("/life");
+                // }, 3000);
+            })
+            .catch((err) => {
+                const response = err.response;
+                if (response) {
+                    setServerErrors(err.response.data.errors);
+                }
+            });
+        // console.log(values.national_code);
     };
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: "" });
         handleChange(e);
     };
 
@@ -205,6 +278,12 @@ function LifeMedicalInfo() {
             case "mobile_number":
                 handleMobileNumber(e);
                 break;
+            case "ins_target_height":
+                handleInsTargetHeight(e);
+                break;
+            case "ins_target_weight":
+                handleInsTargetWeight(e);
+                break;
             case "military_service_status":
                 handleMilitaryServiceStatus(e);
                 break;
@@ -214,7 +293,8 @@ function LifeMedicalInfo() {
     };
 
     const handleNationalCode = (e) => {
-        setErrors({ ...errors, [e.target.name]: "" });
+        // console.log(new RegExp("^0\\d{9}$").test(values.national_code));
+        // console.log(new RegExp("0\\d").test(e.target.value));
     };
 
     const handleMilitaryServiceStatus = (e) => {
@@ -240,7 +320,30 @@ function LifeMedicalInfo() {
     };
 
     const handleMobileNumber = (e) => {
-        const validNumber = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$");
+        // setValues({
+        //     ...values,
+        //     [e.target.name]: parseInt(e.target.value)
+        //         ? parseInt(e.target.value)
+        //         : "0",
+        // });
+    };
+
+    const handleInsTargetHeight = (e) => {
+        setValues({
+            ...values,
+            [e.target.name]: parseInt(e.target.value)
+                ? parseInt(e.target.value)
+                : "",
+        });
+    };
+
+    const handleInsTargetWeight = (e) => {
+        setValues({
+            ...values,
+            [e.target.name]: parseInt(e.target.value)
+                ? parseInt(e.target.value)
+                : "",
+        });
     };
 
     return (

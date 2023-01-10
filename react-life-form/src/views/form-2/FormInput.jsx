@@ -62,7 +62,11 @@ const FormInput = (props) => {
                     <label className="life-compare-label">{label}</label>
                     <input
                         {...inputProps}
-                        className="life-compare-input"
+                        className={
+                            error
+                                ? "life-compare-input-error"
+                                : "life-compare-input"
+                        }
                         onChange={onChange}
                         onBlur={handleFocus}
                         focused={focused.toString()}

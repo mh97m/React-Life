@@ -15,6 +15,18 @@
     text-align: center;
 }
 
+.life-compare-input-error {
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid red;
+}
+
 
 .life-compare-label {
     font-size: 14px;
