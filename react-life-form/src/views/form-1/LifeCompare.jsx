@@ -11,7 +11,8 @@ import "./lifeCompare.css";
 
 function LifeCompare() {
     const navigate = useNavigate();
-    const { setNotification, setNext, setInsurancedId, token } = useStateContext();
+    const { setNotification, setNext, setInsurancedId, token } =
+        useStateContext();
     const [ServerErrors, setServerErrors] = useState(null);
     const cookies = new Cookies();
     const formData = cookies.get("formData") ? cookies.get("formData") : [];
@@ -27,7 +28,10 @@ function LifeCompare() {
         first_job_level_id: formData.job_id ?? "",
         second_job_level: "",
         second_job_level_id: "",
-        divided_payment: ((formData.annual_payment && formData.payment_method) ? parseInt((formData.annual_payment / formData.payment_method)) : 0).toLocaleString(),
+        divided_payment: (formData.annual_payment && formData.payment_method
+            ? parseInt(formData.annual_payment / formData.payment_method)
+            : 0
+        ).toLocaleString(),
         annual_payment_increase: "",
         addon_payment_method: "",
         death_capital_any_reason_ratio: "",
@@ -87,7 +91,11 @@ function LifeCompare() {
     useEffect(() => {
         setYears([...Array(66).keys()].map((i) => now.year - i));
         setMonths([...Array(12).keys()].map((i) => 12 - i));
-        setDays([...Array(values.birth_month <= 6 ? 31 :30).keys()].map((i) => (values.birth_month <= 6 ? 31 :30) - i));
+        setDays(
+            [...Array(values.birth_month <= 6 ? 31 : 30).keys()].map(
+                (i) => (values.birth_month <= 6 ? 31 : 30) - i
+            )
+        );
         updateDurations();
         updateCapitalIncidents();
         const getjobs = async () => {
@@ -250,7 +258,10 @@ function LifeCompare() {
             type: "select",
             label: "نحوه پرداخت حق بیمه پوشش های اضافی",
             name: "addon_payment_method",
-            defaultValue: "نحوه پرداخت",
+            defaultValue: {
+                key: null,
+                value: "نحوه پرداخت",
+            },
             errorMessage:
                 ". نحوه پرداخت حق بیمه پوشش های اضافی را انتخاب نمایید !!",
             required: true,
@@ -270,7 +281,10 @@ function LifeCompare() {
             type: "select",
             label: "سرمایه فوت به هر علت",
             name: "death_capital_any_reason_ratio",
-            defaultValue: "سرمایه فوت",
+            defaultValue: {
+                key: null,
+                value: "سرمایه فوت",
+            },
             errorMessage: ". سرمایه فوت را انتخاب نمایید !!",
             required: true,
             options: [
@@ -390,7 +404,10 @@ function LifeCompare() {
             type: "select",
             label: "فوت بر اثر حادثه",
             name: "death_capital_incident_ratio",
-            defaultValue: "مایل به دریافت نیستم",
+            defaultValue: {
+                key: null,
+                value: "مایل به دریافت نیستم",
+            },
             options: capitalIncidents,
         },
         {
@@ -398,7 +415,10 @@ function LifeCompare() {
             type: "select",
             label: "نقص عضو و از کارافتادگی",
             name: "maim_ratio",
-            defaultValue: "مایل به دریافت نیستم",
+            defaultValue: {
+                key: null,
+                value: "مایل به دریافت نیستم",
+            },
             options: capitalIncidents,
         },
         {
@@ -406,7 +426,10 @@ function LifeCompare() {
             type: "select",
             label: "هزینه پزشکی ناشی از حادثه",
             name: "has_medical_cost",
-            defaultValue: "خیر",
+            defaultValue: {
+                key: 0,
+                value: "خیر",
+            },
             options: [
                 {
                     key: 1,
@@ -419,7 +442,10 @@ function LifeCompare() {
             type: "select",
             label: "بسته تکمیلی خطرات اضافی",
             name: "additional_dangers",
-            defaultValue: "خیر",
+            defaultValue: {
+                key: 0,
+                value: "خیر",
+            },
             options: [
                 {
                     key: 1,
@@ -432,7 +458,10 @@ function LifeCompare() {
             type: "select",
             label: "غرامت بستری",
             name: "hospitalization",
-            defaultValue: "خیر",
+            defaultValue: {
+                key: 0,
+                value: "خیر",
+            },
             options: [
                 {
                     key: 1,
@@ -445,7 +474,10 @@ function LifeCompare() {
             type: "select",
             label: "معافیت از پرداخت حق بیمه",
             name: "exemption",
-            defaultValue: "خیر",
+            defaultValue: {
+                key: 0,
+                value: "خیر",
+            },
             options: [
                 {
                     key: 1,
@@ -458,7 +490,10 @@ function LifeCompare() {
             type: "select",
             label: "امراض خاص",
             name: "special_diseases_ratio",
-            defaultValue: "مایل به دریافت نیستم",
+            defaultValue: {
+                key: null,
+                value: "مایل به دریافت نیستم",
+            },
             options: [
                 {
                     key: 1,
@@ -533,7 +568,7 @@ function LifeCompare() {
                     setInsurancedId(data);
                     cookies.set("formData", [], { path: "/life-compare" });
                     setTimeout(() => {
-                        (!token) && setNext("/life-medical-info");
+                        !token && setNext("/life-medical-info");
                         navigate("/life-medical-info");
                     }, 100);
                 })
@@ -543,18 +578,24 @@ function LifeCompare() {
                         setServerErrors(err.response.data.errors);
                     }
                 });
+            window.scrollTo({
+                top: 100,
+                behavior: "smooth",
+            });
         } else {
             if (!values.first_job_level_id) {
                 setValues({ ...values, first_job_level: "" });
                 setErrors({
                     ...errors,
-                    first_job_level: ". شغل را از موارد پیشنهادی انتخاب کنید !!",
+                    first_job_level:
+                        ". شغل را از موارد پیشنهادی انتخاب کنید !!",
                 });
             } else if (!values.second_job_level_id) {
                 setValues({ ...values, second_job_level: "" });
                 setErrors({
                     ...errors,
-                    second_job_level: ". شغل را از موارد پیشنهادی انتخاب کنید !!",
+                    second_job_level:
+                        ". شغل را از موارد پیشنهادی انتخاب کنید !!",
                 });
             }
         }
@@ -705,10 +746,7 @@ function LifeCompare() {
         setErrors({ ...errors, [e.target.name]: "" });
         if (e.target.value == "خودم") {
             if (age.current < 18) {
-                setValues({ ...values,
-                    birth_year: "",
-                    [e.target.name]: "",
-                });
+                setValues({ ...values, birth_year: "", [e.target.name]: "" });
                 setErrors({
                     ...errors,
                     [e.target.name]:
@@ -723,7 +761,12 @@ function LifeCompare() {
         setErrors({ ...errors, [e.target.name]: "" });
         updateAge(e);
         updateCapitalIncidents(e);
-        e.target.name == 'birth_month' && setDays([...Array(e.target.value <= 6 ? 31 :30).keys()].map((i) => (e.target.value <= 6 ? 31 :30) - i));
+        e.target.name == "birth_month" &&
+            setDays(
+                [...Array(e.target.value <= 6 ? 31 : 30).keys()].map(
+                    (i) => (e.target.value <= 6 ? 31 : 30) - i
+                )
+            );
         if (age.current > 64) {
             setValues({ ...values, [e.target.name]: "" });
             setErrors({
@@ -965,8 +1008,8 @@ function LifeCompare() {
                         onClick={
                             input.name == "first_job_level"
                                 ? onClickFirstJobResults
-                                : input.name == "second_job_level"
-                                    && onClickSecondJobResults
+                                : input.name == "second_job_level" &&
+                                  onClickSecondJobResults
                         }
                     />
                 ))}

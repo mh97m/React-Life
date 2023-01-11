@@ -36,9 +36,11 @@ const FormInput = (props) => {
                         onChange={onChange}
                         onBlur={handleFocus}
                         focused={focused.toString()}
-                        disabled={(typeof disabled == "boolean") && disabled}
+                        disabled={typeof disabled == "boolean" && disabled}
                     >
-                        <option value="">{defaultValue ? defaultValue : label}</option>
+                        <option value={defaultValue ? defaultValue.key : ""}>
+                            {defaultValue ? defaultValue.value : label}
+                        </option>
                         {options.map((opt, index) => {
                             return typeof opt !== "object" ? (
                                 <option key={index} value={opt}>
@@ -71,11 +73,12 @@ const FormInput = (props) => {
                         onBlur={handleFocus}
                         focused={focused.toString()}
                         type={type}
-                        disabled={(typeof disabled == "boolean") && disabled}
+                        disabled={typeof disabled == "boolean" && disabled}
                     />
                     <span className="life-compare-span">{errorMessage}</span>
                     <span className="life-compare-span-error">{error}</span>
-                    {(inputProps.name == "first_job_level" || inputProps.name == "second_job_level") && (
+                    {(inputProps.name == "first_job_level" ||
+                        inputProps.name == "second_job_level") && (
                         <ul>
                             {options?.map((item, index) => {
                                 if (index < 5) {

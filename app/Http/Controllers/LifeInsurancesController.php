@@ -52,6 +52,8 @@ class LifeInsurancesController extends Controller
             $insurance->update([
                 'user_id' => auth()->user()->id
             ]);
+        } elseif ($insurance->user_id != auth()->user()->id) {
+            return response("Access forbidden", 403);
         }
         return response($insurance->birth_year . "/" . $insurance->birth_month . "/" . $insurance->birth_day, 200);
     }

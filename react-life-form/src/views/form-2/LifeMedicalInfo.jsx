@@ -30,6 +30,23 @@ function LifeMedicalInfo() {
         military_service_status: "",
         military_service_details: "",
         military_service_reason: "",
+        father_life_status: "",
+        father_age: "",
+        father_death_reason: "",
+        mother_life_status: "",
+        mother_age: "",
+        mother_death_reason: "",
+        family_health_history: "",
+        family_health_history_reason: "",
+        smoking_status: "",
+        hospitalization_status: "",
+        hospitalization_reason: "",
+        physical_impairment: "",
+        drug_usage: "",
+        health_status: "",
+        disease_type: "",
+        weight_loss: "",
+        weight_loss_reason: "",
     });
     const [errors, setErrors] = useState({
         national_code: "",
@@ -39,19 +56,26 @@ function LifeMedicalInfo() {
         military_service_status: "",
         military_service_details: "",
         military_service_reason: "",
+        father_age: "",
+        father_death_reason: "",
     });
     const [disableds, setDisableds] = useState({
         birth: true,
         military_service_status: true,
         military_service_details: true,
         military_service_reason: true,
+        father_death_reason: true,
+        mother_death_reason: true,
+        family_health_history_reason: true,
     });
 
     useEffect(() => {
         if (insurancedId) {
-            axiosClient.get("/assgin-insurance-to-user/" + insurancedId).then(({ data }) => {
-                setValues({ ...values, birth: data });
-            });
+            axiosClient
+                .get("/assgin-insurance-to-user/" + insurancedId)
+                .then(({ data }) => {
+                    setValues({ ...values, birth: data });
+                });
         } else {
             navigate("/life-insurance");
         }
@@ -125,7 +149,10 @@ function LifeMedicalInfo() {
             type: "select",
             label: "وضعیت خدمت سربازی",
             name: "military_service_status",
-            defaultValue: "انتخاب کنید",
+            defaultValue: {
+                key: null,
+                value: "انتخاب کنید",
+            },
             options: [
                 {
                     key: 1,
@@ -159,13 +186,92 @@ function LifeMedicalInfo() {
             name: "military_service_reason",
             placeholder: "علت معافیت",
         },
+        {
+            id: 10,
+            type: "select",
+            label: "تاریخچه فامیلی",
+            name: "father_life_status",
+            defaultValue: {
+                key: 1,
+                value: "پدر در قید حیات می باشد",
+            },
+            options: [
+                {
+                    key: 0,
+                    value: "پدر در قید حیات نمی باشد",
+                },
+            ],
+        },
+        {
+            id: 11,
+            type: "text",
+            name: "father_age",
+            placeholder: "سن فعلی",
+        },
+        {
+            id: 12,
+            type: "text",
+            name: "father_death_reason",
+            placeholder: "علت فوت",
+        },
+        {
+            id: 13,
+            type: "select",
+            name: "mother_life_status",
+            defaultValue: {
+                key: 1,
+                value: "مادر در قید حیات می باشد",
+            },
+            options: [
+                {
+                    key: 0,
+                    value: "مادر در قید حیات نمی باشد",
+                },
+            ],
+        },
+        {
+            id: 14,
+            type: "text",
+            name: "mother_age",
+            placeholder: "سن فعلی",
+        },
+        {
+            id: 15,
+            type: "text",
+            name: "mother_death_reason",
+            placeholder: "علت فوت",
+        },
+        {
+            id: 16,
+            type: "select",
+            label: "سابقه بیماری افراد خانواده",
+            name: "family_health_history",
+            defaultValue: {
+                key: 0,
+                value: "افراد خانواده سابقه بیماری نداشته اند",
+            },
+            options: [
+                {
+                    key: 1,
+                    value: "افراد خانواده قبلا سابقه بیماری داشته اند",
+                },
+            ],
+        },
+        {
+            id: 17,
+            type: "text",
+            label: "توضیحات سابقه بیماری خانوادگی",
+            name: "family_health_history_reason",
+            placeholder:
+                "لطفا نسبت فرد با بیمه شده و نوع بیماری را ذکر فرمایید",
+        },
     ];
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setServerErrors(null);
         // alert("فرم ثبت شد");
-        if (!(new RegExp("^0\\d{9}$").test(values.national_code))) {
+        if (!new RegExp("^0\\d{9}$").test(values.national_code)) {
             setValues({ ...values, national_code: "" });
             setErrors({
                 ...errors,
@@ -173,7 +279,7 @@ function LifeMedicalInfo() {
             });
             return;
         }
-        if (!(new RegExp("^(\\+98|0)?9\\d{9}$").test(values.mobile_number))) {
+        if (!new RegExp("^(\\+98|0)?9\\d{9}$").test(values.mobile_number)) {
             // 09\d{9}
             setValues({ ...values, mobile_number: "" });
             setErrors({
@@ -203,42 +309,52 @@ function LifeMedicalInfo() {
             });
             return;
         }
-        if (!(disableds.military_service_status)) {
-            if (!(values.military_service_status)) {
+        if (!disableds.military_service_status) {
+            if (!values.military_service_status) {
                 setValues({ ...values, military_service_status: "" });
                 setErrors({
                     ...errors,
-                    military_service_status: ". وضعیت خدمت سربازی را انتخاب کنید !!",
+                    military_service_status:
+                        ". وضعیت خدمت سربازی را انتخاب کنید !!",
                 });
                 return;
             }
         }
-        if (!(disableds.military_service_details)) {
-            if (!(values.military_service_details)) {
+        if (!disableds.military_service_details) {
+            if (!values.military_service_details) {
                 setValues({ ...values, military_service_details: "" });
                 setErrors({
                     ...errors,
                     military_service_details: ". جزئیات معافیت را وارد کنید !!",
                 });
                 return;
-            } else if (!(new RegExp("^\\d{4}\\/\\d{1,2}\\/\\d{1,2}$").test(values.military_service_details))) {
+            } else if (
+                !new RegExp("^\\d{4}\\/\\d{1,2}\\/\\d{1,2}$").test(
+                    values.military_service_details
+                )
+            ) {
                 setValues({ ...values, military_service_details: "" });
                 setErrors({
                     ...errors,
-                    military_service_details: ". فرمت جزئیات معافیت اشتباه است !!",
+                    military_service_details:
+                        ". فرمت جزئیات معافیت اشتباه است !!",
                 });
                 return;
             }
         }
-        if (!(disableds.military_service_reason)) {
-            if (!(values.military_service_reason)) {
+        if (!disableds.military_service_reason) {
+            if (!values.military_service_reason) {
                 setValues({ ...values, military_service_reason: "" });
                 setErrors({
                     ...errors,
                     military_service_reason: ". علت معافیت را وارد کنید !!",
                 });
                 return;
-            } else if (!(new RegExp("^[\u0600-\u06FF\s]+$").test(values.military_service_reason))) {
+            } else if (
+                !new RegExp("^[\u0600-\u06FFs]+$").test(
+                    values.military_service_reason
+                )
+            ) {
                 setValues({ ...values, military_service_reason: "" });
                 setErrors({
                     ...errors,
@@ -273,7 +389,10 @@ function LifeMedicalInfo() {
                     setServerErrors(err.response.data.errors);
                 }
             });
-        // console.log(values.national_code);
+        window.scrollTo({
+            top: 100,
+            behavior: "smooth",
+        });
     };
 
     const onChange = (e) => {
@@ -302,6 +421,21 @@ function LifeMedicalInfo() {
             case "military_service_status":
                 handleMilitaryServiceStatus(e);
                 break;
+            case "father_life_status":
+                handleFatherLifeStatus(e);
+                break;
+            case "father_age":
+                handleAge(e);
+                break;
+            case "mother_life_status":
+                handleMotherLifeStatus(e);
+                break;
+            case "mother_age":
+                handleAge(e);
+                break;
+            case "family_health_history":
+                handleFamilyHealthHistory(e);
+                break;
             default:
                 break;
         }
@@ -310,28 +444,6 @@ function LifeMedicalInfo() {
     const handleNationalCode = (e) => {
         // console.log(new RegExp("^0\\d{9}$").test(values.national_code));
         // console.log(new RegExp("0\\d").test(e.target.value));
-    };
-
-    const handleMilitaryServiceStatus = (e) => {
-        if (e.target.value == "4") {
-            setDisableds({
-                ...disableds,
-                military_service_details: false,
-                military_service_reason: false,
-            });
-        } else {
-            setDisableds({
-                ...disableds,
-                military_service_details: true,
-                military_service_reason: true,
-            });
-            setValues({
-                ...values,
-                [e.target.name]: e.target.value,
-                military_service_details: "",
-                military_service_reason: "",
-            });
-        }
     };
 
     const handleMobileNumber = (e) => {
@@ -347,7 +459,9 @@ function LifeMedicalInfo() {
         setValues({
             ...values,
             [e.target.name]: parseInt(e.target.value)
-                ? parseInt(e.target.value)
+                ? parseInt(e.target.value) < 300
+                    ? parseInt(e.target.value)
+                    : "300"
                 : "",
         });
     };
@@ -356,7 +470,9 @@ function LifeMedicalInfo() {
         setValues({
             ...values,
             [e.target.name]: parseInt(e.target.value)
-                ? parseInt(e.target.value)
+                ? parseInt(e.target.value) < 300
+                    ? parseInt(e.target.value)
+                    : "300"
                 : "",
         });
     };
@@ -384,10 +500,104 @@ function LifeMedicalInfo() {
         }
     };
 
+    const handleMilitaryServiceStatus = (e) => {
+        if (e.target.value == "4") {
+            setDisableds({
+                ...disableds,
+                military_service_details: false,
+                military_service_reason: false,
+            });
+        } else {
+            setDisableds({
+                ...disableds,
+                military_service_details: true,
+                military_service_reason: true,
+            });
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value,
+                military_service_details: "",
+                military_service_reason: "",
+            });
+        }
+    };
+
+    const handleFatherLifeStatus = (e) => {
+        document.getElementsByName("father_age")[0].placeholder =
+            e.target.value == "0" ? "سن فوت" : "سن فعلی";
+        if (e.target.value == "0") {
+            setDisableds({
+                ...disableds,
+                father_death_reason: false,
+            });
+        } else {
+            setDisableds({
+                ...disableds,
+                father_death_reason: true,
+            });
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value,
+                father_death_reason: "",
+            });
+        }
+    };
+
+    const handleMotherLifeStatus = (e) => {
+        document.getElementsByName("mother_age")[0].placeholder =
+            e.target.value == "0" ? "سن فوت" : "سن فعلی";
+        if (e.target.value == "0") {
+            setDisableds({
+                ...disableds,
+                mother_death_reason: false,
+            });
+        } else {
+            setDisableds({
+                ...disableds,
+                mother_death_reason: true,
+            });
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value,
+                mother_death_reason: "",
+            });
+        }
+    };
+
+    const handleAge = (e) => {
+        setValues({
+            ...values,
+            [e.target.name]: parseInt(e.target.value)
+                ? parseInt(e.target.value) < 150
+                    ? parseInt(e.target.value)
+                    : "150"
+                : "",
+        });
+    };
+
+    const handleFamilyHealthHistory = (e) => {
+        if (e.target.value == "1") {
+            setDisableds({
+                ...disableds,
+                family_health_history_reason: false,
+            });
+        } else {
+            setDisableds({
+                ...disableds,
+                family_health_history_reason: true,
+            });
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value,
+                family_health_history_reason: "",
+            });
+        }
+    };
+
     return (
         <div className="life-compare">
             <form onSubmit={handleSubmit} className="life-compare-form">
-                <h1 className="life-compare-h1">استعلام قیمت</h1>
+                <h1 className="life-compare-h1">هزینه های پزشکی</h1>
                 {ServerErrors && (
                     <div className="alert">
                         {Object.keys(ServerErrors).map((key) => (
