@@ -58,6 +58,7 @@ function LifeMedicalInfo() {
         military_service_reason: "",
         father_age: "",
         father_death_reason: "",
+        hospitalization_reason: "",
     });
     const [disableds, setDisableds] = useState({
         birth: true,
@@ -67,6 +68,9 @@ function LifeMedicalInfo() {
         father_death_reason: true,
         mother_death_reason: true,
         family_health_history_reason: true,
+        hospitalization_reason: true,
+        disease_type: true,
+        weight_loss_reason: true,
     });
 
     useEffect(() => {
@@ -207,6 +211,8 @@ function LifeMedicalInfo() {
             type: "text",
             name: "father_age",
             placeholder: "سن فعلی",
+            errorMessage: ". سن پدر بیمه شده را وارد کنید!!",
+            required: true,
         },
         {
             id: 12,
@@ -234,6 +240,8 @@ function LifeMedicalInfo() {
             type: "text",
             name: "mother_age",
             placeholder: "سن فعلی",
+            errorMessage: ". سن مادر بیمه شده را وارد کنید!!",
+            required: true,
         },
         {
             id: 15,
@@ -265,11 +273,119 @@ function LifeMedicalInfo() {
             placeholder:
                 "لطفا نسبت فرد با بیمه شده و نوع بیماری را ذکر فرمایید",
         },
+        {
+            id: 18,
+            type: "select",
+            label: "استعمال دخانیات",
+            name: "smoking_status",
+            defaultValue: {
+                key: 0,
+                value: "خیر",
+            },
+            options: [
+                {
+                    key: 1,
+                    value: "بله",
+                },
+            ],
+        },
+        {
+            id: 19,
+            type: "select",
+            label: "سابقه بستری و یا جراحی قبلی",
+            name: "hospitalization_status",
+            defaultValue: {
+                key: 0,
+                value: "خیر",
+            },
+            options: [
+                {
+                    key: 1,
+                    value: "بله",
+                },
+            ],
+        },
+        {
+            id: 20,
+            type: "text",
+            label: "دلیل بستری شدن",
+            name: "hospitalization_reason",
+            placeholder: "اگر قبلا در بیمارستان بستری بودید علت آن را ذکر کنید",
+        },
+        {
+            id: 21,
+            type: "text",
+            label: "سابقه جسمانی",
+            name: "physical_impairment",
+            placeholder:
+                "اگر قبلا سابقه نقص عضو و یا از کار افتادگی داشتید، علت آن را بیان کنید",
+        },
+        {
+            id: 22,
+            type: "text",
+            label: "مصرف روزانه دارو",
+            name: "drug_usage",
+            placeholder:
+                " اگر به صورت مرتب و روزانه دارو مصرف میکنید لطفا نام آن را قید نمایید",
+        },
+        {
+            id: 23,
+            type: "select",
+            label: "وضعیت سلامتی فعلی",
+            name: "health_status",
+            defaultValue: {
+                key: 1,
+                value: "در سلامت کامل هستم",
+            },
+            options: [
+                {
+                    key: 0,
+                    value: "در حال حاضر سلامتی کامل ندارم",
+                },
+            ],
+        },
+        {
+            id: 24,
+            type: "text",
+            label: "ابتلا به بیماری",
+            name: "disease_type",
+            placeholder:
+                " در صورتی که مبتلا به بیماری خاصی می باشید، نوع آن را قید نمایید",
+        },
+        {
+            id: 25,
+            type: "select",
+            label: "کاهش/افزایش وزن",
+            name: "weight_loss",
+            defaultValue: {
+                key: 0,
+                value: "تغییر محسوسی نداشته ام",
+            },
+            options: [
+                {
+                    key: 1,
+                    value: "در 6 ماه گذشته بیش از 10 کیلوگرم کاهش",
+                },
+                {
+                    key: 2,
+                    value: "در 6 ماه گذشته بیش از 10 کیلوگرم افزایش",
+                },
+            ],
+        },
+        {
+            id: 26,
+            type: "text",
+            label: "توضیحات تکمیلی کاهش/افزایش وزن",
+            name: "weight_loss_reason",
+            placeholder: " لطفا علت کاهش/افزایش وزن را بیان نمایید",
+        },
     ];
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setServerErrors(null);
+        // console.log(values.father_life_status , "1");
+        // return;
         // alert("فرم ثبت شد");
         if (!new RegExp("^0\\d{9}$").test(values.national_code)) {
             setValues({ ...values, national_code: "" });
@@ -363,6 +479,108 @@ function LifeMedicalInfo() {
                 return;
             }
         }
+        if (!disableds.father_death_reason) {
+            if (!values.father_death_reason) {
+                setValues({ ...values, father_death_reason: "" });
+                setErrors({
+                    ...errors,
+                    father_death_reason:
+                        ". علت فوت پدر بیمه شده را وارد کنید !!",
+                });
+                return;
+            } else if (
+                !new RegExp("^[\u0600-\u06FFs]+$").test(
+                    values.father_death_reason
+                )
+            ) {
+                setValues({ ...values, father_death_reason: "" });
+                setErrors({
+                    ...errors,
+                    father_death_reason: ". علت فوت پدر باید فارسی باشد !!",
+                });
+                return;
+            }
+        }
+        if (!disableds.mother_death_reason) {
+            if (!values.mother_death_reason) {
+                setValues({ ...values, mother_death_reason: "" });
+                setErrors({
+                    ...errors,
+                    mother_death_reason:
+                        ". علت فوت مادر بیمه شده را وارد کنید !!",
+                });
+                return;
+            } else if (
+                !new RegExp("^[\u0600-\u06FFs]+$").test(
+                    values.mother_death_reason
+                )
+            ) {
+                setValues({ ...values, mother_death_reason: "" });
+                setErrors({
+                    ...errors,
+                    mother_death_reason: ". علت فوت مادر باید فارسی باشد !!",
+                });
+                return;
+            }
+        }
+        if (!disableds.family_health_history_reason) {
+            if (!values.family_health_history_reason) {
+                setValues({ ...values, family_health_history_reason: "" });
+                setErrors({
+                    ...errors,
+                    family_health_history_reason:
+                        ". توضیحات سابقه بیماری خانوادگی را وارد کنید !!",
+                });
+                return;
+            } else if (
+                !new RegExp("^[\u0600-\u06FFs]+$").test(
+                    values.family_health_history_reason
+                )
+            ) {
+                setValues({ ...values, family_health_history_reason: "" });
+                setErrors({
+                    ...errors,
+                    family_health_history_reason:
+                        ". توضیحات سابقه باید فارسی باشد !!",
+                });
+                return;
+            }
+        }
+        if (!disableds.hospitalization_reason) {
+            if (!values.hospitalization_reason) {
+                setValues({ ...values, hospitalization_reason: "" });
+                setErrors({
+                    ...errors,
+                    hospitalization_reason: ". دلیل بستری شدن را وارد کنید !!",
+                });
+                return;
+            } else if (
+                !new RegExp("^[\u0600-\u06FFs]+$").test(
+                    values.hospitalization_reason
+                )
+            ) {
+                setValues({ ...values, hospitalization_reason: "" });
+                setErrors({
+                    ...errors,
+                    hospitalization_reason: ". دلیل بستری باید فارسی باشد !!",
+                });
+                return;
+            }
+        }
+        if (!disableds.disease_type) {
+            if (
+                !new RegExp("^[\u0600-\u06FFs]+$").test(values.disease_type) &&
+                values.disease_type
+            ) {
+                setValues({ ...values, disease_type: "" });
+                setErrors({
+                    ...errors,
+                    disease_type: ". نوع بیماری باید فارسی باشد !!",
+                });
+                return;
+            }
+        }
+
         const payload = {
             national_code: values.national_code,
             birth: values.birth,
@@ -373,6 +591,33 @@ function LifeMedicalInfo() {
             military_service_status: values.military_service_status,
             military_service_details: values.military_service_details,
             military_service_reason: values.military_service_reason,
+            father_life_status: values.father_life_status
+                ? values.father_life_status
+                : "1",
+            father_age: values.father_age,
+            father_death_reason: values.father_death_reason,
+            mother_life_status: values.mother_life_status
+                ? values.mother_life_status
+                : "1",
+            mother_age: values.mother_age,
+            mother_death_reason: values.mother_death_reason,
+            family_health_history: values.family_health_history
+                ? values.family_health_history
+                : "0",
+            family_health_history_reason: values.family_health_history_reason,
+            smoking_status: values.smoking_status ? values.smoking_status : "0",
+            hospitalization_status: values.hospitalization_status
+                ? values.hospitalization_status
+                : "0",
+            hospitalization_reason: values.hospitalization_reason,
+            physical_impairment: values.physical_impairment
+                ? values.physical_impairment
+                : "1",
+            drug_usage: values.drug_usage,
+            health_status: values.health_status ? values.health_status : "1",
+            disease_type: values.disease_type,
+            weight_loss: values.weight_loss ? values.weight_loss : "0",
+            weight_loss_reason: values.weight_loss_reason,
         };
         axiosClient
             .post("/life-medical-info", payload)
@@ -436,6 +681,15 @@ function LifeMedicalInfo() {
             case "family_health_history":
                 handleFamilyHealthHistory(e);
                 break;
+            case "hospitalization_status":
+                handleHospitalizationStatus(e);
+                break;
+            case "health_status":
+                handleHealthStatus(e);
+                break;
+            case "weight_loss":
+                handleWeightLoss(e);
+                break;
             default:
                 break;
         }
@@ -484,6 +738,10 @@ function LifeMedicalInfo() {
                 military_service_status: false,
             });
         } else {
+            setErrors({
+                ...errors,
+                military_service_status: "",
+            });
             setDisableds({
                 ...disableds,
                 military_service_status: true,
@@ -531,6 +789,10 @@ function LifeMedicalInfo() {
                 father_death_reason: false,
             });
         } else {
+            setErrors({
+                ...errors,
+                father_death_reason: "",
+            });
             setDisableds({
                 ...disableds,
                 father_death_reason: true,
@@ -552,6 +814,10 @@ function LifeMedicalInfo() {
                 mother_death_reason: false,
             });
         } else {
+            setErrors({
+                ...errors,
+                mother_death_reason: "",
+            });
             setDisableds({
                 ...disableds,
                 mother_death_reason: true,
@@ -582,6 +848,10 @@ function LifeMedicalInfo() {
                 family_health_history_reason: false,
             });
         } else {
+            setErrors({
+                ...errors,
+                family_health_history_reason: "",
+            });
             setDisableds({
                 ...disableds,
                 family_health_history_reason: true,
@@ -590,6 +860,75 @@ function LifeMedicalInfo() {
                 ...values,
                 [e.target.name]: e.target.value,
                 family_health_history_reason: "",
+            });
+        }
+    };
+
+    const handleHospitalizationStatus = (e) => {
+        if (e.target.value == "1") {
+            setDisableds({
+                ...disableds,
+                hospitalization_reason: false,
+            });
+        } else {
+            setErrors({
+                ...errors,
+                hospitalization_reason: "",
+            });
+            setDisableds({
+                ...disableds,
+                hospitalization_reason: true,
+            });
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value,
+                hospitalization_reason: "",
+            });
+        }
+    };
+
+    const handleHealthStatus = (e) => {
+        if (e.target.value == "0") {
+            setDisableds({
+                ...disableds,
+                disease_type: false,
+            });
+        } else {
+            setErrors({
+                ...errors,
+                disease_type: "",
+            });
+            setDisableds({
+                ...disableds,
+                disease_type: true,
+            });
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value,
+                disease_type: "",
+            });
+        }
+    };
+
+    const handleWeightLoss = (e) => {
+        if (e.target.value == "0") {
+            setErrors({
+                ...errors,
+                weight_loss_reason: "",
+            });
+            setDisableds({
+                ...disableds,
+                weight_loss_reason: true,
+            });
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value,
+                weight_loss_reason: "",
+            });
+        } else {
+            setDisableds({
+                ...disableds,
+                weight_loss_reason: false,
             });
         }
     };

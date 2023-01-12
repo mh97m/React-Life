@@ -34,6 +34,23 @@ class LifeMedicalInfoRequest extends FormRequest
             'military_service_status' => '',
             'military_service_details' => '',
             'military_service_reason' => '',
+            'father_life_status' => 'required',
+            'father_age' => 'required|integer',
+            'father_death_reason' => '',
+            'mother_life_status' => 'required',
+            'mother_age' => 'required|integer',
+            'mother_death_reason' => '',
+            'family_health_history' => 'required',
+            'family_health_history_reason' => '',
+            'smoking_status' => 'required',
+            'hospitalization_status' => 'required',
+            'hospitalization_reason' => '',
+            'physical_impairment' => '',
+            'drug_usage' => '',
+            'health_status' => 'required',
+            'disease_type' => '',
+            'weight_loss' => 'required',
+            'weight_loss_reason' => '',
         ];
     }
 }

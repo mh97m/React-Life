@@ -405,7 +405,7 @@ function LifeCompare() {
             label: "فوت بر اثر حادثه",
             name: "death_capital_incident_ratio",
             defaultValue: {
-                key: null,
+                key: 0,
                 value: "مایل به دریافت نیستم",
             },
             options: capitalIncidents,
@@ -416,7 +416,7 @@ function LifeCompare() {
             label: "نقص عضو و از کارافتادگی",
             name: "maim_ratio",
             defaultValue: {
-                key: null,
+                key: 0,
                 value: "مایل به دریافت نیستم",
             },
             options: capitalIncidents,
@@ -491,7 +491,7 @@ function LifeCompare() {
             label: "امراض خاص",
             name: "special_diseases_ratio",
             defaultValue: {
-                key: null,
+                key: 0,
                 value: "مایل به دریافت نیستم",
             },
             options: [
@@ -553,13 +553,23 @@ function LifeCompare() {
                     values.death_capital_any_reason_ratio,
                 capital_increase: values.capital_increase,
                 death_capital_incident_ratio:
-                    values.death_capital_incident_ratio,
-                maim_ratio: values.maim_ratio,
-                has_medical_cost: values.has_medical_cost,
-                additional_dangers: values.additional_dangers,
-                hospitalization: values.hospitalization,
-                exemption: values.exemption,
-                special_diseases_ratio: values.special_diseases_ratio,
+                    values.death_capital_incident_ratio
+                        ? values.death_capital_incident_ratio
+                        : "0",
+                maim_ratio: values.maim_ratio ? values.maim_ratio : "0",
+                has_medical_cost: values.has_medical_cost
+                    ? values.has_medical_cost
+                    : "0",
+                additional_dangers: values.additional_dangers
+                    ? values.additional_dangers
+                    : "0",
+                hospitalization: values.hospitalization
+                    ? values.hospitalization
+                    : "0",
+                exemption: values.exemption ? values.exemption : "0",
+                special_diseases_ratio: values.special_diseases_ratio
+                    ? values.special_diseases_ratio
+                    : "0",
             };
             axiosClient
                 .post("/life-compare", payload)
