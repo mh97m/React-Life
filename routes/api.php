@@ -27,6 +27,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/assgin-insurance-to-user/{id}', [LifeInsurancesController::class, 'assginInsuranceToUser']);
 
     Route::apiResource('/users', UserController::class);
+    Route::get('/lifes', [LifeInsurancesController::class, 'all']);
+
+    Route::post('/check-national-code', [LifeInsurancesController::class, 'checkNationalCode']);
 
     Route::post('/life-medical-info', [LifeInsurancesController::class, 'storeLifeMedicalInfo']);
 });

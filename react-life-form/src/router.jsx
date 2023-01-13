@@ -6,6 +6,7 @@ import Login from "./views/Login";
 import NotFound from "./views/NotFound";
 import Signup from "./views/Signup";
 import Users from "./views/Users";
+import Lifes from "./views/Lifes";
 import UserForm from "./views/UserForm";
 import MultiStepForm from "./views/form-0/MultiStepForm";
 import LifeCompare from "./views/form-1/LifeCompare";
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "/users/:id",
                 element: <UserForm key="userUpdate" />,
+            },
+            {
+                path: "/lifes",
+                element: <Lifes />,
             },
             {
                 path: "/life-insurance",

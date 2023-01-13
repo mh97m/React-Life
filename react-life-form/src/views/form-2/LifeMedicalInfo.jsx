@@ -11,7 +11,7 @@ import "./lifeCompare.css";
 
 function LifeMedicalInfo() {
     const navigate = useNavigate();
-    const { setNotification, insurancedId, user } = useStateContext();
+    const { setNotification, insurancedId, setInsurancedId, user } = useStateContext();
     const [ServerErrors, _setServerErrors] = useState(null);
     const setServerErrors = (errors) => {
         _setServerErrors(errors);
@@ -581,9 +581,29 @@ function LifeMedicalInfo() {
             }
         }
 
+        axiosClient
+            .post("/check-national-code", {
+                national_code: values.national_code,
+                birth: values.birth,
+            })
+            .then(({ data }) => {
+                console.log(data);
+                // setTimeout(() => {
+                //     navigate("/life");
+                // }, 3000);
+            })
+            .catch((err) => {
+                const response = err.response;
+                if (response) {
+                    setServerErrors(err.response.data.errors);
+                }
+                return;
+            });
+
         const payload = {
+            id: insurancedId,
             national_code: values.national_code,
-            birth: values.birth,
+            // birth: values.birth,
             mobile_number: values.mobile_number,
             ins_target_height: values.ins_target_height,
             ins_target_weight: values.ins_target_weight,
@@ -624,6 +644,8 @@ function LifeMedicalInfo() {
             .then(({ data }) => {
                 setNotification("ثبت اطلاعات با موفقیت انجام شد !");
                 console.log(data);
+                setInsurancedId(null);
+                navigate("/lifes");
                 // setTimeout(() => {
                 //     navigate("/life");
                 // }, 3000);

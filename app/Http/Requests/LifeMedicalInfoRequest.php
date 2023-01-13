@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\LifeInsurance;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,8 +26,13 @@ class LifeMedicalInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'national_code' => 'required|string',
-            'birth' => 'required',
+            'id' => 'required',
+            'national_code' => [
+                'required',
+                'string',
+                Rule::unique(LifeInsurance::class)
+            ],
+            // 'birth' => 'required',
             'mobile_number' => 'required|string',
             'ins_target_height' => 'required|integer',
             'ins_target_weight' => 'required|integer',

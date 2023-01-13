@@ -31,6 +31,8 @@ export default function DefaultLayout() {
             <aside>
                 <Link to="/dashboard">داشبورد</Link>
                 <Link to="/users">کاربران</Link>
+                <Link to="/lifes">بیمه های عمر</Link>
+                <Link to="/life-insurance">ثبت بیمه عمر</Link>
             </aside>
             <div className="content">
                 <header>
