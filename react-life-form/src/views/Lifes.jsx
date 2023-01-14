@@ -57,7 +57,7 @@ export default function Lifes() {
                             <th>کد ملی</th>
                             <th>تاریخ تولد</th>
                             <th>مبلغ سال اول</th>
-                            <th>تعداد فسط در سال</th>
+                            <th>تعداد قسط در سال</th>
                             <th>شماره موبایل</th>
                             <th>جنسیت</th>
                             <th>شغل</th>
@@ -82,10 +82,10 @@ export default function Lifes() {
                                     <td>{life.id}</td>
                                     <td>{life.national_code}</td>
                                     <td>{life.birth_year} / {life.birth_month} / {life.birth_day}</td>
-                                    <td>{life.annual_payment}</td>
+                                    <td>{life.annual_payment.toLocaleString()}</td>
                                     <td>{life.payment_method}</td>
                                     <td>{life.mobile_number}</td>
-                                    <td>{life.gender}</td>
+                                    <td>{life.gender == 1 ? "مرد" : "زن"}</td>
                                     <td>{life.first_job_level}</td>
                                     <td>{life.insurance_target}</td>
                                     <td>{life.created_at}</td>

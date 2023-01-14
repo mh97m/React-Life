@@ -259,7 +259,7 @@ function LifeCompare() {
             label: "نحوه پرداخت حق بیمه پوشش های اضافی",
             name: "addon_payment_method",
             defaultValue: {
-                key: null,
+                key: "",
                 value: "نحوه پرداخت",
             },
             errorMessage:
@@ -267,11 +267,11 @@ function LifeCompare() {
             required: true,
             options: [
                 {
-                    key: 0,
+                    key: 1,
                     value: "جداگانه پرداخت میکنم",
                 },
                 {
-                    key: 1,
+                    key: 2,
                     value: "از حق بیمه سالیانه کسر گردد",
                 },
             ],
@@ -282,7 +282,7 @@ function LifeCompare() {
             label: "سرمایه فوت به هر علت",
             name: "death_capital_any_reason_ratio",
             defaultValue: {
-                key: null,
+                key: "",
                 value: "سرمایه فوت",
             },
             errorMessage: ". سرمایه فوت را انتخاب نمایید !!",

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exports\LifeInsuranceExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LifeInsuranceRequest;
 use App\Http\Requests\LifeMedicalInfoRequest;
 use App\Http\Resources\LifeInsuranceResource;
 use App\Models\LifeInsurance;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LifeInsurancesController extends Controller
 {
@@ -63,9 +65,11 @@ class LifeInsurancesController extends Controller
         unset($data['id']);
         try {
             $insurance->update($data);
+            Excel::store(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx');
+            Excel::download(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx');
         } catch (\Throwable $th) {
             //throw $th;
-            return response($th->getMessage(), 400);
+            return response($th->getMessage());
         }
 
         return response($data, 201);
@@ -74,12 +78,12 @@ class LifeInsurancesController extends Controller
     /**
      * refrence created insurance to the logged in user
      *
-     * @param \App\Http\Requests\Request $request
+     * @param \App\Models\LifeInsurance $insurance
      * @return \Illuminate\Http\Response
      */
-    public function assginInsuranceToUser(Request $request)
+    public function assginInsuranceToUser(LifeInsurance $insurance)
     {
-        $insurance = LifeInsurance::find($request->id);
+        // $insurance = LifeInsurance::find($request->id);
         if (!$insurance->user_id) {
             $insurance->update([
                 'user_id' => auth()->user()->id
@@ -98,7 +102,7 @@ class LifeInsurancesController extends Controller
      */
     public function checkNationalCode(Request $request)
     {
-        $insurance = LifeInsurance::where("national_code", $request->national_code);
+        // $insurance = LifeInsurance::where("national_code", $request->national_code);
         return response($request->national_code . "---" . $request->birth, 200);
     }
 }

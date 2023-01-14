@@ -65,7 +65,7 @@ class LifeInsuranceRequest extends FormRequest
             'annual_payment_increase' => 'required',
             'addon_payment_method' => [
                 'required',
-                Rule::in(["0", "1"]),
+                Rule::in(["1", "2"]),
             ],
             'death_capital_any_reason_ratio' => 'required',
             'capital_increase' => 'required',

@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    Route::get('/assgin-insurance-to-user/{id}', [LifeInsurancesController::class, 'assginInsuranceToUser']);
+    Route::get('/assgin-insurance-to-user/{insurance}', [LifeInsurancesController::class, 'assginInsuranceToUser']);
 
     Route::apiResource('/users', UserController::class);
 

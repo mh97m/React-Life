@@ -76,7 +76,7 @@ function LifeMedicalInfo() {
     useEffect(() => {
         if (insurancedId) {
             axiosClient
-                .get("/assgin-insurance-to-user/" + insurancedId)
+                .get(`/assgin-insurance-to-user/${insurancedId}`)
                 .then(({ data }) => {
                     setValues({ ...values, birth: data });
                 });
@@ -645,10 +645,9 @@ function LifeMedicalInfo() {
                 setNotification("ثبت اطلاعات با موفقیت انجام شد !");
                 console.log(data);
                 setInsurancedId(null);
-                navigate("/lifes");
-                // setTimeout(() => {
-                //     navigate("/life");
-                // }, 3000);
+                setTimeout(() => {
+                    navigate("/lifes");
+                }, 100);
             })
             .catch((err) => {
                 const response = err.response;

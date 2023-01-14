@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +23,8 @@ class LifeInsurance extends Model
     protected $casts = [
         'annual_payment' => 'int',
         'divided_payment' => 'int',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
     // public function annualPayment(): Attribute
     // {
@@ -35,4 +38,16 @@ class LifeInsurance extends Model
     //         get: fn($value) => (int) $value,
     //     );
     // }
+    public function createdAt(): Attribute
+    {
+        return new Attribute(
+            get: fn($value) => (new Carbon($value))->diffForHumans(),
+        );
+    }
+    public function updatedAt(): Attribute
+    {
+        return new Attribute(
+            get: fn($value) => (new Carbon($value))->diffForHumans(),
+        );
+    }
 }
