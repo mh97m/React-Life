@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\LifeInsuranceRequest;
 use App\Http\Requests\LifeMedicalInfoRequest;
 use App\Http\Resources\LifeInsuranceResource;
@@ -18,7 +19,20 @@ class LifeInsurancesController extends Controller
     public function all()
     {
         $insurances = LifeInsurance::where('user_id', auth()->user()->id)->get();
-        return response($insurances, 201);
+        return response($insurances);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\LifeInsurance $insurance
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(LifeInsurance $insurance)
+    {
+        $insurance->delete();
+
+        return response("", 204);
     }
 
     /**

@@ -12,12 +12,12 @@ export default function Lifes() {
         getLifes();
     }, []);
 
-    const onDeleteClick = (user) => {
-        if (!window.confirm("Are you sure you want to delete this user?")) {
+    const onDeleteClick = (life) => {
+        if (!window.confirm("آیا می خواهید بیمه عمر انتخاب شده را پاک کنید ؟")) {
             return;
         }
-        axiosClient.delete(`/lifes/${user.id}`).then(() => {
-            setNotification("User was successfully deleted");
+        axiosClient.delete(`/lifes/${life.id}`).then(({ data }) => {
+            setNotification("بیمه عمر با موفقیت پاک شد.");
             getLifes();
         });
     };
@@ -28,8 +28,7 @@ export default function Lifes() {
             .get("/lifes")
             .then(({ data }) => {
                 setLoading(false);
-                // console.log(data.data)
-                setLifes(data);
+                setLifes(typeof data == "object" ? data : []);
             })
             .catch(() => {
                 setLoading(false);
@@ -64,7 +63,7 @@ export default function Lifes() {
                             <th>شغل</th>
                             <th>نسبت</th>
                             <th>تاریخ ایجاد</th>
-                            {/* <th>مدیریت</th>  */}
+                            <th>مدیریت</th> 
                         </tr>
                     </thead>
                     {loading && (
@@ -90,21 +89,21 @@ export default function Lifes() {
                                     <td>{life.first_job_level}</td>
                                     <td>{life.insurance_target}</td>
                                     <td>{life.created_at}</td>
-                                    {/* <td>
-                                        <Link
+                                    <td>
+                                        {/* <Link
                                             className="btn-edit"
-                                            to={"/users/" + u.id}
+                                            to={"/lifes/" + life.id}
                                         >
                                             تغییر
                                         </Link>
-                                        &nbsp;
+                                        &nbsp; */}
                                         <button
                                             className="btn-delete"
-                                            onClick={(ev) => onDeleteClick(u)}
+                                            onClick={(e) => onDeleteClick(life)}
                                         >
                                             حذف
                                         </button>
-                                    </td> */}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

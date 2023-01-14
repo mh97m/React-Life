@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\LifeInsurancesController;
+use App\Http\Controllers\Api\LifeInsurancesController;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +27,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/assgin-insurance-to-user/{id}', [LifeInsurancesController::class, 'assginInsuranceToUser']);
 
     Route::apiResource('/users', UserController::class);
+
     Route::get('/lifes', [LifeInsurancesController::class, 'all']);
+    Route::delete('/lifes/{insurance}', [LifeInsurancesController::class, 'destroy']);
 
     Route::post('/check-national-code', [LifeInsurancesController::class, 'checkNationalCode']);
 
