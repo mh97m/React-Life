@@ -68,8 +68,6 @@ class LifeInsuranceExport implements FromCollection, WithMapping, WithHeadings, 
             $insurance->weight_loss_reason,
             // Date::dateTimeToExcel($insurance->birthday),
             // $insurance->company->name,
-            // $insurance->company->insurance_count,
-            // Date::dateTimeToExcel($insurance->company->established_at)
         ];
     }
 

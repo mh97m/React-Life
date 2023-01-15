@@ -65,8 +65,8 @@ class LifeInsurancesController extends Controller
         unset($data['id']);
         try {
             $insurance->update($data);
-            Excel::store(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx');
-            Excel::download(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx');
+            Excel::store(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx', 'local');
+            return response()->download(storage_path('app') . '\\life-' . $request->id . '.xlsx');
         } catch (\Throwable $th) {
             //throw $th;
             return response($th->getMessage());

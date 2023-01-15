@@ -11,7 +11,8 @@ import "./lifeCompare.css";
 
 function LifeMedicalInfo() {
     const navigate = useNavigate();
-    const { setNotification, insurancedId, setInsurancedId, user } = useStateContext();
+    const { setNotification, insurancedId, setInsurancedId, user } =
+        useStateContext();
     const [ServerErrors, _setServerErrors] = useState(null);
     const setServerErrors = (errors) => {
         _setServerErrors(errors);
@@ -640,10 +641,16 @@ function LifeMedicalInfo() {
             weight_loss_reason: values.weight_loss_reason,
         };
         axiosClient
-            .post("/life-medical-info", payload)
+            .post("/life-medical-info", payload, { responseType: "blob" })
             .then(({ data }) => {
                 setNotification("ثبت اطلاعات با موفقیت انجام شد !");
                 console.log(data);
+                const url = window.URL.createObjectURL(new Blob([data]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", "life.xlsx");
+                document.body.appendChild(link);
+                link.click();
                 setInsurancedId(null);
                 setTimeout(() => {
                     navigate("/lifes");

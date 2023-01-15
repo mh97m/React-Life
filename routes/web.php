@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('test', function () {
     dd((LifeInsurance::inRandomOrder()->first())->birth_day);
+    // dd(storage_path().'\app\life-13.xlsx');
     // $now = new Carbon();
     // $now = Verta::now();
     // $max_age = (Verta::now())->subYears(65);
