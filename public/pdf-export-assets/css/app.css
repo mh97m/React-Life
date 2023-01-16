@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'iransans';
+    src: url('../fonts/iransans.eot');
+    src: url('../fonts/iransans.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/iransans.woff') format('woff'),
+    url('../fonts/iransans.ttf') format('truetype')
+}
+
+.checked::before,
+.checked::after {
+    position: absolute;
+}
+
+.checked::before {
+    content: "";
+    border: 2px solid #716f64;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    top: -1px;
+    left: -1px;
+    height: 10px;
+    width: 10px;
+}
+
+.ckecked-wide::after {
+    display: none;
+}
+
+.ckecked-wide::before {
+    width: 85px;
+    height: 23px;
+}
+
+.check-set-width::before {
+    width: 56px;
+}

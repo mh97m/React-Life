@@ -34,6 +34,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/check-national-code', [LifeInsurancesController::class, 'checkNationalCode']);
 
     Route::post('/life-medical-info', [LifeInsurancesController::class, 'storeLifeMedicalInfo']);
+
+    Route::get('/export-excel/{id}', [LifeInsurancesController::class, 'exportExcel']);
+
+    Route::get('/export-pdf/{id}', [LifeInsurancesController::class, 'exportPdf']);
 });
 
 Route::post('/signup', [AuthController::class, 'signup']);

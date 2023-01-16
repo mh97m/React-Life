@@ -10,6 +10,7 @@ use App\Http\Resources\LifeInsuranceResource;
 use App\Models\LifeInsurance;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class LifeInsurancesController extends Controller
 {
@@ -65,8 +66,6 @@ class LifeInsurancesController extends Controller
         unset($data['id']);
         try {
             $insurance->update($data);
-            Excel::store(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx', 'local');
-            return response()->download(storage_path('app') . '\\life-' . $request->id . '.xlsx');
         } catch (\Throwable $th) {
             //throw $th;
             return response($th->getMessage());
@@ -104,5 +103,42 @@ class LifeInsurancesController extends Controller
     {
         // $insurance = LifeInsurance::where("national_code", $request->national_code);
         return response($request->national_code . "---" . $request->birth, 200);
+    }
+
+    /**
+     * Export excel output of insurance
+     *
+     * @param \App\Http\Requests\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exportExcel(Request $request)
+    {
+        Excel::store(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx', 'local');
+        return response()->download(storage_path('app') . '\\life-' . $request->id . '.xlsx');
+    }
+
+    /**
+     * Export pdf output of insurance
+     *
+     * @param \App\Http\Requests\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exportPdf(Request $request)
+    {
+        $data = new LifeInsuranceResource(LifeInsurance::find($request->id));
+        // return response(gettype($data->resource->toArray()));
+        // return response(storage_path('app') . '\\life-' . $request->id . '.pdf');
+        try {
+            // return response($data);
+            // Pdf::loadView('pdf.index', $data)->save(storage_path('app') . '\\life-' . $request->id . '.pdf');
+            // return response()->download(storage_path('app') . '\\life-' . $request->id . '.pdf');
+            $pdf = Pdf::loadView('pdf.index', $data->resource->toArray());
+            $pdf->save(storage_path('app') . '\\life-' . $request->id . '.pdf');
+            // return response()->download(storage_path('app') . '\\life-' . $request->id . '.pdf');
+            return true;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response($th->getMessage());
+        }
     }
 }

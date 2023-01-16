@@ -13,13 +13,43 @@ export default function Lifes() {
     }, []);
 
     const onDeleteClick = (life) => {
-        if (!window.confirm("آیا می خواهید بیمه عمر انتخاب شده را پاک کنید ؟")) {
+        if (
+            !window.confirm("آیا می خواهید بیمه عمر انتخاب شده را پاک کنید ؟")
+        ) {
             return;
         }
         axiosClient.delete(`/lifes/${life.id}`).then(({ data }) => {
             setNotification("بیمه عمر با موفقیت پاک شد.");
             getLifes();
         });
+    };
+
+    const exportExcel = (life) => {
+        axiosClient
+            .get(`/export-excel/${life.id}`, { responseType: "blob" })
+            .then(({ data }) => {
+                const url = window.URL.createObjectURL(new Blob([data]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", "life.xlsx");
+                document.body.appendChild(link);
+                link.click();
+            });
+    };
+
+    const exportPdf = (life) => {
+        axiosClient
+            .get(`/export-pdf/${life.id}`)
+            .then(({ data }) => {
+                console.log(data)
+                // , { responseType: "blob" }
+                // const url = window.URL.createObjectURL(new Blob([data]));
+                // const link = document.createElement("a");
+                // link.href = url;
+                // link.setAttribute("download", "life.pdf");
+                // document.body.appendChild(link);
+                // link.click();
+            });
     };
 
     const getLifes = () => {
@@ -63,7 +93,7 @@ export default function Lifes() {
                             <th>شغل</th>
                             <th>نسبت</th>
                             <th>تاریخ ایجاد</th>
-                            <th>مدیریت</th> 
+                            <th>مدیریت</th>
                         </tr>
                     </thead>
                     {loading && (
@@ -81,8 +111,13 @@ export default function Lifes() {
                                 <tr key={life.id}>
                                     <td>{life.id}</td>
                                     <td>{life.national_code}</td>
-                                    <td>{life.birth_year} / {life.birth_month} / {life.birth_day}</td>
-                                    <td>{life.annual_payment.toLocaleString()}</td>
+                                    <td>
+                                        {life.birth_year} / {life.birth_month} /{" "}
+                                        {life.birth_day}
+                                    </td>
+                                    <td>
+                                        {life.annual_payment.toLocaleString()}
+                                    </td>
                                     <td>{life.payment_method}</td>
                                     <td>{life.mobile_number}</td>
                                     <td>{life.gender == 1 ? "مرد" : "زن"}</td>
@@ -90,13 +125,20 @@ export default function Lifes() {
                                     <td>{life.insurance_target}</td>
                                     <td>{life.created_at}</td>
                                     <td>
-                                        {/* <Link
+                                        <a
                                             className="btn-edit"
-                                            to={"/lifes/" + life.id}
+                                            onClick={(e) => exportExcel(life)}
                                         >
-                                            تغییر
-                                        </Link>
-                                        &nbsp; */}
+                                            دانلود EXCEL
+                                        </a>
+                                        &nbsp;
+                                        <a
+                                            className="btn-edit"
+                                            onClick={(e) => exportPdf(life)}
+                                        >
+                                            دانلود PDF
+                                        </a>
+                                        &nbsp;
                                         <button
                                             className="btn-delete"
                                             onClick={(e) => onDeleteClick(life)}
