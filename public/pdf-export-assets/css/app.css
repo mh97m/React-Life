@@ -34,3 +34,10 @@
 .check-set-width::before {
     width: 56px;
 }
+
+/*
+* {
+    min-width: 0%;
+    max-width: 100%;
+}
+*/
