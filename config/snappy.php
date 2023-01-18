@@ -40,8 +40,10 @@ return [
         'timeout' => false,
         'options' => [
             'enable-local-file-access' => true,
-            'orientation' => 'landscape',
-            'encoding' => 'UTF-8'
+            'orientation' => 'portrait',
+            'encoding' => 'UTF-8',
+            'page-size' => 'A3',
+            // 'page-height' => '1000mm'
         ],
         'env'     => [],
     ],

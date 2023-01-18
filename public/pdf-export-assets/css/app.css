@@ -35,10 +35,6 @@
     width: 56px;
 }
 
-
-/* * {
-    min-width: 0%;
-    max-width: 100%;
-    background-color:black;
-} */
-
+.new-page {
+    page-break-before: always;
+}

@@ -2339,7 +2339,7 @@
                         <div style="text-transform: uppercase;text-align: center;">www.bimehasia.com</div>
                     </td>
                 </tr>
-                <tr style="display: block;position: relative;width: 100%;padding-left: 25px;padding-right: 25px;">
+                <tr style="display: block;position: relative;width: 100%;padding-left: 25px;padding-right: 25px;" class="new-page">
                     <td style="display: block;">
                         <div style="clear: both;display: block;margin-right: 34px;">
                             <div style="width: 10%;float: left;position: relative;min-height: 1px;">
