@@ -42,8 +42,9 @@ return [
             'enable-local-file-access' => true,
             'orientation' => 'portrait',
             'encoding' => 'UTF-8',
-            'page-size' => 'A3',
-            // 'page-height' => '1000mm'
+            // 'page-size' => 'A3',
+            'page-height' => 335,
+            'page-width' => 236 //320
         ],
         'env'     => [],
     ],
