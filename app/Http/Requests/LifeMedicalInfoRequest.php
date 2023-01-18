@@ -57,6 +57,7 @@ class LifeMedicalInfoRequest extends FormRequest
             'disease_type' => '',
             'weight_loss' => 'required',
             'weight_loss_reason' => '',
+            'verification_code' => 'required',
         ];
     }
 }

@@ -48,6 +48,7 @@ function LifeMedicalInfo() {
         disease_type: "",
         weight_loss: "",
         weight_loss_reason: "",
+        verification_code: "",
     });
     const [errors, setErrors] = useState({
         national_code: "",
@@ -60,6 +61,7 @@ function LifeMedicalInfo() {
         father_age: "",
         father_death_reason: "",
         hospitalization_reason: "",
+        verification_code: "",
     });
     const [disableds, setDisableds] = useState({
         birth: true,
@@ -72,6 +74,7 @@ function LifeMedicalInfo() {
         hospitalization_reason: true,
         disease_type: true,
         weight_loss_reason: true,
+        verification_code: true,
     });
 
     useEffect(() => {
@@ -380,14 +383,18 @@ function LifeMedicalInfo() {
             name: "weight_loss_reason",
             placeholder: " لطفا علت کاهش/افزایش وزن را بیان نمایید",
         },
+        {
+            id: 27,
+            type: "text",
+            label: "کد تایید",
+            name: "verification_code",
+            placeholder: " کد تایید را وارد کنید",
+        },
     ];
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setServerErrors(null);
-        // console.log(values.father_life_status , "1");
-        // return;
-        // alert("فرم ثبت شد");
         if (!new RegExp("^0\\d{9}$").test(values.national_code)) {
             setValues({ ...values, national_code: "" });
             setErrors({
@@ -581,6 +588,41 @@ function LifeMedicalInfo() {
                 return;
             }
         }
+        if (disableds.verification_code) {
+            axiosClient
+                .post("/send-verification-code", {
+                    id: insurancedId,
+                })
+                .then(({ data }) => {
+                    setNotification("کد تایید با موفقیت ارسال شد !");
+                    console.log(data);
+                    setDisableds({
+                        ...disableds,
+                        verification_code: false,
+                    });
+                })
+                .catch((err) => {
+                    const response = err.response;
+                    if (response) {
+                        setServerErrors(err.response.data.errors);
+                    }
+                    setDisableds({
+                        ...disableds,
+                        verification_code: true,
+                    });
+                });
+            return;
+        }
+        if (!disableds.verification_code) {
+            if (!values.verification_code) {
+                setValues({ ...values, verification_code: "" });
+                setErrors({
+                    ...errors,
+                    verification_code: ". کد تایید را وارد کنید !!",
+                });
+                return;
+            }
+        }
 
         axiosClient
             .post("/check-national-code", {
@@ -589,9 +631,6 @@ function LifeMedicalInfo() {
             })
             .then(({ data }) => {
                 console.log(data);
-                // setTimeout(() => {
-                //     navigate("/life");
-                // }, 3000);
             })
             .catch((err) => {
                 const response = err.response;
@@ -637,7 +676,9 @@ function LifeMedicalInfo() {
             disease_type: values.disease_type,
             weight_loss: values.weight_loss ? values.weight_loss : "0",
             weight_loss_reason: values.weight_loss_reason,
+            verification_code: values.verification_code,
         };
+
         axiosClient
             .post("/life-medical-info", payload)
             .then(({ data }) => {
@@ -709,6 +750,9 @@ function LifeMedicalInfo() {
                 break;
             case "weight_loss":
                 handleWeightLoss(e);
+                break;
+            case "verification_code":
+                handleVerificationCode(e);
                 break;
             default:
                 break;
@@ -856,7 +900,7 @@ function LifeMedicalInfo() {
             [e.target.name]: parseInt(e.target.value)
                 ? parseInt(e.target.value) < 150
                     ? parseInt(e.target.value)
-                    : "150"
+                    : "110"
                 : "",
         });
     };
@@ -953,9 +997,18 @@ function LifeMedicalInfo() {
         }
     };
 
+    const handleVerificationCode = (e) => {
+        setValues({
+            ...values,
+            [e.target.name]: parseInt(e.target.value)
+                ? parseInt(e.target.value)
+                : "",
+        });
+    };
+
     return (
         <div className="life-compare">
-            <form onSubmit={handleSubmit} className="life-compare-form">
+            <form onSubmit={handleSubmit} className="life-medical-form">
                 <h1 className="life-compare-h1">هزینه های پزشکی</h1>
                 {ServerErrors && (
                     <div className="alert">

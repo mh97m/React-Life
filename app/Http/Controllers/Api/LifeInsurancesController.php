@@ -8,10 +8,12 @@ use App\Http\Requests\LifeInsuranceRequest;
 use App\Http\Requests\LifeMedicalInfoRequest;
 use App\Http\Resources\LifeInsuranceResource;
 use App\Models\LifeInsurance;
+use App\Notifications\SendVerificationCode;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\Snappy\Facades\SnappyPdf;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 
 class LifeInsurancesController extends Controller
 {
@@ -35,7 +37,6 @@ class LifeInsurancesController extends Controller
     public function destroy(LifeInsurance $insurance)
     {
         $insurance->delete();
-
         return response("", 204);
     }
 
@@ -48,10 +49,33 @@ class LifeInsurancesController extends Controller
     public function storeLifeCompare(LifeInsuranceRequest $request)
     {
         $data = $request->validated();
-        $life_insurance = LifeInsurance::create($data);
+        try {
+            $life_insurance = LifeInsurance::create($data);
+            return response($life_insurance->id, 201);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response($th->getMessage());
+        }
+    }
 
-        return response($life_insurance->id, 201);
-        // return response(new LifeInsuranceResource($life_insurance) , 201);
+    /**
+     * Send verification code
+     *
+     * @param \App\Http\Requests\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function sendVerificationCode(Request $request)
+    {
+        try {
+            $user = auth()->user();
+            $verification_code = rand(10000, 99999);
+            Cache::put('verification_code_' . $user->id . '_' . $request->id, $verification_code, now()->addHour(1));
+            // $user->notify(new SendVerificationCode($user, $verification_code));
+            return response($verification_code, 200);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response($th->getMessage());
+        }
     }
 
     /**
@@ -64,15 +88,23 @@ class LifeInsurancesController extends Controller
     {
         $insurance = LifeInsurance::find($request->id);
         $data = $request->validated();
-        unset($data['id']);
+        unset($data['id'], $data['verification_code']);
         try {
-            $insurance->update($data);
+            if ($request->verification_code == Cache::get('verification_code_' . auth()->user()->id . '_' . $request->id)) {
+                $insurance->update($data);
+                Cache::forget('verification_code_' . auth()->user()->id . '_' . $request->id);
+                return response($data, 201);
+            } else {
+                return response([
+                    'errors' => [
+                        'verification_code' => ['کد تایید اشتباه است !!?']
+                    ]
+                ], 406);
+            }
         } catch (\Throwable $th) {
             //throw $th;
             return response($th->getMessage());
         }
-
-        return response($data, 201);
     }
 
     /**
@@ -114,8 +146,13 @@ class LifeInsurancesController extends Controller
      */
     public function exportExcel(Request $request)
     {
-        return Excel::download(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx');
-        // return response()->download(storage_path('app') . '\\life-' . $request->id . '.xlsx');
+        try {
+            return Excel::download(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx');
+            // return response()->download(storage_path('app') . '\\life-' . $request->id . '.xlsx');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response($th->getMessage());
+        }
     }
 
     /**
