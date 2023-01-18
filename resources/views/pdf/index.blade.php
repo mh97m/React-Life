@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>پی دی اف</title>
-    {{-- <link rel="stylesheet" type="text/css" href="/pdf-export-assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/pdf-export-assets/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/pdf-export-assets/css/app.css"> --}}
     <link rel="stylesheet" type="text/css" href="{{ public_path('pdf-export-assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ public_path('pdf-export-assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ public_path('pdf-export-assets/css/app.css') }}">
@@ -23,7 +20,8 @@
                         <div style="clear: both;display: block;margin-right: 34px;">
                             <div style="width: 25%;float: left;position: relative;min-height: 1px;">
                                 <img src="{{ public_path('pdf-export-assets/images/logo-left.png') }}"
-                                    style="max-height: 35px;float: left;margin-left: 20px;margin-top: 30px;" alt="">
+                                    style="max-height: 35px;float: left;margin-left: 20px;margin-top: 30px;"
+                                    alt="">
                             </div>
                             <div style="width: 50%;padding-left: 39px;float: left;min-height: 1px;position: relative;">
                                 <h1
@@ -34,7 +32,8 @@
                             </div>
                             <div style="width: 25%;padding-left: 15px;float: left;min-height: 1px;position: relative;">
                                 <img src="{{ public_path('pdf-export-assets/images/apple.png') }}"
-                                    style="max-height: 35px;float: right;margin-right: -12px;margin-top: 29px;" alt="">
+                                    style="max-height: 35px;float: right;margin-right: -12px;margin-top: 29px;"
+                                    alt="">
                             </div>
                         </div>
                         <div
@@ -248,7 +247,8 @@
                                 </div>
                             </div>
                             <div style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
-                                <div style="width: 16%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 16%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">جنسیت</span>
                                     <span style="margin: 0 2px;float: right;display: inline-block;">: </span>
                                     <span style="float: right;display: inline-block;">زن</span>
@@ -278,13 +278,15 @@
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 62%;float: right;display: inline-block;margin: 6px 5px 0 4px;text-align: center;"></span>
                                 </div>
-                                <div style="width: 21%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 21%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">شماره شناسنامه</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 50%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;min-width: 37%;"></span>
                                 </div>
-                                <div style="width: 15%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 15%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">تاریخ تولد</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
@@ -298,7 +300,8 @@
                                 </div>
                             </div>
                             <div style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
-                                <div style="width: 52%;position: relative;min-height: 1px;float: left;padding-top: 4px;">
+                                <div
+                                    style="width: 52%;position: relative;min-height: 1px;float: left;padding-top: 4px;">
                                     <span style="float: right;display: inline-block;">شماره ثبت</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
@@ -307,7 +310,8 @@
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 19%;float: right;display: inline-block;margin: 6px 5px 0 4px;text-align: center;"></span>
-                                    <span style="float: right;display: inline-block;padding-top: 1px;">وضعیت تاهل</span>
+                                    <span style="float: right;display: inline-block;padding-top: 1px;">وضعیت
+                                        تاهل</span>
                                     <span style="margin: 0 2px;float: right;display: inline-block;">: </span>
                                     <span style="float: right;display: inline-block;margin-right: -1px;">مجرد</span>
                                     <span
@@ -390,13 +394,15 @@
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 64%;float: right;display: inline-block;margin: 6px 5px 0 4px;text-align: center;"></span>
                                 </div>
-                                <div style="width: 21%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 21%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">کد شهرستان</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 53%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;min-width: 37%;"></span>
                                 </div>
-                                <div style="width: 17%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 17%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">تلفن ثابت</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
@@ -422,13 +428,15 @@
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 65%;float: right;display: inline-block;margin: 6px 5px 0 4px;text-align: center;"></span>
                                 </div>
-                                <div style="width: 24%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 24%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">خیابان</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 71%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;min-width: 37%;"></span>
                                 </div>
-                                <div style="width: 32%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 32%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">نشانی دقیق محل کار</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span style="float: right;display: inline-block;">شهر</span>
@@ -459,13 +467,15 @@
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 56%;float: right;display: inline-block;margin: 6px 0 0 2px;text-align: center;"></span>
                                 </div>
-                                <div style="width: 20%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 20%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;margin-right: 3px;">خیابان</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 71%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;min-width: 37%;"></span>
                                 </div>
-                                <div style="width: 32%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 32%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">نشانی دقیق محل سکونت</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span style="float: right;display: inline-block;">شهر</span>
@@ -648,7 +658,8 @@
                                 </div>
                             </div>
                             <div style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
-                                <div style="width: 50%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 50%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;margin-right: 77px;">تابعیت</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
@@ -657,33 +668,35 @@
                                     <span style="margin: 0 2px;float: right;display: inline-block;">: </span>
                                     <span style="float: right;display: inline-block;">زن</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
-                            width: 12px;height: 12px;margin: 0 2px;"></span>
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['gender'] == 2) background-color: black; @endif
+                                            width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <span style="float: right;display: inline-block;margin-right: 5px;">مرد</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
-                            width: 12px;height: 12px;margin: 0 2px;"></span>
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['gender'] == 1) background-color: black; @endif
+                                            width: 12px;height: 12px;margin: 0 2px;"></span>
                                 </div>
-                                <div style="width: 50%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 50%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">تاریخ تولد</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
-                                        style="border-bottom: dotted 2px #184727;width: 8%;float: right;display: inline-block;margin: 6px 2px 0 1px;text-align: center;"></span>
+                                        style="border-bottom: dotted 2px #184727;width: 8%;float: right;display: inline-block;margin: 6px 2px 0 1px;text-align: center;">{{ $data['birth_year'] }}</span>
                                     <span style="float: right;display: inline-block;">/</span>
                                     <span
-                                        style="margin-top: 6px;border-bottom: dotted 2px #184727;width: 8%;float: right;display: inline-block;text-align: center;margin-right: 1px;margin-left: 1px;"></span>
+                                        style="margin-top: 6px;border-bottom: dotted 2px #184727;width: 8%;float: right;display: inline-block;text-align: center;margin-right: 1px;margin-left: 1px;">{{ $data['birth_month'] }}</span>
                                     <span style="float: right;display: inline-block;">/</span>
                                     <span
-                                        style="margin-top: 6px;border-bottom: dotted 2px #184727;width: 16%;float: right;display: inline-block;text-align: center;margin-right: 2px;"></span>
+                                        style="margin-top: 6px;border-bottom: dotted 2px #184727;width: 16%;float: right;display: inline-block;text-align: center;margin-right: 2px;">{{ $data['birth_day'] }}</span>
                                     <span style="float: right;display: inline-block;margin-right: 6px;">شماره
                                         شناسنامه</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
-                                        style="border-bottom: dotted 2px #184727;width: 25%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;"></span>
+                                        style="border-bottom: dotted 2px #184727;width: 25%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;">{{ $data['national_code'] }}</span>
                                 </div>
                             </div>
                             <div style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
-                                <div style="width: 70%;position: relative;min-height: 1px;float: left;padding-top: 4px;">
+                                <div
+                                    style="width: 70%;position: relative;min-height: 1px;float: left;padding-top: 4px;">
                                     <span style="float: right;display: inline-block;">نام پدر</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
@@ -695,8 +708,9 @@
                                     <span style="float: right;display: inline-block;margin: 0 3px 0 0;">شغل</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
-                                        style="border-bottom: dotted 2px #184727;width: 16%;float: right;display: inline-block;margin: 6px 2px 0 1px;text-align: center;"></span>
-                                    <span style="float: right;display: inline-block;padding-top: 1px;">وضعیت تاهل</span>
+                                        style="border-bottom: dotted 2px #184727;width: 16%;float: right;display: inline-block;margin: 6px 2px 0 1px;text-align: center;">{{ $data['first_job_level'] }}</span>
+                                    <span style="float: right;display: inline-block;padding-top: 1px;">وضعیت
+                                        تاهل</span>
                                     <span style="margin: 0 2px;float: right;display: inline-block;">: </span>
                                     <span style="float: right;display: inline-block;margin-right: -1px;">مجرد</span>
                                     <span
@@ -720,33 +734,43 @@
                                                     <tr>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-right: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 18px;">
+                                                            {{ $data['national_code'][9] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 18px;">
+                                                            {{ $data['national_code'][8] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 18px;">
+                                                            {{ $data['national_code'][7] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 18px;">
+                                                            {{ $data['national_code'][6] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 15px;">
+                                                            {{ $data['national_code'][5] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 18px;">
+                                                            {{ $data['national_code'][4] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 18px;">
+                                                            {{ $data['national_code'][3] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 18px;">
+                                                            {{ $data['national_code'][2] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 18px;">
+                                                            {{ $data['national_code'][1] }}
                                                         </td>
                                                         <td
                                                             style="width: 15px;height: 15px;border-left: 1px solid #0a083b;border-bottom: 1px solid #0a083b;display: inline-block;float: right;text-align: center;line-height: 15px;">
+                                                            {{ $data['national_code'][0] }}
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -766,15 +790,17 @@
                                     <span style="float: right;display: inline-block;">تلفن همراه</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
-                                        style="border-bottom: dotted 2px #184727;width: 73%;float: right;display: inline-block;margin: 6px 5px 0 4px;text-align: center;"></span>
+                                        style="border-bottom: dotted 2px #184727;width: 73%;float: right;display: inline-block;margin: 6px 5px 0 4px;text-align: center;">{{ $data['mobile_number'] }}</span>
                                 </div>
-                                <div style="width: 21%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 21%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">کد شهرستان</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 53%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;min-width: 37%;"></span>
                                 </div>
-                                <div style="width: 31%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 31%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">تلفن ثابت</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
@@ -800,13 +826,15 @@
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 65%;float: right;display: inline-block;margin: 6px 5px 0 4px;text-align: center;"></span>
                                 </div>
-                                <div style="width: 24%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 24%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">خیابان</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 71%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;min-width: 37%;"></span>
                                 </div>
-                                <div style="width: 32%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 32%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">نشانی دقیق محل کار</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span style="float: right;display: inline-block;">شهر</span>
@@ -837,13 +865,15 @@
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 56%;float: right;display: inline-block;margin: 6px 0 0 2px;text-align: center;"></span>
                                 </div>
-                                <div style="width: 20%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 20%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;margin-right: 3px;">خیابان</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 71%;float: right;display: inline-block;margin-top: 6px;margin-right: 1px;text-align: center;min-width: 37%;"></span>
                                 </div>
-                                <div style="width: 32%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 32%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">نشانی دقیق محل سکونت</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span style="float: right;display: inline-block;">شهر</span>
@@ -874,33 +904,36 @@
                                         <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                         <span style="float: right;display: inline-block;margin-right: 5px;">یکجا</span>
                                         <span
-                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['payment_method'] == 1) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                         <span
                                             style="float: right;display: inline-block;margin-right: 18px;">سالانه</span>
                                         <span
-                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['payment_method'] == 1) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                         <span style="float: right;display: inline-block;margin-right: 14px;">دو قسط شش
                                             ماهه</span>
                                         <span
-                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['payment_method'] == 2) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
-                                        <span style="float: right;display: inline-block;margin-right: 18px;">چهار قسط سه
+                                        <span style="float: right;display: inline-block;margin-right: 18px;">چهار قسط
+                                            سه
                                             ماهه</span>
                                         <span
-                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['payment_method'] == 4) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                         <span style="float: right;display: inline-block;margin-right: 10px;">شش قسط دو
                                             ماهه</span>
                                         <span
-                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['payment_method'] == 6) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
-                                        <span style="float: right;display: inline-block;margin-right: 11px;"> دوازده قسط
+                                        <span style="float: right;display: inline-block;margin-right: 11px;"> دوازده
+                                            قسط
                                             ماهانه</span>
-                                        <span style="float: right;display: inline-block;margin-right: 5px;">(گروهی)</span>
                                         <span
-                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                            style="float: right;display: inline-block;margin-right: 5px;">(گروهی)</span>
+                                        <span
+                                            style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['payment_method'] == 12) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     </div>
                                 </div>
@@ -913,7 +946,8 @@
                                     <div
                                         style="display: table;width: 100%;min-height: 24px;border: 1px solid #000000;margin-right: 3px;">
                                         <div style="display: table;text-align: center;margin: 5px 0;">
-                                            <span style="display: inline-block;float: right;margin-right: 12px;">4</span>
+                                            <span
+                                                style="display: inline-block;float: right;margin-right: 12px;">4</span>
                                             <span
                                                 style="border-bottom: solid 2px #000000;display: inline-block;width: 4px;float: right;padding-top: 6px;margin-left: 3px;">
                                             </span>
@@ -927,27 +961,33 @@
                                             <span
                                                 style="float: right;display: inline-block;margin-right: 10px;">ثابت</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['annual_payment_increase'] == 0) background-color: black; @endif
                                   width: 12px;height: 12px;margin: 0 2px;"></span>
-                                            <span style="float: right;display: inline-block;margin-right: 5px;">5%</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="float: right;display: inline-block;margin-right: 5px;">5%</span>
+                                            <span
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['annual_payment_increase'] == 5) background-color: black; @endif
                                    width: 12px;height: 12px;margin: 0 2px;"></span>
                                             <span
                                                 style="float: right;display: inline-block;margin-right: 5px;">10%</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['annual_payment_increase'] == 10) background-color: black; @endif
                                         width: 12px;height: 12px;margin: 0 2px;"></span>
                                             <span
                                                 style="float: right;display: inline-block;margin-right: 5px;">15%</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['annual_payment_increase'] == 15) background-color: black; @endif
                                        width: 12px;height: 12px;margin: 0 2px;"></span>
                                             <span
-                                                style="float: right;display: inline-block;margin-right: 5px;
-                                     ">20%</span>
+                                                style="float: right;display: inline-block;margin-right: 5px;">20%</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['annual_payment_increase'] == 20) background-color: black; @endif
+                              width: 12px;height: 12px;margin: 0 2px;"></span>
+                                            <span
+                                                style="float: right;display: inline-block;margin-right: 5px;
+                                     ">25%</span>
+                                            <span
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['annual_payment_increase'] == 25) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                         </div>
                                     </div>
@@ -966,9 +1006,9 @@
                                         <span style="display: inline-block;float: right;padding: 15px 0;">: </span>
                                         <span class="ckecked-wide checked"
                                             style="position: relative;float: right;
-                                  display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;
-                                  border-bottom-color: #f1efe2;width: 85px;height: 23px;margin: 10px 6px 10px 0;
-                                  text-align: center;line-height: 23px;"></span>
+                                                display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;
+                                                border-bottom-color: #f1efe2;width: 85px;height: 23px;margin: 10px 6px 10px 0;
+                                                text-align: center;line-height: 23px;">{{ number_format($data['annual_payment']) }}</span>
                                         <span
                                             style="float: right;display: inline-block;margin-right: 10px;padding: 15px 0;">ریال</span>
                                     </div>
@@ -987,8 +1027,8 @@
                                         <span style="display: inline-block;float: right;padding: 15px 0;">: </span>
                                         <span class="ckecked-wide checked"
                                             style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;width: 85px;
-                                  height: 23px;margin: 10px 2px 10px 0;text-align: center;line-height: 23px;
-                                  "></span>
+                                                height: 23px;margin: 10px 2px 10px 0;text-align: center;line-height: 23px;
+                                                ">{{ number_format($data['divided_payment']) }}</span>
                                         <span
                                             style="float: right;display: inline-block;margin-right: 5px;padding: 15px 0;">ریال</span>
                                     </div>
@@ -1002,7 +1042,8 @@
                                     <div
                                         style="display: table;width: 100%;min-height: 24px;border: 1px solid #000000;margin-right: 3px;margin-top: 2px;">
                                         <div style="display: table;text-align: center;margin: 5px 0;">
-                                            <span style="display: inline-block;float: right;margin-right: 5px;">7</span>
+                                            <span
+                                                style="display: inline-block;float: right;margin-right: 5px;">7</span>
                                             <span
                                                 style="border-bottom: solid 2px #000000;display: inline-block;width: 4px;float: right;padding-top: 6px;margin-left: 3px;">
                                             </span>
@@ -1016,27 +1057,28 @@
                                             <span
                                                 style="float: right;display: inline-block;margin-right: 10px;">ثابت</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['capital_increase'] == 0) background-color: black; @endif
                                   width: 12px;height: 12px;margin: 0 2px;"></span>
-                                            <span style="float: right;display: inline-block;margin-right: 10px;">5%</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="float: right;display: inline-block;margin-right: 10px;">5%</span>
+                                            <span
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['capital_increase'] == 5) background-color: black; @endif
                                    width: 12px;height: 12px;margin: 0 2px;"></span>
                                             <span
                                                 style="float: right;display: inline-block;margin-right: 10px;">10%</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['capital_increase'] == 10) background-color: black; @endif
                                      width: 12px;height: 12px;margin: 0 2px;"></span>
                                             <span
                                                 style="float: right;display: inline-block;margin-right: 5px;">15%</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['capital_increase'] == 15) background-color: black; @endif
                                         width: 12px;height: 12px;margin: 0 2px;"></span>
                                             <span
                                                 style="float: right;display: inline-block;margin-right: 5px;
                                      ">20%</span>
                                             <span
-                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['capital_increase'] == 20) background-color: black; @endif
                                    width: 12px;height: 12px;margin: 0 2px;"></span>
                                         </div>
                                     </div>
@@ -1059,7 +1101,7 @@
                                             style="position: relative;  float: right;
                                   display: inline-block;border: 2px solid #aca899; border-right-color: #f1efe2;
                                   border-bottom-color: #f1efe2;width: 85px;height: 23px;margin: 10px 6px 10px 0;
-                                  text-align: center;line-height: 23px;"></span>
+                                  text-align: center;line-height: 23px;">{{ number_format($data['death_capital_any_reason_ratio'] * $data['annual_payment']) }}</span>
                                         <span
                                             style="float: right;display: inline-block;margin-right: 10px;padding: 15px 0;">ریال</span>
                                     </div>
@@ -1081,7 +1123,7 @@
                                             style="position: relative;  float: right;
                                   display: inline-block;border: 2px solid #aca899; border-right-color: #f1efe2;
                                   border-bottom-color: #f1efe2;width: 85px;height: 23px;margin: 10px 6px 10px 0;
-                                  text-align: center;line-height: 23px;"></span>
+                                  text-align: center;line-height: 23px;">{{ $data['life_ins_duration'] }}</span>
                                         <span
                                             style="float: right;display: inline-block;margin-right: 5px;padding: 15px 0;">سال</span>
                                     </div>
@@ -1121,27 +1163,36 @@
                                                 style="float: left;display: inline-block;margin-left: 1px;margin-top: 4px;">
                                                 <span style="float: right;display: inline-block;">ندارد</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['death_capital_incident_ratio'] == 0) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                                 <span
                                                     style="float: right;display: inline-block;margin-right: 10px;">دارد</span>
+                                                <span style="float: right;display: inline-block;margin-right: 2px;">:
+                                                </span>
                                                 <span
-                                                    style="float: right;display: inline-block;margin-right: 2px;">: </span>
-                                                <span style="float: right;display: inline-block;margin-right: 10px;">(یک
+                                                    style="float: right;display: inline-block;margin-right: 10px;">(یک
                                                     برابر</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['death_capital_incident_ratio'] == 1) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
-                                                <span style="float: right;display: inline-block;margin-right: 10px;"> دو
+                                                <span style="float: right;display: inline-block;margin-right: 10px;">
+                                                    دو
                                                     برابر</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['death_capital_incident_ratio'] == 2) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
-                                                <span style="float: right;display: inline-block;margin-right: 10px;"> سه
+                                                <span style="float: right;display: inline-block;margin-right: 10px;">
+                                                    سه
                                                     برابر</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['death_capital_incident_ratio'] == 3) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
+                                                <span style="float: right;display: inline-block;margin-right: 10px;">
+                                                    چهار
+                                                    برابر</span>
+                                                <span
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['death_capital_incident_ratio'] == 4) background-color: black; @endif
+                                          width: 12px;height: 12px;margin: 0 2px;"></span>
                                                 <span
                                                     style="float: right;display: inline-block;margin-right: 3px;margin-left: 5px;">
                                                     سرمایه فوت
@@ -1165,22 +1216,36 @@
                                                 style="float: left;display: inline-block;margin-left: 1px;margin-top: 4px;">
                                                 <span style="float: right;display: inline-block;">ندارد</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['maim_ratio'] == 0) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                                 <span
                                                     style="float: right;display: inline-block;margin-right: 10px;">دارد</span>
+                                                <span style="float: right;display: inline-block;margin-right: 2px;">:
+                                                </span>
                                                 <span
-                                                    style="float: right;display: inline-block;margin-right: 2px;">: </span>
+                                                    style="float: right;display: inline-block;margin-right: 10px;">(یک
+                                                    برابر</span>
                                                 <span
-                                                    style="float: right;display: inline-block;margin-right: 10px;">(100%</span>
-                                                <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['maim_ratio'] == 1) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
+                                                <span style="float: right;display: inline-block;margin-right: 10px;">
+                                                    دو
+                                                    برابر</span>
                                                 <span
-                                                    style="float: right;display: inline-block;margin-right: 10px;">50%</span>
-                                                <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['maim_ratio'] == 2) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
+                                                <span style="float: right;display: inline-block;margin-right: 10px;">
+                                                    سه
+                                                    برابر</span>
+                                                <span
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['maim_ratio'] == 3) background-color: black; @endif
+                                              width: 12px;height: 12px;margin: 0 2px;"></span>
+                                                <span style="float: right;display: inline-block;margin-right: 10px;">
+                                                    چهار
+                                                    برابر</span>
+                                                <span
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if ($data['maim_ratio'] == 4) background-color: black; @endif
+                                          width: 12px;height: 12px;margin: 0 2px;"></span>
                                                 <span
                                                     style="float: right;display: inline-block;margin-right: 3px;margin-left: 5px;">
                                                     سرمایه فوت
@@ -1192,12 +1257,16 @@
                                                 <div style="display: inline-block;margin-left: 1px;margin-top: 4px;">
                                                     <span style="float: right;display: inline-block;">ندارد</span>
                                                     <span
-                                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['has_medical_cost'] == 0) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                                     <span
                                                         style="float: right;display: inline-block;margin-right: 4px;">دارد</span>
                                                     <span
-                                                        style="float: right;display: inline-block;margin-right: 2px;">: </span>
+                                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['has_medical_cost'] == 1) background-color: black; @endif
+                                              width: 12px;height: 12px;margin: 0 2px;"></span>
+                                                    <span
+                                                        style="float: right;display: inline-block;margin-right: 2px;">:
+                                                    </span>
                                                     <div
                                                         style="float: right;display: inline-block;margin-right: 2px;margin-top: 2px;font-size: 8.5px;">
                                                         (
@@ -1222,7 +1291,8 @@
                                                     <span>10%</span>
                                                     سرمایه فوت در اثر حادثه تا سقف 200 میلیون ریال
                                                 </div>
-                                                <span style="margin: 3px 2px;float: right;display: inline-block;">: </span>
+                                                <span style="margin: 3px 2px;float: right;display: inline-block;">:
+                                                </span>
                                             </div>
                                         </div>
                                         <div
@@ -1230,8 +1300,10 @@
                                             <div style=" padding: 5px 0 1px 0;font-size: 8.5px;">
                                                 <span
                                                     style="padding-right: 5px;display: inline-block;float: right;font-weight: bold;">توجه</span>
-                                                <span style="display: inline-block;float: right;margin: 0 2px;">: </span>
-                                                <span style="display: inline-block;float: right;"> بیمه شده محترم</span>
+                                                <span style="display: inline-block;float: right;margin: 0 2px;">:
+                                                </span>
+                                                <span style="display: inline-block;float: right;"> بیمه شده
+                                                    محترم</span>
                                                 <span style="display: inline-block;float: right;">،</span>
                                                 <div style="display: inline-block;float: right;">
                                                     نظر به اینکه خطرات ذیل در شرایط عمومی حوادث شخصی پوشش های تکمیلی
@@ -1250,7 +1322,8 @@
                                                     این موارد نیز
                                                     تحت پوشش بیمه ای قرار گرفته و جز تعهدات بیمه گر محسوب خواهند شد
                                                 </div>
-                                                <span style="margin: 5px 2px;float: right;display: inline-block;">: </span>
+                                                <span style="margin: 5px 2px;float: right;display: inline-block;">:
+                                                </span>
                                             </div>
                                         </div>
                                         <div
@@ -1302,17 +1375,20 @@
                                             <span style="float: right;margin-right: 13px;margin-top: 5px;">رشته
                                                 ورزشی</span>
                                             <span
-                                                style="float: right;display: inline-block;margin-right: 2px;margin-top: 5px;">: </span>
+                                                style="float: right;display: inline-block;margin-right: 2px;margin-top: 5px;">:
+                                            </span>
                                             <span
                                                 style="margin-top: 11px;margin-right: 2px;border-bottom: dotted 2px #184727;width: 16%;float: right;display: inline-block;text-align: center;"></span>
                                             <span style="float: right;margin-right: 13px;margin-top: 4px;">و</span>
                                             <span style="float: right;margin-right: 13px;margin-top: 4px;">مدت
                                                 تمرین</span>
                                             <span
-                                                style="float: right;display: inline-block;margin-right: 2px;margin-top: 5px;">: </span>
+                                                style="float: right;display: inline-block;margin-right: 2px;margin-top: 5px;">:
+                                            </span>
                                             <span
                                                 style="margin-right: 2px;margin-top: 10px;border-bottom: dotted 2px #184727;width: 15%;float: right;display: inline-block;text-align: center;"></span>
-                                            <span style="float: right;margin-right: 5px;margin-top: 4px;">در هفته</span>
+                                            <span style="float: right;margin-right: 5px;margin-top: 4px;">در
+                                                هفته</span>
 
                                         </div>
                                     </div>
@@ -1335,7 +1411,7 @@
                                                 پوشش تکمیلی بیماری های خاص
                                             </div>
                                             <span style="display: inline-block;float: right;padding: 4px 0;">
-                                                : 
+                                                :
                                             </span>
                                         </div>
                                         <div
@@ -1374,12 +1450,12 @@
                                                 style="float: left;display: inline-block;margin-left: 1px;margin-top: 4px;">
                                                 <span style="float: right;display: inline-block;">دارد</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['exemption'] == 0) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                                 <span
                                                     style="float: right;display: inline-block;margin-right: 10px;">ندارد</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['exemption'] == 1) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                             </div>
                                         </div>
@@ -1396,15 +1472,16 @@
                                                 <span>(حامی)</span>
                                             </div>
                                             <span style="margin: 3px 2px;float: right;display: inline-block;">: </span>
-                                            <div style="float: left;display: inline-block;margin-left: 0;margin-top: 4px;">
+                                            <div
+                                                style="float: left;display: inline-block;margin-left: 0;margin-top: 4px;">
                                                 <span style="float: right;display: inline-block;">دارد</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['exemption'] == 0) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                                 <span
                                                     style="float: right;display: inline-block;margin-right: 10px;">ندارد</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['exemption'] == 1) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                             </div>
                                         </div>
@@ -1433,7 +1510,7 @@
                                                 (<i style="vertical-align: middle;" class="fa fa-star"></i>)
                                             </span>
                                             <span style="display: inline-block;float: right;padding: 4px 0;">
-                                                : 
+                                                :
                                             </span>
                                             <span
                                                 style="margin-top: 11px;margin-right: 2px;border-bottom: dotted 2px #184727;width: 38%;float: right;display: inline-block;text-align: center;"></span>
@@ -1462,12 +1539,12 @@
                                                 style="float: left;display: inline-block;margin-left: 1px;margin-top: 4px;">
                                                 <span style="float: right;display: inline-block;">بله</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['addon_payment_method'] == 1) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                                 <span
                                                     style="float: right;display: inline-block;margin-right: 10px;">خیر</span>
                                                 <span
-                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                                    style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['addon_payment_method'] == 2) background-color: black; @endif
                                               width: 12px;height: 12px;margin: 0 2px;"></span>
                                             </div>
                                         </div>
@@ -1997,7 +2074,8 @@
                                         <span
                                             style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
                             width: 12px;height: 12px;margin: 0 2px;"></span>
-                                        <span style="float: right;display: inline-block;margin-right: 3px;">بله،تمام شده
+                                        <span style="float: right;display: inline-block;margin-right: 3px;">بله،تمام
+                                            شده
                                             است</span>
                                         <span
                                             style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
@@ -2005,7 +2083,8 @@
                                         <span style="float: right;display: inline-block;">در صورت مثبت بودن پاسخ</span>
                                     </div>
                                 </div>
-                                <div style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
+                                <div
+                                    style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
                                     <div
                                         style="width: 33%;position: relative;min-height: 1px;float: left;text-align: right;">
                                         <span style="float: right;display: inline-block;margin-top: 4px;">
@@ -2089,7 +2168,8 @@
                                             بودن پاسخ</span>
                                     </div>
                                 </div>
-                                <div style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
+                                <div
+                                    style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
                                     <div
                                         style="width: 33%;position: relative;min-height: 1px;float: left;text-align: right;">
                                         <span style="float: right;display: inline-block;margin-top: 4px;">
@@ -2148,7 +2228,8 @@
                                             style="float: right;display: inline-block;font-weight: bold;margin-right: 3px;">
                                             که مورد موافقت قرار نگرفته باشد؟
                                         </div>
-                                        <span style="float: right;display: inline-block;margin-right: 3px;">در صورت مثبت
+                                        <span style="float: right;display: inline-block;margin-right: 3px;">در صورت
+                                            مثبت
                                             بودن علت آن را توضیح دهید.</span>
                                     </div>
                                 </div>
@@ -2263,7 +2344,8 @@
                         <div style="clear: both;display: block;margin-right: 34px;">
                             <div style="width: 10%;float: left;position: relative;min-height: 1px;">
                                 <img src="{{ public_path('pdf-export-assets/images/logo-left.png') }}"
-                                    style="max-height: 35px;float: left;margin-left: 20px;margin-top: 30px;" alt="">
+                                    style="max-height: 35px;float: left;margin-left: 20px;margin-top: 30px;"
+                                    alt="">
                             </div>
                             <div style="width: 80%;float: left;min-height: 1px;position: relative;">
                                 <div
@@ -2271,7 +2353,7 @@
                                     <span style="display: inline-block;">توجه</span>
                                     لازم است سوالات ذیل که در خصوص سوابق پزشکی
                                     <span style="font-size: 13px;border-bottom: 1.5px solid red;">"بیمه شده"</span>
-                                    می باشد،توسط ایشان یا بیمه گذار پاسخ داده شود: 
+                                    می باشد،توسط ایشان یا بیمه گذار پاسخ داده شود:
                                 </div>
                                 <div
                                     style="text-align: center;font-size: 11px;font-weight: bold;display: block;margin: 0 auto 0 auto;line-height: 28px;color: red;">
@@ -2280,7 +2362,8 @@
                             </div>
                             <div style="width: 10%;padding-left: 15px;float: left;min-height: 1px;position: relative;">
                                 <img src="{{ public_path('pdf-export-assets/images/apple.png') }}"
-                                    style="max-height: 35px;float: right;margin-right: -12px;margin-top: 29px;" alt="">
+                                    style="max-height: 35px;float: right;margin-right: -12px;margin-top: 29px;"
+                                    alt="">
                             </div>
                         </div>
                     </td>
@@ -2301,7 +2384,8 @@
                                     </div>
                                     <span style="display: inline-block;float: right;">: </span>
                                 </div>
-                                <table style="page-break-inside: avoid;width: 100%;display: block;position: relative;width: 100%;">
+                                <table
+                                    style="page-break-inside: avoid;width: 100%;display: block;position: relative;width: 100%;">
                                     <tbody style="display: table;width: 100%;border: 1px solid #000000;">
                                         <tr style="border-bottom: 1px solid #000000;">
                                             <td
@@ -2309,8 +2393,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">قلب و عروق</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2328,8 +2412,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">داخلی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2347,8 +2431,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">سکته مغزی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2366,8 +2450,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">هپاتیت</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2385,8 +2469,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">پوست</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2405,9 +2489,10 @@
                                                 style="padding: 5px 2px;border-left: 1px solid #000000;border-bottom-color: transparent;font-size: 9px;">
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
-                                                    <span style="float: right;display: inline-block;">دستگاه تنفسی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="float: right;display: inline-block;">دستگاه
+                                                        تنفسی</span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2425,8 +2510,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">غدد داخلی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2444,8 +2529,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">تشنج</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2463,8 +2548,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">سل</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2483,8 +2568,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">روحی و
                                                         روانی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2504,8 +2589,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">فشار خون</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2524,8 +2609,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">کلیه و مجاری
                                                         ادرار</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2543,8 +2628,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">صرع</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2563,8 +2648,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">بیماری
                                                         عفونی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2583,8 +2668,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">استخوان و
                                                         مفاصل</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2603,9 +2688,10 @@
                                                 style="padding: 5px 2px;border-left: 1px solid #000000;border-bottom-color: transparent;font-size: 9px;">
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
-                                                    <span style="float: right;display: inline-block;">بیماری قند</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="float: right;display: inline-block;">بیماری
+                                                        قند</span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2623,8 +2709,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">سرطان</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2641,9 +2727,10 @@
                                                 style="padding: 5px 2px;border-left: 1px solid #000000;border-bottom-color: transparent;font-size: 9px;">
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
-                                                    <span style="float: right;display: inline-block;">مغز و اعصاب</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="float: right;display: inline-block;">مغز و
+                                                        اعصاب</span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2661,8 +2748,8 @@
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">چشم</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2679,9 +2766,10 @@
                                                 style="padding: 5px 2px;border-left: 1px solid #000000;border-bottom-color: transparent;font-size: 9px;">
                                                 <div
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
-                                                    <span style="float: right;display: inline-block;">بیماری خونی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="float: right;display: inline-block;">بیماری
+                                                        خونی</span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2702,8 +2790,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">نوع بیماری
                                                         قند</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                 </div>
                                             </td>
                                             <td
@@ -2712,8 +2800,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">دستگاه
                                                         گوارش</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2732,8 +2820,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">بیماریهای
                                                         واگیردار</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2752,8 +2840,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">گوش و حلق و
                                                         بینی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2772,8 +2860,8 @@
                                                     style="width: 100%;position: relative;min-height: 1px;text-align: right;">
                                                     <span style="float: right;display: inline-block;">اختلال
                                                         حرکتی</span>
-                                                    <span
-                                                        style="margin: 0 2px;float: right;display: inline-block;">: </span>
+                                                    <span style="margin: 0 2px;float: right;display: inline-block;">:
+                                                    </span>
                                                     <div style="float: left;display: inline-block;">
                                                         <span style="float: right;display: inline-block;">بله</span>
                                                         <span
@@ -2842,11 +2930,11 @@
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-left: 3px;">خیر</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['family_health_history'] == 0) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <span style="float: right;display: inline-block;margin-right: 15px;">بله</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['family_health_history'] == 1) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                 </div>
                             </div>
@@ -2854,7 +2942,7 @@
                                 style="display: table;width: 100%;position: relative;min-height: 1px;margin-bottom: 5px;margin-top: 12px;margin-right: 17px;">
                                 <div style="margin-right: 2px;margin-left: 2px;">
                                     در صورت مثبت بودن پاسخ،نوع بیماری،نسبت فرد بیمارو سن وی را ذکر نمایید
-                                    <span>: </span>
+                                    <span>: {{ $data['family_health_history_reason'] }}</span>
                                 </div>
                             </div>
                             <div
@@ -2870,14 +2958,14 @@
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-left: 3px;">خیر</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if(!$data['physical_impairment']) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <span style="float: right;display: inline-block;margin-right: 15px;">بله</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['physical_impairment']) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <div style="float: right;display: inline-block;margin-right: 4px;">
-                                        چنانچه دارای نقص عضو می باشید با ذکر علت و درصد عنوان نمائید: 
+                                        چنانچه دارای نقص عضو می باشید با ذکر علت و درصد عنوان نمائید: {{ $data['physical_impairment'] }}
                                     </div>
                                 </div>
                             </div>
@@ -2894,11 +2982,11 @@
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-left: 3px;">خیر</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['hospitalization_status'] == 0) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <span style="float: right;display: inline-block;margin-right: 15px;">بله</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['hospitalization_status'] == 1) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                 </div>
                             </div>
@@ -2939,14 +3027,14 @@
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-left: 3px;">خیر</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['weight_loss'] == 0) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <span style="float: right;display: inline-block;margin-right: 15px;">بله</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['weight_loss'] != 0) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <div style="float: right;display: inline-block;margin-right: 4px;">
-                                        در صورت مثبت بودن پاسخ،میزان و علت آن را ذکر فرمائید: 
+                                        در صورت مثبت بودن پاسخ،میزان و علت آن را ذکر فرمائید: {{ $data['weight_loss_reason'] }}
                                     </div>
                                 </div>
                             </div>
@@ -2963,14 +3051,14 @@
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-left: 3px;">خیر</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if(!$data['drug_usage']) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <span style="float: right;display: inline-block;margin-right: 15px;">بله</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['drug_usage']) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <div style="float: right;display: inline-block;margin-right: 4px;">
-                                        لطفا نام دارو و میزان مصرف در 24 ساعت را اعلام فرمائید: 
+                                        لطفا نام دارو و میزان مصرف در 24 ساعت را اعلام فرمائید: {{ $data['drug_usage'] }}
                                     </div>
                                 </div>
                             </div>
@@ -3021,7 +3109,8 @@
                                     <span
                                         style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
                             width: 12px;height: 12px;margin: 0 2px;"></span>
-                                    <span style="float: right;display: inline-block;margin-right: 4px;">علت فوت؟</span>
+                                    <span style="float: right;display: inline-block;margin-right: 4px;">علت
+                                        فوت؟</span>
                                 </div>
                             </div>
                             <div
@@ -3042,19 +3131,21 @@
                                         <span
                                             style="display: inline-block;width: 4px;float: right;margin: 0 2px;">/</span>
                                         <span style="float: right;display: inline-block;">قلیان</span>
-                                        <span style="float: right;display: inline-block;margin-right: 3px;">استفاده کرده
+                                        <span style="float: right;display: inline-block;margin-right: 3px;">استفاده
+                                            کرده
                                             یا می کنید؟</span>
                                     </div>
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-left: 3px;">خیر</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['smoking_status'] == 0) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <span style="float: right;display: inline-block;margin-right: 15px;">بله</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['smoking_status'] == 1) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
-                                    <span style="float: right;display: inline-block;margin-right: 4px;">میزان و مدت مصرف
+                                    <span style="float: right;display: inline-block;margin-right: 4px;">میزان و مدت
+                                        مصرف
                                         آن</span>
                                 </div>
                             </div>
@@ -3075,14 +3166,14 @@
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-left: 3px;">خیر</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['exemption'] != 4 && $data['gender'] == 1) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <span style="float: right;display: inline-block;margin-right: 15px;">بله</span>
                                     <span
-                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
+                                        style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2; @if($data['military_service_status'] == 4 && $data['gender'] == 1) background-color: black; @endif
                             width: 12px;height: 12px;margin: 0 2px;"></span>
                                     <div style="float: right;display: inline-block;margin-right: 4px;">
-                                        علت آن را توضیح دهید؟
+                                        علت آن را توضیح دهید؟ {{ $data['military_service_reason'] }}
                                     </div>
                                 </div>
                             </div>
@@ -3100,7 +3191,7 @@
                                         style="position: relative;  float: right;
                                   display: inline-block;border: 2px solid #aca899; border-right-color: #f1efe2;
                                   border-bottom-color: #f1efe2;width: 85px;height: 23px;margin: 0 6px 10px 0;
-                                  text-align: center;line-height: 23px;"></span>
+                                  text-align: center;line-height: 23px;">{{ $data['ins_target_height'] }}</span>
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-top: 4px;">وزن
                                         بیمه شده</span>
@@ -3108,7 +3199,7 @@
                                         style="position: relative;  float: right;
                                   display: inline-block;border: 2px solid #aca899; border-right-color: #f1efe2;
                                   border-bottom-color: #f1efe2;width: 85px;height: 23px;margin: 0 6px 10px 0;
-                                  text-align: center;line-height: 23px;"></span>
+                                  text-align: center;line-height: 23px;">{{ $data['ins_target_weight'] }}</span>
                                 </div>
                             </div>
                             <div
@@ -3159,7 +3250,7 @@
                                             توجه
                                         </span>
                                         <span style="display: inline-block;float: right;margin: 0 2px 0 2px;">
-                                            : 
+                                            :
                                         </span>
                                         مشتری گرامی در صورت پذیرش در خواست شما و تخصیص کد رهگیری
                                         <span>(شناسه)</span>
@@ -3234,7 +3325,8 @@
                             </div>
 
                             <div style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
-                                <div style="width: 19%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 19%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">تاریخ و امضا</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
@@ -3258,7 +3350,8 @@
                                     <span
                                         style="margin-top: 6px;margin-right: 2px;border-bottom: dotted 2px #184727;width: 65%;float: right;display: inline-block;text-align: center;"></span>
                                 </div>
-                                <div style="width: 20%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 20%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">تاریخ و امضا</span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
@@ -3321,8 +3414,10 @@
                                 </div>
                             </div>
                             <div style="clear: both;display: table;width: 100%;text-align: center;margin-top: 10px;">
-                                <div style="width: 27%;position: relative;min-height: 1px;float: left;text-align: right;">
-                                    <span style="float: right;display: inline-block;">تاریخ ، مهر و امضا نماینده </span>
+                                <div
+                                    style="width: 27%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                    <span style="float: right;display: inline-block;">تاریخ ، مهر و امضا نماینده
+                                    </span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
                                     <span
                                         style="border-bottom: dotted 2px #184727;width: 8%;float: right;display: inline-block;margin: 6px 2px 0 0px;text-align: center;"></span>
@@ -3345,7 +3440,8 @@
                                     <span
                                         style="margin-right: 2px;margin-top: 6px;border-bottom: dotted 2px #184727;width: 46%;float: right;display: inline-block;text-align: center;"></span>
                                 </div>
-                                <div style="width: 28%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 28%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;">تاریخ ، نام و امضا بازار یاب
                                     </span>
                                     <span style="float: right;display: inline-block;margin-right: 2px;">: </span>
@@ -3402,7 +3498,7 @@
                                         علت در خواست آزمایش های پزشکی
                                     </div>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span
                                         style="float: right;display: inline-block;margin-right: 15px;margin-left: 3px;">سن
@@ -3439,7 +3535,7 @@
                                         سوابق پزشکی بیمه شده بررسی گردید و پذیرش ایشان
                                     </div>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                 </div>
                             </div>
@@ -3454,7 +3550,7 @@
                                         نیاز به آزمایش تکمیلی دارد
                                     </div>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span style="float: right;display: inline-block;margin-left: 3px;">بله</span>
                                     <span
@@ -3472,7 +3568,7 @@
                                         منع پزشکی دارد
                                     </div>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span style="float: right;display: inline-block;margin-left: 3px;">بله</span>
                                     <span
@@ -3490,7 +3586,7 @@
                                         با اضافه نرخ پزشکی
                                     </div>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span class="ckecked-wide checked"
                                         style="position: relative;  float: right;
@@ -3506,7 +3602,8 @@
                                 <div style="width: 20%;position: relative;min-height: 1px;float: left;">
                                     <span style="float: right;">امضا و مهر پزشک</span>
                                 </div>
-                                <div style="width: 22%;position: relative;min-height: 1px;float: left;text-align: right;">
+                                <div
+                                    style="width: 22%;position: relative;min-height: 1px;float: left;text-align: right;">
                                     <span style="float: right;display: inline-block;margin-right: 16px;">تاریخ</span>
                                     <span style="float: right;display: inline-block;margin: 0 2px;">: </span>
                                     <span
@@ -3575,7 +3672,7 @@
                                         با توجه به اطلاعات مندرج در سوابق بیمه ای بیمه شده
                                     </div>
                                     <span style="float: right;display: inline-block;margin-right: 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span
                                         style="border-bottom: solid 2px #000000; display: inline-block;width: 4px;float: right;padding-top: 6px;margin: 0 5px;">
@@ -3607,7 +3704,7 @@
                                         سابقه خسارت
                                     </div>
                                     <span style="float: right;display: inline-block;margin-right: 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span style="float: right;display: inline-block;margin-left: 3px;">دارد</span>
                                     <span
@@ -3623,7 +3720,7 @@
                                     </span>
                                     <div style="float: right;display: inline-block;">منع مقرراتی</div>
                                     <span style="float: right;display: inline-block;margin-right: 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span style="float: right;display: inline-block;margin-left: 3px;">دارد</span>
                                     <span
@@ -3637,7 +3734,8 @@
                                     <span
                                         style="border-bottom: solid 2px #000000; display: inline-block;width: 4px;float: right;padding-top: 6px;margin-left: 3px;">
                                     </span>
-                                    <div style="float: right;display: inline-block;">با توجه به اطلاعات پرسشنامه،</div>
+                                    <div style="float: right;display: inline-block;">با توجه به اطلاعات پرسشنامه،
+                                    </div>
 
                                 </div>
                             </div>
@@ -3651,9 +3749,10 @@
                                     <span
                                         style="border-bottom: solid 2px #000000; display: inline-block;width: 4px;float: right;padding-top: 6px;margin: 0 3px;">
                                     </span>
-                                    <span style="float: right;display: inline-block;margin-right: 3px;">قد و وزن</span>
+                                    <span style="float: right;display: inline-block;margin-right: 3px;">قد و
+                                        وزن</span>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span
                                         style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
@@ -3664,7 +3763,7 @@
                                     <span style="float: right;display: inline-block;margin-right: 3px;">سوابق
                                         خانوادگی</span>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span
                                         style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
@@ -3674,15 +3773,16 @@
                                     </span>
                                     <span style="float: right;display: inline-block;margin-right: 3px;">پزشکی</span>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span
                                         style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;
                             width: 12px;height: 12px;margin: 0 2px;"></span>
-                                    <span style="float: right;display: inline-block;margin-right: 3px;">با مجموع کل اضافه
+                                    <span style="float: right;display: inline-block;margin-right: 3px;">با مجموع کل
+                                        اضافه
                                         نرخ</span>
                                     <span style="display: inline-block;float: right;margin: 0 3px;">
-                                        : 
+                                        :
                                     </span>
                                     <span
                                         style="position: relative;float: right;display: inline-block;border: 2px solid #aca899;border-right-color: #f1efe2;border-bottom-color: #f1efe2;

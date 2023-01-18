@@ -25,30 +25,32 @@ export default function Lifes() {
     };
 
     const exportExcel = (life) => {
+        setLoading(true);
         axiosClient
             .get(`/export-excel/${life.id}`, { responseType: "blob" })
             .then(({ data }) => {
                 const url = window.URL.createObjectURL(new Blob([data]));
                 const link = document.createElement("a");
                 link.href = url;
-                link.setAttribute("download", "life.xlsx");
+                link.setAttribute("download", `life-${life.id}.xlsx`);
                 document.body.appendChild(link);
                 link.click();
+                setLoading(false);
             });
     };
 
     const exportPdf = (life) => {
+        setLoading(true);
         axiosClient
-            .get(`/export-pdf/${life.id}`)
+            .get(`/export-pdf/${life.id}`, { responseType: "blob" })
             .then(({ data }) => {
-                console.log(data)
-                // , { responseType: "blob" }
-                // const url = window.URL.createObjectURL(new Blob([data]));
-                // const link = document.createElement("a");
-                // link.href = url;
-                // link.setAttribute("download", "life.pdf");
-                // document.body.appendChild(link);
-                // link.click();
+                const url = window.URL.createObjectURL(new Blob([data]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", `life-${life.id}.pdf`);
+                document.body.appendChild(link);
+                link.click();
+                setLoading(false);
             });
     };
 

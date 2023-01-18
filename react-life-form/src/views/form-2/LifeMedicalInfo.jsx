@@ -631,9 +631,7 @@ function LifeMedicalInfo() {
                 ? values.hospitalization_status
                 : "0",
             hospitalization_reason: values.hospitalization_reason,
-            physical_impairment: values.physical_impairment
-                ? values.physical_impairment
-                : "1",
+            physical_impairment: values.physical_impairment,
             drug_usage: values.drug_usage,
             health_status: values.health_status ? values.health_status : "1",
             disease_type: values.disease_type,

@@ -58,7 +58,7 @@ class LifeInsuranceExport implements FromCollection, WithMapping, WithHeadings, 
     public function map($insurance): array
     {
         return [
-            $insurance->id, $insurance->national_code, $insurance->insurance_target, $insurance->birth_year . '/' . $insurance->birth_month . '/' . $insurance->birth_day, $insurance->life_ins_duration, $insurance->first_job_level, $insurance->second_job_level,
+            $insurance->id, $insurance->national_code, $insurance->mobile_number, $insurance->insurance_target, $insurance->birth_year . '/' . $insurance->birth_month . '/' . $insurance->birth_day, $insurance->life_ins_duration, $insurance->first_job_level, $insurance->second_job_level,
             $insurance->payment_method, $insurance->annual_payment, $insurance->divided_payment, $insurance->annual_payment_increase, $insurance->addon_payment_method, $insurance->death_capital_any_reason_ratio,
             $insurance->capital_increase, $insurance->death_capital_incident_ratio, $insurance->maim_ratio, $insurance->has_medical_cost, $insurance->additional_dangers, $insurance->hospitalization,
             $insurance->exemption, $insurance->special_diseases_ratio, $insurance->ins_target_height, $insurance->ins_target_weight, $insurance->gender, $insurance->military_service_status,
@@ -78,25 +78,37 @@ class LifeInsuranceExport implements FromCollection, WithMapping, WithHeadings, 
     {
         $styleArray = ['font' => ['bold' => true]];
         return [
-            AfterSheet::class =>
-
-            function (AfterSheet $event) use ($styleArray) {
+            AfterSheet::class => function (AfterSheet $event) use ($styleArray) {
 
                 // bold heading
-                $event->sheet->getStyle('1')
-
-                    ->applyFromArray($styleArray);
+                $event->sheet->getStyle('1')->applyFromArray($styleArray);
 
                 // change direction to rtl
                 $event->sheet->setRightToLeft(true);
-                // center all text
 
-                $event->sheet
-                    ->getStyle("1")
-                    ->getAlignment()->setHorizontal('center');
-                $event->sheet
-                    ->getStyle("2")
-                    ->getAlignment()->setHorizontal('center');
+                // center all text
+                $event->sheet->getStyle("1")->getAlignment()->setHorizontal('center');
+                $event->sheet->getStyle("2")->getAlignment()->setHorizontal('center');
+
+                //paint cells
+                $event->sheet->getStyle('1')->applyFromArray(
+                    [
+                        'borders' => [
+                            'outline' => [
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_DASHED,
+                            ],
+                        ],
+                        'fill' => [
+                            'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_GRADIENT_LINEAR,
+                            'startColor' => [
+                                'argb' => 'FFA0A0A0',
+                            ],
+                            'endColor' => [
+                                'argb' => 'FFFFFFFF',
+                            ],
+                        ],
+                    ]
+                );
             },
         ];
     }

@@ -10,7 +10,8 @@ use App\Http\Resources\LifeInsuranceResource;
 use App\Models\LifeInsurance;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\Snappy\Facades\SnappyPdf;
+use Illuminate\Http\Response;
 
 class LifeInsurancesController extends Controller
 {
@@ -113,8 +114,8 @@ class LifeInsurancesController extends Controller
      */
     public function exportExcel(Request $request)
     {
-        Excel::store(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx', 'local');
-        return response()->download(storage_path('app') . '\\life-' . $request->id . '.xlsx');
+        return Excel::download(new LifeInsuranceExport($request->id), 'life-' . $request->id . '.xlsx');
+        // return response()->download(storage_path('app') . '\\life-' . $request->id . '.xlsx');
     }
 
     /**
@@ -126,16 +127,9 @@ class LifeInsurancesController extends Controller
     public function exportPdf(Request $request)
     {
         $data = new LifeInsuranceResource(LifeInsurance::find($request->id));
-        // return response(gettype($data->resource->toArray()));
-        // return response(storage_path('app') . '\\life-' . $request->id . '.pdf');
         try {
-            // return response($data);
-            // Pdf::loadView('pdf.index', $data)->save(storage_path('app') . '\\life-' . $request->id . '.pdf');
-            // return response()->download(storage_path('app') . '\\life-' . $request->id . '.pdf');
-            $pdf = Pdf::loadView('pdf.index', $data->resource->toArray());
-            $pdf->save(storage_path('app') . '\\life-' . $request->id . '.pdf');
-            // return response()->download(storage_path('app') . '\\life-' . $request->id . '.pdf');
-            return true;
+            $pdf = SnappyPdf::loadView('pdf.index', ['data' => $data->resource->toArray()]);
+            return response()->download($pdf->inline());
         } catch (\Throwable $th) {
             //throw $th;
             return response($th->getMessage());
