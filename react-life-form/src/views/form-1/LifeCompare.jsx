@@ -6,7 +6,7 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { useStateContext } from "../../context/ContextProvider.jsx";
 import axiosClient from "../../axios-client.js";
-import FormInput from "./FormInput";
+import LifeCompareItem from "./LifeCompareItem";
 import "./lifeCompare.css";
 
 function LifeCompare() {
@@ -186,7 +186,7 @@ function LifeCompare() {
             type: "select",
             label: "روش پرداخت",
             name: "payment_method",
-            errorMessage: ". ابتدا مبلغ پرداختی را انتخاب نمایید !!",
+            errorMessage: ". روش پرداخت را انتخاب نمایید !!",
             required: true,
             options: [
                 {
@@ -1008,7 +1008,7 @@ function LifeCompare() {
                     </div>
                 )}
                 {inputs.map((input) => (
-                    <FormInput
+                    <LifeCompareItem
                         key={input.id}
                         {...input}
                         value={values[input.name]}

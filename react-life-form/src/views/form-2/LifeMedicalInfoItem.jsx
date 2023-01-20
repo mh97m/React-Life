@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./formInput.css";
+import "./lifeMedicalInfoItem.css";
 
-const FormInput = (props) => {
+const LifeMedicalInfoItem = (props) => {
     const {
         label,
         errorMessage,
@@ -64,7 +64,11 @@ const FormInput = (props) => {
                     <label className="life-compare-label">{label}</label>
                     <input
                         {...inputProps}
-                        className="life-compare-input"
+                        className={
+                            error
+                                ? "life-compare-input-error"
+                                : "life-compare-input"
+                        }
                         onChange={onChange}
                         onBlur={handleFocus}
                         focused={focused.toString()}
@@ -73,29 +77,10 @@ const FormInput = (props) => {
                     />
                     <span className="life-compare-span">{errorMessage}</span>
                     <span className="life-compare-span-error">{error}</span>
-                    {(inputProps.name == "first_job_level" ||
-                        inputProps.name == "second_job_level") && (
-                        <ul>
-                            {options?.map((item, index) => {
-                                if (index < 5) {
-                                    return (
-                                        <li
-                                            key={index}
-                                            className="ui-menu-item"
-                                            onClick={onClick}
-                                            value={item.fanavaran_id}
-                                        >
-                                            {item.caption}
-                                        </li>
-                                    );
-                                }
-                            })}
-                        </ul>
-                    )}
                 </div>
             );
             break;
     }
 };
 
-export default FormInput;
+export default LifeMedicalInfoItem;

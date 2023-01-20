@@ -11,6 +11,7 @@ import UserForm from "./views/UserForm";
 import MultiStepForm from "./views/form-0/MultiStepForm";
 import LifeCompare from "./views/form-1/LifeCompare";
 import LifeMedicalInfo from "./views/form-2/LifeMedicalInfo";
+import InsuranceTargetDetails from "./views/form-3/InsuranceTargetDetails";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path: "/life-medical-info",
                 element: <LifeMedicalInfo />,
+            },
+            {
+                path: "/insurance-target-details",
+                element: <InsuranceTargetDetails />,
             },
         ],
     },

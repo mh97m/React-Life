@@ -1,0 +1,141 @@
+.life-compare-form-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.life-compare-input {
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.life-compare-input-error {
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid red;
+}
+
+
+.life-compare-label {
+    font-size: 14px;
+    color: gray;
+    text-align: right;
+}
+
+.life-compare-span {
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    direction: rtl;
+}
+.life-compare-span-error {
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    direction: rtl;
+}
+
+input:invalid[focused="true"]{
+    border: 2px solid red;
+}
+
+input:invalid[focused="true"] ~ span{
+    display: block;
+}
+
+select:invalid[focused="true"]{
+    border: 2px solid red;
+}
+
+select:invalid[focused="true"] ~ span{
+    display: block;
+}
+
+.life-compare-form-select {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.life-compare-select {
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.life-compare-select-error {
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid red;
+}
+
+.ui-menu-item {
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 4px;
+    margin: 2px;
+    background-color: azure;
+    text-align: center;
+}
+
+.heir-add-button {
+    width: 30%;
+    height: 40px;
+    border: none;
+    background-color: rebeccapurple;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.heir-remove-button {
+    width: 20%;
+    height: 40px;
+    border: none;
+    background-color: rebeccapurple;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    margin-right: 50%;
+}

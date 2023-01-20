@@ -6,8 +6,8 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { useStateContext } from "../../context/ContextProvider.jsx";
 import axiosClient from "../../axios-client.js";
-import FormInput from "./FormInput";
-import "./lifeCompare.css";
+import LifeMedicalInfoItem from "./LifeMedicalInfoItem";
+import "./lifeMedicalInfo.css";
 
 function LifeMedicalInfo() {
     const navigate = useNavigate();
@@ -684,7 +684,7 @@ function LifeMedicalInfo() {
             .then(({ data }) => {
                 setNotification("ثبت اطلاعات با موفقیت انجام شد !");
                 console.log(data);
-                setInsurancedId(null);
+                // setInsurancedId(null);
                 setTimeout(() => {
                     navigate("/lifes");
                 }, 100);
@@ -1018,19 +1018,13 @@ function LifeMedicalInfo() {
                     </div>
                 )}
                 {inputs.map((input) => (
-                    <FormInput
+                    <LifeMedicalInfoItem
                         key={input.id}
                         {...input}
                         value={values[input.name]}
                         error={errors[input.name]}
                         disabled={disableds[input.name]}
                         onChange={onChange}
-                        onClick={
-                            input.name == "first_job_level"
-                                ? onClickFirstJobResults
-                                : input.name == "second_job_level" &&
-                                  onClickSecondJobResults
-                        }
                     />
                 ))}
                 <button className="life-compare-button">ثبت نام</button>

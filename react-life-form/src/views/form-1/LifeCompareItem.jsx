@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./formInput.css";
+import "./lifeCompareItem.css";
 
-const FormInput = (props) => {
+const LifeCompareItem = (props) => {
     const {
         label,
         errorMessage,
@@ -64,11 +64,7 @@ const FormInput = (props) => {
                     <label className="life-compare-label">{label}</label>
                     <input
                         {...inputProps}
-                        className={
-                            error
-                                ? "life-compare-input-error"
-                                : "life-compare-input"
-                        }
+                        className="life-compare-input"
                         onChange={onChange}
                         onBlur={handleFocus}
                         focused={focused.toString()}
@@ -102,4 +98,4 @@ const FormInput = (props) => {
     }
 };
 
-export default FormInput;
+export default LifeCompareItem;
