@@ -52,7 +52,7 @@ Route::prefix('v1')->group(function () {
     });
     Route::get('/update-jobs', function () {
         $data = json_encode(Job::get(['fanavaran_id', 'caption']), JSON_UNESCAPED_UNICODE );
-        if (($data) != (file_get_contents(base_path('react-life-form/src/jobs.json')))) {
+        if ($data != file_get_contents(base_path('react-life-form/src/jobs.json'))) {
             file_put_contents(base_path('react-life-form/src/jobs.json'), $data);
             return response(true);
         }
