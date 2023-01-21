@@ -8,6 +8,7 @@ import { useStateContext } from "../../context/ContextProvider.jsx";
 import axiosClient from "../../axios-client.js";
 import LifeCompareItem from "./LifeCompareItem";
 import "./lifeCompare.css";
+import JsonJobs from "../../Jobs.json";
 
 function LifeCompare() {
     const navigate = useNavigate();
@@ -100,12 +101,27 @@ function LifeCompare() {
         updateCapitalIncidents();
         const getjobs = async () => {
             try {
-                const result = await fetch(
-                    `${import.meta.env.VITE_API_BASE_URL}` + "/api/v1/get-jobs"
-                );
+                axiosClient
+                    .get("/v1/update-jobs")
+                    .then(({ data }) => {
+                        if (data) {
+                            JsonJobs = fetch(
+                                `${import.meta.env.VITE_BASE_URL}` + "/src/Jobs.json"
+                            );
+                        }
+                    })
+                    .catch((err) => {
+                        const response = err.response;
+                        if (response) {
+                            setServerErrors(err.response.data.errors);
+                        }
+                    });
+                // const result = await fetch(
+                //     `${import.meta.env.VITE_API_BASE_URL}` + "/api/v1/get-jobs"
+                // );
                 // const result = await axios.get("http://127.0.0.1:8000/api/v1/get-jobs");
-                const resultJobs = await result.json();
-                setJobs(await resultJobs);
+                // const resultJobs = await Jobs.json();
+                setJobs(JsonJobs);
             } catch (error) {
                 console.error("Can not connet to backend");
                 setJobs([]);

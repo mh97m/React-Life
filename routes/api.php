@@ -48,6 +48,14 @@ Route::post('/life-compare', [LifeInsurancesController::class, 'storeLifeCompare
 
 Route::prefix('v1')->group(function () {
     Route::get('/get-jobs', function () {
-        return Job::all()->toArray();
+        return Job::get(['fanavaran_id', 'caption']);
+    });
+    Route::get('/update-jobs', function () {
+        $data = json_encode(Job::get(['fanavaran_id', 'caption']), JSON_UNESCAPED_UNICODE );
+        if (($data) != (file_get_contents(base_path('react-life-form/src/jobs.json')))) {
+            file_put_contents(base_path('react-life-form/src/jobs.json'), $data);
+            return response(true);
+        }
+        return response(false);
     });
 });

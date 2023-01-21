@@ -8,11 +8,11 @@ import { ContextProvider } from "./context/ContextProvider.jsx";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
+    <>
         <ContextProvider>
             <RouterProvider router={router} />
         </ContextProvider>
-    </React.StrictMode>
+    </>
 );
 
 reportWebVitals();

@@ -8,7 +8,7 @@ function JobInfo({ formData, setFormData }) {
         const results =
             query.target.value.length > 2
                 ? Jobs.filter((value) => {
-                      return value.Caption.toLowerCase().includes(
+                      return value.caption.toLowerCase().includes(
                           query.target.value.toLowerCase()
                       );
                   })
@@ -41,7 +41,7 @@ function JobInfo({ formData, setFormData }) {
                             onClick={(e) => {
                                 setFormData({
                                     ...formData,
-                                    job_id: item.Id.toString(),
+                                    job_id: item.fanavaran_id.toString(),
                                     job: e.target.innerHTML,
                                 });
                                 setResults([]);
@@ -49,7 +49,7 @@ function JobInfo({ formData, setFormData }) {
                             key={index}
                             className="job-offer"
                         >
-                            {item.Caption}
+                            {item.caption}
                         </span>
                     );
                 }
