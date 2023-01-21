@@ -163,7 +163,10 @@ class LifeInsurancesController extends Controller
      */
     public function exportPdf(Request $request)
     {
-        $data = new LifeInsuranceResource(LifeInsurance::find($request->id));
+        $data = new LifeInsuranceResource(LifeInsurance::where([
+            'id' => $request->id,
+            'user_id' => auth()->user()->id
+        ])->first());
         try {
             $pdf = SnappyPdf::loadView('pdf.index', ['data' => $data->resource->toArray()]);
             return response()->download($pdf->inline());

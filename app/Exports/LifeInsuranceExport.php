@@ -30,7 +30,10 @@ class LifeInsuranceExport implements FromCollection, WithMapping, WithHeadings, 
      */
     public function collection()
     {
-        return new LifeInsuranceResource(LifeInsurance::where('id', $this->id)->get());
+        return new LifeInsuranceResource(LifeInsurance::where([
+            'id'=> $this->id,
+            'user_id' => auth()->user()->id
+            ])->get());
     }
 
     /**

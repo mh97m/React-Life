@@ -949,7 +949,7 @@ function LifeCompare() {
     };
 
     const handleDeathCapitalIncidentRatio = (e) => {
-        if (e.target.value) {
+        if (e.target.value && e.target.value != 0) {
             setDisableds({
                 ...disableds,
                 maim_ratio: false,
@@ -975,7 +975,7 @@ function LifeCompare() {
     };
 
     const handleHasMedicalCost = (e) => {
-        if (e.target.value) {
+        if (e.target.value && e.target.value != 0) {
             setDisableds({
                 ...disableds,
                 additional_dangers: false,

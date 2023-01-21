@@ -96,15 +96,19 @@ function InsuranceTargetDetails() {
 
     const handleUserIfDead = (e) => {
         if (e.target.value == null) {
-            heirs = 1;
+            heirs.current = 1;
             handleHeirs();
         } else {
-            heirs = 0;
+            heirs.current = 0;
             handleHeirs();
         }
     };
 
-    const addHeir = (e) => {};
+    const addHeir = (e) => {
+        parent = document.getElementsByName("user_if_dead");
+        
+        document.createElement();
+    };
 
     const removeHeir = (e) => {};
 
