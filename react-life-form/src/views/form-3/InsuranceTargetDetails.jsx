@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, React } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "universal-cookie";
 import DateObject from "react-date-object";
@@ -8,6 +8,7 @@ import { useStateContext } from "../../context/ContextProvider.jsx";
 import axiosClient from "../../axios-client.js";
 import InsuranceTargetDetailsItem from "./InsuranceTargetDetailsItem";
 import "./insuranceTargetDetails.css";
+import InsuranceTargetDetailsHeir from "./InsuranceTargetDetailsHeir.jsx";
 
 function InsuranceTargetDetails() {
     const navigate = useNavigate();
@@ -104,10 +105,30 @@ function InsuranceTargetDetails() {
         }
     };
 
-    const addHeir = (e) => {
-        parent = document.getElementsByName("user_if_dead");
-        
-        document.createElement();
+    const addHeir = () => {
+        let parent = document.getElementsByClassName("heirs");
+        // let national_code = document.createElement('div');
+        // let national_code_label = document.createElement('label');
+        // let national_code_input = document.createElement('input');
+        // national_code.className = "life-compare-form-input";
+        // national_code_label.className = "life-compare-label";
+        // national_code_input.className = "life-compare-input";
+        // national_code_label.innerHTML = "کد ملی ";
+        // national_code.appendChild(national_code_label);
+        // national_code.appendChild(national_code_input);
+        // parent[0].appendChild(national_code);
+
+        // let elements = [];
+        // let l = React.createElement("label", { className: "life-compare-label" });
+        // l.innerHTML = "کد ملی ";
+        // let i = React.createElement("input", { className: "life-compare-input" });
+        // elements.push(l);
+        // elements.push(i);
+        // let n = React.createElement("div", { className: "life-compare-form-input" },elements);
+        // parent[0].appendChild(n);
+
+
+
     };
 
     const removeHeir = (e) => {};
@@ -115,6 +136,7 @@ function InsuranceTargetDetails() {
     const removeHeirs = (e) => {};
 
     const handleHeirs = () => {
+        addHeir();
         console.log(heirs);
         // const parent = document.getElementsByName("heirs");
         // console.log(parent)
@@ -183,6 +205,7 @@ function InsuranceTargetDetails() {
                         onClick={input.name == "user_if_dead" && onClickHeir}
                     />
                 ))}
+                <InsuranceTargetDetailsHeir count={5}/>
                 <button className="life-compare-button">ثبت نام</button>
             </form>
         </div>
