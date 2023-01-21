@@ -32,7 +32,7 @@ return [
     |    The environment variables to set while running the wkhtmltopdf process.
     |
     */
-    
+
     'pdf' => [
         'enabled' => true,
         // 'binary'  => env('WKHTML_PDF_BINARY', '/usr/local/bin/wkhtmltopdf'),
@@ -40,15 +40,12 @@ return [
         'timeout' => false,
         'options' => [
             'enable-local-file-access' => true,
-            'orientation' => 'portrait',
             'encoding' => 'UTF-8',
             // 'page-size' => 'A3',
-            'page-height' => 335,
-            'page-width' => 236 //320
         ],
         'env'     => [],
     ],
-    
+
     'image' => [
         'enabled' => true,
         // 'binary'  => env('WKHTML_IMG_BINARY', '/usr/local/bin/wkhtmltoimage'),

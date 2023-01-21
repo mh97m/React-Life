@@ -168,7 +168,10 @@ class LifeInsurancesController extends Controller
             'user_id' => auth()->user()->id
         ])->first());
         try {
-            $pdf = SnappyPdf::loadView('pdf.index', ['data' => $data->resource->toArray()]);
+            $pdf = SnappyPdf::loadView('pdf.index', ['data' => $data->resource->toArray()])
+                ->setOrientation('portrait')
+                ->setOption('page-height', 335)
+                ->setOption('page-width', 236);
             return response()->download($pdf->inline());
         } catch (\Throwable $th) {
             //throw $th;
