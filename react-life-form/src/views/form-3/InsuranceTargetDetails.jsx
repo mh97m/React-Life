@@ -29,12 +29,10 @@ function InsuranceTargetDetails() {
         heir_shares: [],
     });
     const [errors, setErrors] = useState({
-        national_code: "",
         user_if_dead: "",
+        national_codes: [],
     });
-    const [disableds, setDisableds] = useState({
-        birth: true,
-    });
+    const [disableds, setDisableds] = useState({});
     const heirs = useRef(1);
     const [heirsElement, setHeirsElement] = useState();
 
@@ -71,7 +69,25 @@ function InsuranceTargetDetails() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setServerErrors(null);
+        values.national_codes.every(function (national_code, index) {
+            console.log(national_code, index);
+            if (!new RegExp("^0\\d{9}$").test(national_code)) {
+                console.log(values.national_codes[index]);
+                console.log(`national_codes[${index}]`);
+                // setValues({ ...values, ...national_codes[index]: "" });
+                values.national_codes[index] = "";
+                console.log(values.national_codes);
+                errors.national_codes[index] = ". فرمت کد ملی بیمه شده اشتباه است !!";
+                // setErrors({
+                //     ...errors,
+                //     national_code: ". فرمت کد ملی بیمه شده اشتباه است !!",
+                // });
+                return;
+            }
+        });
+
         console.log(values);
+        console.log(errors);
     };
 
     const onChange = (e) => {
@@ -100,31 +116,6 @@ function InsuranceTargetDetails() {
         }
         // setValues({ ...values, [e.target.name]: e.target.value });
     };
-
-    const addHeir = () => {
-        let parent = document.getElementsByClassName("heirs");
-        // let national_code = document.createElement('div');
-        // let national_code_label = document.createElement('label');
-        // let national_code_input = document.createElement('input');
-        // national_code.className = "life-compare-form-input";
-        // national_code_label.className = "life-compare-label";
-        // national_code_input.className = "life-compare-input";
-        // national_code_label.innerHTML = "کد ملی ";
-        // national_code.appendChild(national_code_label);
-        // national_code.appendChild(national_code_input);
-        // parent[0].appendChild(national_code);
-
-        // let elements = [];
-        // let l = React.createElement("label", { className: "life-compare-label" });
-        // l.innerHTML = "کد ملی ";
-        // let i = React.createElement("input", { className: "life-compare-input" });
-        // elements.push(l);
-        // elements.push(i);
-        // let n = React.createElement("div", { className: "life-compare-form-input" },elements);
-        // parent[0].appendChild(n);
-    };
-    const removeHeir = (e) => {};
-    const removeHeirs = (e) => {};
 
     const handleHeirs = (e) => {
         if (heirs.current == 0) {
@@ -157,6 +148,10 @@ function InsuranceTargetDetails() {
         } else {
             heirs.current > 1 && (heirs.current = heirs.current - 1);
             handleHeirs();
+            // setValues({ ...values, [e.target.name]: e.target.value });
+            values.national_codes.pop();
+            values.heir_targets.pop();
+            values.heir_shares.pop();
         }
     };
 
@@ -183,7 +178,7 @@ function InsuranceTargetDetails() {
                         heirsElement={
                             input.name == "user_if_dead" && heirsElement
                         }
-                        heirs={heirs.current}
+                        heirs={input.name == "user_if_dead" && heirs.current}
                     />
                 ))}
                 <button className="life-compare-button">ثبت نام</button>

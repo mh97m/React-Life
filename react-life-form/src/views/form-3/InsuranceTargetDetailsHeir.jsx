@@ -79,27 +79,6 @@ const InsuranceTargetDetailsHeir = (props) => {
     const handleHeirShares = (e) => {
         values.heir_shares[e.target.name[e.target.name.length - 2]] = e.target.value;
     };
-
-    const elements = [];
-    // for (let i = 0; i < count; i++) {
-    //     console.log('first')
-    //     inputs.map((input) => {
-    //         elements.push(
-    //             <InsuranceTargetDetailsItem
-    //                 key={input.id}
-    //                 {...input}
-    //                 value={values[input.name]}
-    //                 error={errors[input.name]}
-    //                 disabled={disableds[input.name]}
-    //                 onChange={onChange}
-    //                 onClick={input.name == "user_if_dead" && onClickHeir}
-    //             />
-    //         );
-    //         console.log(input);
-    //     });
-    // }
-
-    // console.log(elements);
     return (
         <>
             {inputs.map((input) => (
