@@ -13,6 +13,8 @@ const InsuranceTargetDetailsItem = (props) => {
         error,
         defaultValue,
         disabled,
+        heirsElement,
+        heirs,
         ...inputProps
     } = props;
     const [focused, setFocused] = useState(false);
@@ -55,14 +57,15 @@ const InsuranceTargetDetailsItem = (props) => {
                     </select>
                     <span className="life-compare-span">{errorMessage}</span>
                     <span className="life-compare-span-error">{error}</span>
-                    {(inputProps.name == "user_if_dead") && (
+                    {(inputProps.name == "user_if_dead" && inputProps.value == 0) && (
                         <div>
-                            <button className="heir-add-button" onClick={onClick}>اضافه کردن وارث</button>
-                            <button className="heir-remove-button" onClick={onClick}>حذف وارث</button>
+                            {heirs < 4 && (<button className="heir-add-button" type="button" onClick={onClick}>اضافه کردن وارث</button>)}
+                            {heirs > 1 &&  (<button className="heir-remove-button" type="button" onClick={onClick}>حذف وارث</button>)}
                             <div className="heirs">
                             </div>
                         </div>
                     )}
+                    {(inputProps.name == "user_if_dead" && inputProps.value == 0) && (heirsElement)}
                 </div>
             );
             break;

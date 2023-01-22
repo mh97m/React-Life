@@ -138,4 +138,7 @@ select:invalid[focused="true"] ~ span{
     margin-top: 15px;
     margin-bottom: 30px;
     margin-right: 50%;
+    display: inline-block;
+    direction: ltr;
+    justify-self: start;
 }

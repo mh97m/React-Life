@@ -100,25 +100,14 @@ function LifeCompare() {
         updateDurations();
         updateCapitalIncidents();
         try {
-            setJobs(JsonJobs);
             axiosClient
                 .get("/v1/update-jobs")
                 .then(({ data }) => {
-                    if (data) {
-                        async () => {
-                            setJobs(
-                                await fetch(
-                                    `${
-                                        import.meta.env.VITE_BASE_URL
-                                    }/src/Jobs.json`
-                                )
-                            );
-                        };
-                        // const result = await fetch(
-                        //     `${import.meta.env.VITE_BASE_URL}/src/Jobs.json`
-                        // );
-                        // setJobs(result);
-                    }
+                    fetch(`${import.meta.env.VITE_BASE_URL}/src/Jobs.json`)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            setJobs(data);
+                        });
                 })
                 .catch((err) => {
                     const response = err.response;
@@ -126,11 +115,6 @@ function LifeCompare() {
                         setServerErrors(err.response.data.errors);
                     }
                 });
-            // const result = await fetch(
-            //     `${import.meta.env.VITE_API_BASE_URL}` + "/api/v1/get-jobs"
-            // );
-            // const result = await axios.get("http://127.0.0.1:8000/api/v1/get-jobs");
-            // const resultJobs = await Jobs.json();
         } catch (error) {
             console.error("Jobs not loaded");
             setJobs([]);

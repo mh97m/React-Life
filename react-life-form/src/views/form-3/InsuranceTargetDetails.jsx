@@ -23,8 +23,10 @@ function InsuranceTargetDetails() {
         }, 20000);
     };
     const [values, setValues] = useState({
-        national_code: "",
-        user_if_dead: "",
+        user_if_dead: 0,
+        national_codes: [],
+        heir_targets: [],
+        heir_shares: [],
     });
     const [errors, setErrors] = useState({
         national_code: "",
@@ -34,6 +36,7 @@ function InsuranceTargetDetails() {
         birth: true,
     });
     const heirs = useRef(1);
+    const [heirsElement, setHeirsElement] = useState();
 
     useEffect(() => {
         // if (!insurancedId) {
@@ -49,7 +52,7 @@ function InsuranceTargetDetails() {
             label: "استفاده کننده در صورت فوت",
             name: "user_if_dead",
             defaultValue: {
-                key: null,
+                key: 0,
                 value: "خودم انتخاب می کنم",
             },
             options: [
@@ -65,18 +68,10 @@ function InsuranceTargetDetails() {
         },
     ];
 
-    const [heir, setHeir] = useState([
-        {
-            id: inputs.length + 1,
-            type: "input",
-            label: "مبلغ پرداختی قسط اول",
-            name: "divided_payment",
-        }
-    ]);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setServerErrors(null);
+        console.log(values);
     };
 
     const onChange = (e) => {
@@ -96,13 +91,14 @@ function InsuranceTargetDetails() {
     };
 
     const handleUserIfDead = (e) => {
-        if (e.target.value == null) {
+        if (e.target.value == 0) {
             heirs.current = 1;
-            handleHeirs();
+            handleHeirs(e);
         } else {
             heirs.current = 0;
-            handleHeirs();
+            handleHeirs(e);
         }
+        // setValues({ ...values, [e.target.name]: e.target.value });
     };
 
     const addHeir = () => {
@@ -126,61 +122,42 @@ function InsuranceTargetDetails() {
         // elements.push(i);
         // let n = React.createElement("div", { className: "life-compare-form-input" },elements);
         // parent[0].appendChild(n);
-
-
-
     };
-
     const removeHeir = (e) => {};
-
     const removeHeirs = (e) => {};
 
-    const handleHeirs = () => {
-        addHeir();
-        console.log(heirs);
-        // const parent = document.getElementsByName("heirs");
-        // console.log(parent)
-        // const heir = {
-        //     id: 10,
-        //     type: "input",
-        //     label: "مبلغ پرداختی قسط اول",
-        //     name: "divided_payment",
-        //     readOnly: true,
-        // };
-        // let div = document.createElement("div");
-        // for (let index = 0; index < heirs.current; index++) {
-        // referenceNode.parentNode.insertBefore(
-        //     newNode,
-        //     referenceNode.nextSibling
-        // );
-        // parent.after(div);
-        // console.log(parent);
-        // }
-
-        // console.log(inputs.length);
+    const handleHeirs = (e) => {
+        if (heirs.current == 0) {
+            setValues({
+                ...values,
+                national_codes: [],
+                heir_targets: [],
+                heir_shares: [],
+                [e.target.name]: e.target.value,
+            });
+            // values.national_codes = [];
+            // values.heir_targets = [];
+            // values.heir_shares = [];
+        }
+        setHeirsElement(
+            <InsuranceTargetDetailsHeir
+                time={heirs.current}
+                inputLength={inputs.length}
+                values={values}
+                errors={errors}
+                disableds={disableds}
+            />
+        );
     };
 
     const onClickHeir = (e) => {
         if (e.target.className == "heir-add-button") {
-            heirs.current = heirs.current + 1;
+            heirs.current < 4 && (heirs.current = heirs.current + 1);
             handleHeirs();
         } else {
-            heirs.current = heirs.current - 1;
+            heirs.current > 1 && (heirs.current = heirs.current - 1);
             handleHeirs();
         }
-        // inputs.current.push({
-        //     id: inputs.current.length+1,
-        //     type: "input",
-        //     label: "مبلغ پرداختی قسط اول",
-        //     name: "divided_payment",
-        //     readOnly: true,
-        // });
-        // console.log(inputs);
-        // ('<p>aaaaaaaaaaaaa</p>').appendTo('div#heirs');
-        // console.log(
-        //     [...Array(heirs.current).keys()].map((i) => i),
-        //     new Array(heirs.current).fill(0)
-        // )
     };
 
     return (
@@ -203,9 +180,12 @@ function InsuranceTargetDetails() {
                         disabled={disableds[input.name]}
                         onChange={onChange}
                         onClick={input.name == "user_if_dead" && onClickHeir}
+                        heirsElement={
+                            input.name == "user_if_dead" && heirsElement
+                        }
+                        heirs={heirs.current}
                     />
                 ))}
-                <InsuranceTargetDetailsHeir count={5}/>
                 <button className="life-compare-button">ثبت نام</button>
             </form>
         </div>
